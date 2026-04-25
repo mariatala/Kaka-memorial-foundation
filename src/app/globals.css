@@ -21,8 +21,8 @@ html {
 }
 
 body {
-	background: var(--color-light);
-	color: var(--color-primary-dark);
+	background: var(--color-foreground);
+	color: var(--color-background);
 	font-family: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
 		BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, 'Noto Sans', 'Apple Color Emoji',
 		'Segoe UI Emoji';
@@ -42,8 +42,8 @@ body {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #081127;
+    --foreground: #edf3f7;
   }
 }
 
