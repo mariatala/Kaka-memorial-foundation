@@ -1,16 +1,44 @@
 @import "tailwindcss";
 
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #edf3f7; /*Grey --Blue*/
+  --background: #081127; /*Navy Blue*/
+	--color-primary: #8d99dd;      /*Navy Light Blue*/
+	--color-secondary: #96bd18;    /*Light Green*/
+	--color-secondary-dark: #6f8f12; /*Dark Light Green*/
+	--color-light: #f9f9f9; /*Grey --Red*/
+	--color-accent-one: #685b9a; /*Light Purple*/
+	--color-accent-two: #f2b036; /*Orange*/
+	--color-accent-two-dark: #d69f29; /*Dark Orange*/
+	--color-accent-three: #a6c3d9; /*Ocean Blue*/
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+/* ─── Base ─────────────────────────────────────────────── */
+html {
+	scroll-behavior: smooth;
 }
+
+body {
+	background: var(--color-light);
+	color: var(--color-primary-dark);
+	font-family: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+		BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, 'Noto Sans', 'Apple Color Emoji',
+		'Segoe UI Emoji';
+	text-rendering: optimizeLegibility;
+}
+
+
+/* ─── Font helpers ─────────────────────────────────────── */
+.font-display {
+	font-family: var(--font-quicksand), var(--font-inter), ui-sans-serif, system-ui;
+}
+
+.font-reading {
+	font-family: var(--font-gowun-dodum), var(--font-inter), ui-sans-serif, system-ui;
+}
+
 
 @media (prefers-color-scheme: dark) {
   :root {
