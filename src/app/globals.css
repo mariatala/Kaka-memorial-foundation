@@ -4,6 +4,9 @@
 :root {
   --foreground: #edf3f7; /*Grey --Blue*/
   --background: #081127; /*Navy Blue*/
+}
+
+@theme{
 	--color-primary: #8d99dd;      /*Navy Light Blue*/
 	--color-secondary: #96bd18;    /*Light Green*/
 	--color-secondary-dark: #6f8f12; /*Dark Light Green*/
