@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import Image from 'next/image';
 import TeamMemberCard from '@/app/about/TeamMemberCard';
 import { Gowun_Dodum } from 'next/font/google';

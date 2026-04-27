@@ -19,7 +19,7 @@ const inter = Inter({
 	subsets: ['latin'],
 });
 
-const CausesPage = () => {
+export default function CausesPage(){
 	const causesIcons = [
 		<HandHeart
 			key="handheart"
@@ -245,9 +245,9 @@ const CausesPage = () => {
 						].map((item, index) => (
 							<div
 								key={index}
-								className="relative bg-white shadow-lg border-l-2 border-r-2 md:border-r-0  border-primary rounded-xl p-6 md:p-10 flex  gap-6 items-start"
+								className="relative bg-white shadow-lg border-l-4 border-r-2 md:border-r-0  border-primary rounded-xl p-6 md:p-10 flex  gap-6 items-start"
 							>
-								<div className="text-secondary flex-shrink-0 text-xl">
+								<div className="text-secondary shrink-0 text-xl">
 									{React.cloneElement(causesIcons[index], { key: index })}
 								</div>
 								<div className="flex flex-col space-y-4">
@@ -270,5 +270,3 @@ const CausesPage = () => {
 		</div>
 	);
 };
-
-export default CausesPage;

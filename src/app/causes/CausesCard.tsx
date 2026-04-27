@@ -27,14 +27,14 @@ interface EducationSectionProps {
 	cards: Card[];
 }
 
-const EducationSection: React.FC<EducationSectionProps> = ({
+export default function EducationSection ({
 	imageSrc,
 	imageAlt = 'Illustration',
 	heading,
 	subheading,
 	description,
 	cards,
-}) => {
+}:EducationSectionProps) {
 	return (
 		<div className="w-full  mx-auto px-6 md:px-16 py-16 bg-accent-three-light rounded-sm  mt-8 flex flex-col gap-16">
 			{/* Top Section */}
@@ -100,5 +100,3 @@ const EducationSection: React.FC<EducationSectionProps> = ({
 		</div>
 	);
 };
-
-export default EducationSection;
