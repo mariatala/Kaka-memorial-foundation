@@ -17,7 +17,7 @@ export default function HeroSection() {
 			style={{ backgroundImage: "url('/cover_image.jpeg')" }}
 		>
 			{/* Gradient Overlay */}
-			<div className="absolute inset-0 bg-linear-to-b from-primary-dark/40 to-primary-dark/100 z-0" />
+			<div className="absolute inset-0 bg-gradient-to-b from-primary-dark/40 to-primary-dark/100 z-0" />
 
 			{/* Hero Content */}
 			<div className="relative z-10  h-full flex flex-col-reverse gap-8 md:flex-row items-center mt-16 justify-center  md:justify-between text-justify py-32">

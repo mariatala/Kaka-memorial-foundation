@@ -12,7 +12,8 @@ interface TeamMemberCardProps {
 	niconneFontClass?: string;
 }
 
-const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
+
+export default function TeamMemberCard ({
 	imageSrc,
 	altText,
 	description,
@@ -20,9 +21,9 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
 	role,
 	gowunFontClass = '',
 	niconneFontClass = '',
-}) => {
+}:TeamMemberCardProps)  {
 	return (
-		<div className="w-full md:w-4/6 lg:w-full mx-auto py-8 px-4 xl:px-12 gap-8 bg-slate-50 border-t-4 border-b-4 border-secondary inline-flex justify-between items-start flex-col md:flex-row">
+		<div className="w-full md:w-4/6 lg:w-full mx-auto py-8 px-4 xl:px-12 gap-8 bg-slate-100 border-t-4 border-b-4 border-secondary inline-flex justify-between items-start flex-col md:flex-row">
 			<Image
 				className="w-full md:w-2/5"
 				width={400}
@@ -46,4 +47,3 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
 	);
 };
 
-export default TeamMemberCard;

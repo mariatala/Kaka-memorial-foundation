@@ -13,12 +13,13 @@ interface TeamSectionProps {
 	titleFontClass?: string;
 }
 
-const TeamSection: React.FC<TeamSectionProps> = ({
+
+export default function TeamSection ({
 	gowunFontClass,
 	niconneFontClass,
-}) => {
+} : TeamSectionProps) {
 	return (
-		<section className="our-team w-full bg-gradient-to-b from-accent-three-light to-white  py-12 md:py-24">
+		<section className="our-team w-full bg-linear-to-b from-accent-three-light to-white  py-12 md:py-24">
 			<div className="w-[90%] max-w-7xl mx-auto flex flex-col justify-center items-center gap-20 overflow-hidden">
 				{/* Heading */}
 				<div className="flex items-center flex-col md:items-center-safe w-full gap-2">
@@ -132,4 +133,3 @@ const TeamSection: React.FC<TeamSectionProps> = ({
 	);
 };
 
-export default TeamSection;

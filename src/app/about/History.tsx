@@ -5,7 +5,7 @@ import { Gowun_Dodum } from 'next/font/google';
 
 const gowun = Gowun_Dodum({ weight: '400', subsets: ['latin'] });
 
-const HistorySection = () => {
+export default function HistorySection () {
 	return (
 		<section className="relative w-full py-12 md:py-24 px-4 md:px-12 lg:px-24">
 			<div className=" mx-auto flex flex-col md:flex-row items-start gap-8 lg:gap-12">
@@ -73,4 +73,4 @@ const HistorySection = () => {
 	);
 };
 
-export default HistorySection;
+

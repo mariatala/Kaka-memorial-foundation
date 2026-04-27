@@ -9,7 +9,7 @@ const niconne = Niconne({ weight: '400', subsets: ['latin'] });
 const gowun = Gowun_Dodum({ weight: '400', subsets: ['latin'] });
 const inter = Inter({ weight: '400', subsets: ['latin'] });
 
-const AboutPage = () => {
+export default function AboutPage () {
 	return (
 		<div className="bg-white text-primary font-['Inter']">
 			<section className="w-full inline-flex items-end  h-80 justify-start bg-gradient-to-b from-primary to-primary-dark py-16 ">
@@ -48,4 +48,4 @@ const AboutPage = () => {
 	);
 };
 
-export default AboutPage;
+

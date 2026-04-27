@@ -8,10 +8,10 @@ interface MissionVisionSectionProps {
 	bodyFontClass?: string;
 }
 
-const MissionVisionSection: React.FC<MissionVisionSectionProps> = ({
+export default function MissionVisionSection({
 	titleFontClass = '',
 	bodyFontClass = '',
-}) => {
+} : MissionVisionSectionProps) {
 	return (
 		<section id='Mission-Vision' className="w-full bg-light py-20 px-6 md:px-16">
 			<div className="w-full max-w-7xl mx-auto flex flex-col gap-16">
@@ -75,4 +75,3 @@ const MissionVisionSection: React.FC<MissionVisionSectionProps> = ({
 	);
 };
 
-export default MissionVisionSection;
