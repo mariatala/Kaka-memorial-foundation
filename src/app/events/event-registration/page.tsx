@@ -7,7 +7,7 @@ const inter = Inter({
 	subsets: ['latin'],
 });
 const gowun = Gowun_Dodum({ weight: '400', subsets: ['latin'] });
-const EventRegistrationForm = () => {
+export default function EventRegistrationForm (){
 	const [formData, setFormData] = useState({
 		name: '',
 		email: '',
@@ -34,10 +34,8 @@ const EventRegistrationForm = () => {
 	};
 
 	return (
-		<section>
 		
-			{/* // Main section for the event registration form */}
-			<section className="w-full max-w-3xl mx-auto px-4 py-16 my-32">
+			<section className="w-full max-w-3xl mx-auto px-4 py-16 my-32 bg-light text-primary">
 				<h2
 					className={`text-3xl md:text-4xl font-bold text-primary text-center mb-6 uppercase tracking-wide ${gowun.className}`}
 				>
@@ -145,8 +143,7 @@ const EventRegistrationForm = () => {
 					)}
 				</form>
 			</section>
-		</section>
+		
 	);
 };
 
-export default EventRegistrationForm;

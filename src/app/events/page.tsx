@@ -9,10 +9,10 @@ const inter = Inter({
 	subsets: ['latin'],
 });
 const gowun = Gowun_Dodum({ weight: '400', subsets: ['latin'] });
-const EventsPage = () => {
+export default function EventsPage(){
 	return (
-		<div className="w-full h-full flex flex-col">
-			<section className="w-full flex min-h-[32rem] md:min-h-[30rem] justify-start items-center py-8 md:py-0">
+		<div className="w-full h-full flex flex-col bg-light text-primary">
+			<section className="w-full flex min-h-128 md:min-h-120 justify-start items-center py-8 md:py-0">
 				
 
 				<div className="w-full flex flex-col-reverse  md:flex-row mt-16 justify-end items-center">
@@ -72,4 +72,3 @@ const EventsPage = () => {
 		</div>
 	);
 };
-export default EventsPage;

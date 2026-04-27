@@ -85,7 +85,7 @@ export default function Header() {
 		{ href: '/causes', label: 'Causes' },
 		{ href: '/events', label: 'Events' },
 		{ href: '/join_us', label: 'Join Us' },
-		{ href: '/contact', label: 'Contact' },
+		{ href: '/contacts', label: 'Contact Us' },
 	];
 
 	// Better Auth session has the user nested under session?.user

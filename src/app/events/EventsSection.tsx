@@ -14,7 +14,7 @@ const events = [
 		location: '',
 		imageUrl: '/school.png',
 		background: 'bg-secondary',
-		joinLink: '/events/event_registration',
+		joinLink: '/events/event-registration',
 	},
 	{
 		title: 'Advocacy & Awareness Campaigns',
@@ -25,7 +25,7 @@ const events = [
 		location: '',
 		imageUrl: '/xtalk.jpg',
 		background: 'bg-accent-one',
-		joinLink: '/events/event_registration',
+		joinLink: '/events/event-registration',
 	},
 	{
 		title: 'Fundraising & Partnership Events',
@@ -36,11 +36,11 @@ const events = [
 		location: '',
 		imageUrl: '/education2.jpeg',
 		background: 'bg-accent-two',
-		joinLink: '/events/event_registration',
+		joinLink: '/events/event-registration',
 	},
 ];
 
-const EventsSection = () => {
+export default function EventsSection(){
 	return (
 		<section className=" w-full events-section px-2 pb-12 sm:px-8 md:px-16 lg:px-32">
 			<div className="w-full inline-flex justify-center md:my-0 ">
@@ -86,4 +86,3 @@ const EventsSection = () => {
 	);
 };
 
-export default EventsSection;

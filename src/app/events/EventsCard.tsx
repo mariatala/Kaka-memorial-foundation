@@ -18,12 +18,12 @@ type EventsCardProps = {
 	joinLink?: string;
 };
 
-const EventsCard: React.FC<EventsCardProps> = ({
+export default function EventsCard({
 	event,
 	imageUrl,
 	background = 'bg-white',
 	joinLink = '#',
-}) => {
+} : EventsCardProps){
 	const displayDate = event.date
 		? new Date(event.date).toLocaleDateString()
 		: 'No planned event at the moment';
@@ -74,4 +74,4 @@ const EventsCard: React.FC<EventsCardProps> = ({
 	);
 };
 
-export default EventsCard;
+
