@@ -7,12 +7,14 @@
 }
 
 @theme{
-	--color-primary: #8d99dd;      /*Navy Light Blue*/
+	--color-primary: oklch(0.3764 0.1059 282.87);
+	--color-primary-dark: #081127;/*Navy Blue*/
 	--color-secondary: #96bd18;    /*Light Green*/
 	--color-secondary-dark: #6f8f12; /*Dark Light Green*/
 	--color-light: #f9f9f9; /*Grey --Red*/
 	--color-accent-one: #685b9a; /*Light Purple*/
 	--color-accent-two: #f2b036; /*Orange*/
+	--color-accent-three-light: #edf3f7;
 	--color-accent-two-dark: #d69f29; /*Dark Orange*/
 	--color-accent-three: #a6c3d9; /*Ocean Blue*/
 }
