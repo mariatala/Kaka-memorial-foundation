@@ -50,6 +50,9 @@ export default function Header() {
 		'contacts',
 		'login',
 		'registrations',
+		'sign-in',
+		'sign-up',
+		'dashboard',
 	] as const;
 	const segment = pathname.split('/')[1];
 	const variantKey = altPaths.includes(segment as (typeof altPaths)[number])
