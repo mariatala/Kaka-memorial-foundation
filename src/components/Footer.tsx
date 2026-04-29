@@ -144,7 +144,7 @@ const Footer: React.FC = () => {
 						<nav aria-label="Footer quick links" className="mt-auto pt-4 border-t border-primary/20">
 							<p className="text-xs font-semibold uppercase tracking-wider text-primary/50 mb-3">Quick Links</p>
 							<ul className="flex flex-wrap gap-x-4 gap-y-2 text-sm">
-								{[['/', 'Home'], ['/about', 'About'], ['/causes', 'Causes'], ['/events', 'Events'], ['/join_us', 'Join Us'], ['/contact', 'Contact']].map(([href, label]) => (
+								{[['/', 'Home'], ['/about', 'About'], ['/causes', 'Causes'], ['/events', 'Events'], ['/join-us', 'Join Us'], ['/contacts', 'Contact']].map(([href, label]) => (
 									<li key={href}><Link href={href} className="text-primary/60 hover:text-primary-dark hover:underline underline-offset-2 transition-colors">{label}</Link></li>
 								))}
 							</ul>

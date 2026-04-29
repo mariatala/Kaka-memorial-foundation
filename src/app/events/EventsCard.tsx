@@ -23,7 +23,7 @@ export default function EventsCard({
 	imageUrl,
 	background = 'bg-white',
 	joinLink = '#',
-} : EventsCardProps){
+}: EventsCardProps) {
 	const displayDate = event.date
 		? new Date(event.date).toLocaleDateString()
 		: 'No planned event at the moment';
@@ -31,47 +31,43 @@ export default function EventsCard({
 
 	return (
 		<div
-			className={`${background} w-full shadow-sm px-4 py-8 lg:p-16 mb-32 flex flex-col gap-8 lg:flex-row items-center`}
+			className={`${background} w-full shadow-sm px-4 py-8 lg:p-16 mb-12 flex flex-col gap-8 lg:flex-row items-center rounded-lg`}
 		>
-			{/* Image on the left */}
+			{/* Image */}
 			<Image
-				width={100}
-				height={100}
+				width={400}
+				height={300}
 				loading="lazy"
-				src={imageUrl || 'https://via.placeholder.com/100'}
+				src={imageUrl || 'https://via.placeholder.com/400x300'}
 				alt={event.title}
-				className="w-full md:1/2 lg:w-1/3 object-cover rounded-lg max-h-72"
+				className="w-full md:w-1/2 lg:w-1/3 object-cover rounded-lg max-h-72"
 			/>
 
 			{/* Content */}
-			<div className="w-full md:1/2 lg:w-2/3">
+			<div className="w-full md:w-1/2 lg:w-2/3">
 				<div className="w-full flex flex-col justify-center items-start gap-2">
 					<h3
 						className={`text-2xl md:text-3xl xl:text-4xl tracking-widest uppercase text-light ${gowun.className}`}
 					>
 						{event.title}
 					</h3>
-					<div className="w-16 h-1 bg-light rounded-full" />
-					<h4 className="text-xl text-light font-semibold tracking-wide mt-2">
+					<div className="w-16 h-1 bg-light/60 rounded-full" />
+					<h4 className="text-lg text-light/90 font-semibold tracking-wide mt-1">
 						{event.subtitle}
 					</h4>
 				</div>
-				<p className="text-light tracking-wide leading-8 my-8">
+				<p className="text-light/90 tracking-wide leading-8 my-6">
 					{event.description}
 				</p>
-				<p className="text-primary  mb-1">Date: {displayDate}</p>
-				<p className="text-primary  mb-2">Location: {displayLocation}</p>
+				<p className="text-light/70 text-sm mb-1">Date: {displayDate}</p>
+				<p className="text-light/70 text-sm mb-4">Location: {displayLocation}</p>
 				<Link
 					href={joinLink}
-					target="_blank"
-					rel="noopener noreferrer"
-					className="inline-block px-8 py-1 mt-5 border-2 border-light text-light rounded-xs hover:bg-primary-dark hover:border-transparent transition-all duration-500 ease-in-out"
+					className="inline-block px-8 py-2 mt-2 border-2 border-light text-light rounded-sm font-medium hover:bg-light hover:text-primary transition-all duration-300 ease-in-out"
 				>
 					Join Us
 				</Link>
 			</div>
 		</div>
 	);
-};
-
-
+}

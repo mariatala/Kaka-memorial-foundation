@@ -42,7 +42,7 @@ export default function TeamSection ({
 						src="/team/Zainab.jpg"
 						alt="Team member - Founder"
 					/>
-					<div className="w-full md:w-2/3 flex flex-col gap-4 text-indigo-900">
+					<div className="w-full md:w-2/3 flex flex-col gap-4 text-primary">
 						<p className={`${gowunFontClass} leading-8 tracking-wide`}>
 							"The Kaka Memorial Foundation was born from a deep desire to honor
 							my mother’s legacy of compassion and her belief in equal
@@ -55,7 +55,7 @@ export default function TeamSection ({
 						<h5 className={`${niconneFontClass} text-3xl text-primary`}>
 							Mrs. Zainab Inuwa Gani Esq.
 						</h5>
-						<p className="text-lime-500 text-sm md:text-base font-semibold uppercase tracking-wider">
+						<p className="text-secondary text-sm md:text-base font-semibold uppercase tracking-wider">
 							Founder & Director
 						</p>
 					</div>

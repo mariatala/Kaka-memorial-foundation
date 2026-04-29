@@ -97,7 +97,7 @@ export default function RegistrationCard ({ formType } : RegistrationCardProps) 
 		}
 	};
 	return (
-		<div className="w-full max-w-5xl mx-auto bg-white border border-gray-200 shadow-md rounded-md p-8 space-y-6">
+		<div className="w-full max-w-5xl mx-auto bg-white border border-primary/10 shadow-md rounded-md p-8 space-y-6">
 			<h2 className={`text-2xl font-bold ${titleColor} text-center`}>
 				{title}
 			</h2>
@@ -133,7 +133,7 @@ export default function RegistrationCard ({ formType } : RegistrationCardProps) 
 			) : (
 				<form
 					onSubmit={handleSubmit}
-					className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-24"
+					className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-6"
 				>
 					{/* Left Column */}
 					<div className="space-y-4">

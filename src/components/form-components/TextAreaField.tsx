@@ -17,17 +17,17 @@ const TextAreaField: React.FC<TextAreaFieldProps> = ({
 	onChange,
 	rows = 3,
 	placeholder,
-	focusColor = 'focus:border-primary focus:ring-primary',
+	focusColor = 'focus:border-primary',
 }) => (
-	<div>
-		<label className="block  text-primary">{label}</label>
+	<div className="flex flex-col gap-1">
+		<label className="text-sm font-medium text-primary">{label}</label>
 		<textarea
 			name={name}
 			value={value}
 			onChange={onChange}
 			rows={rows}
 			placeholder={placeholder}
-			className={`w-full mt-1 h-12 p-1 border-b border-gray-300 outline-none bg-transparent ${focusColor}`}
+			className={`w-full py-2.5 px-1 border-b border-primary/30 outline-none bg-transparent resize-none transition-colors duration-200 placeholder:text-primary/30 ${focusColor}`}
 		/>
 	</div>
 );

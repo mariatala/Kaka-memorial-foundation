@@ -73,7 +73,7 @@ export default function EducationSection ({
 				{cards.map((card, index) => (
 					<div
 						key={index}
-						className="bg-white border border-gray-200 rounded-xl shadow-xs hover:shadow-md hover:shadow-primary transition-shadow duration-300 overflow-hidden flex flex-col"
+						className="bg-white border border-primary/10 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden flex flex-col"
 					>
 						{/* Card Content */}
 						<div className="p-6 flex flex-col gap-4">
@@ -89,7 +89,7 @@ export default function EducationSection ({
 							<Link
 								className="self-start text-sm font-medium text-secondary hover:underline transition
 								duration-500 ease-in-out scroll-mt-24 "
-								href="/join_us#donate"
+								href="/join-us#donate"
 							>
 								Donate Now →
 							</Link>

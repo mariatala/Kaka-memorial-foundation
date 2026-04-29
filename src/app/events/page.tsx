@@ -39,21 +39,21 @@ export default function EventsPage(){
 								</p>
 								<div className="grid grid-cols-2 md:grid-cols-3 items-center gap-4 mt-6 max-w-fit">
 									<Link
-										href="/join_us"
+										href="/join-us"
 										className={`bg-primary text-light flex items-center gap-2 px-2 sm:px-4 py-2 rounded-sm shadow-md text-sm  ${inter.className} tracking-wide hover:bg-secondary hover:text-primary transition-all duration-300`}
 									>
 										Join Us
 										<Heart className=" h-5 w-5 ml-1 text-accent-three-light" />
 									</Link>
 									<Link
-										href="/join_us#donate"
+										href="/join-us#donate"
 										className={`bg-secondary text-light flex items-center gap-2 px-4 py-2 rounded-sm shadow-md text-sm  ${inter.className} tracking-wide hover:bg-primary hover:text-secondary transition-all duration-300`}
 									>
 										Donate
 										<Heart className=" h-5 w-5 ml-1 text-accent-three-light" />
 									</Link>
 									<Link
-										href="/join_us#volunteer"
+										href="/join-us#volunteer"
 										className={`bg-accent-three-light text-primary border border-primary flex items-center gap-2 px-4 py-2 rounded-sm shadow-md text-sm  ${inter.className} tracking-wide hover:bg-primary hover:text-light transition-all duration-300`}
 									>
 										Volunteer

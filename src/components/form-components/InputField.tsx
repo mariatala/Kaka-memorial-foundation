@@ -21,8 +21,8 @@ const InputField: React.FC<InputFieldProps> = ({
 	placeholder,
 	focusColor,
 }) => (
-	<div>
-		<label className="block   text-primary">
+	<div className="flex flex-col gap-1">
+		<label className="text-sm font-medium text-primary">
 			{label} {required && <span className="text-red-500">*</span>}
 		</label>
 		<input
@@ -32,7 +32,7 @@ const InputField: React.FC<InputFieldProps> = ({
 			value={value}
 			onChange={onChange}
 			placeholder={placeholder}
-			className={`w-full mt-1 h-12 p-1 border-b border-gray-300 outline-none bg-transparent ${focusColor}`}
+			className={`w-full py-2.5 px-1 border-b border-primary/30 outline-none bg-transparent transition-colors duration-200 placeholder:text-primary/30 ${focusColor}`}
 		/>
 	</div>
 );

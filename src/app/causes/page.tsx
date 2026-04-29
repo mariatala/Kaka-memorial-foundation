@@ -129,7 +129,7 @@ export default function CausesPage(){
 					/>
 					<CausesCard // Collaborative Projects Section
 						imageSrc="/collaborative.jpg"
-						heading="Collaborative Projects (SDG 17))"
+						heading="Collaborative Projects (SDG 17)"
 						subheading=" Partner with us."
 						description=" We believe real change happens through strong partnerships. At Kaka Memorial Foundation, we collaborate with NGOs, government bodies, and private sector allies to design and deliver impactful solutions in education, healthcare, clean water, and rural development. Together, we go further building sustainable progress through shared vision and action."
 						cards={[
@@ -148,7 +148,7 @@ export default function CausesPage(){
 						<h3
 							className={`text-3xl md:text-5xl  tracking-widest uppercase text-primary ${gowun.className}`}
 						>
-							wHERE wE SERVE
+							Where We Serve
 						</h3>
 						<div className="w-16 h-1 bg-secondary rounded-full" />
 						<h4 className="text-xl text-secondary font-semibold tracking-wide mt-2">

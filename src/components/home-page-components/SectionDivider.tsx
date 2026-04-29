@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Inter } from 'next/font/google';
+
 const inter = Inter({
 	weight: ['200', '300', '400', '500', '600', '700', '800'],
 	subsets: ['latin'],
@@ -11,8 +12,8 @@ const SectionDivider = () => {
 		<div className="w-full flex flex-col md:flex-row items-stretch justify-between">
 			{/* Mission */}
 			<Link
-				href="/join_us#mission-vision"
-				className="group w-full md:flex-1 h-full px-10 md:px-16  py-8 bg-secondary transition-all duration-300  hover:shadow-xl hover:scale-[1.07] text-white text-center flex flex-col items-center justify-center"
+				href="/about#Mission-Vision"
+				className="group w-full md:flex-1 h-full px-10 md:px-16 py-8 bg-secondary transition-all duration-300 hover:brightness-110 hover:shadow-lg text-white text-center flex flex-col items-center justify-center"
 			>
 				<h3
 					className={`text-xl md:text-2xl font-medium ${inter.className} tracking-wide group-hover:underline underline-offset-4`}
@@ -20,7 +21,7 @@ const SectionDivider = () => {
 					Our Mission
 				</h3>
 				<p
-					className={`mt-2 text-sm md:text-base  font-light ${inter.className} tracking-wider`}
+					className={`mt-2 text-sm md:text-base font-light ${inter.className} tracking-wider`}
 				>
 					Our Goal, Vision and Commitment
 				</p>
@@ -29,7 +30,7 @@ const SectionDivider = () => {
 			{/* Events */}
 			<Link
 				href="/events"
-				className="group w-full md:flex-1 h-full px-10 md:px-16 py-8 bg-primary transition-all duration-300 hover:shadow-xl hover:scale-[1.07] text-white text-center flex flex-col items-center justify-center"
+				className="group w-full md:flex-1 h-full px-10 md:px-16 py-8 bg-primary transition-all duration-300 hover:brightness-110 hover:shadow-lg text-white text-center flex flex-col items-center justify-center"
 			>
 				<h3
 					className={`text-xl md:text-2xl font-medium ${inter.className} tracking-wide group-hover:underline underline-offset-4`}
@@ -37,7 +38,7 @@ const SectionDivider = () => {
 					Our Events
 				</h3>
 				<p
-					className={`mt-2 text-sm md:text-base  font-light ${inter.className} tracking-wider`}
+					className={`mt-2 text-sm md:text-base font-light ${inter.className} tracking-wider`}
 				>
 					Register and Help Make Change
 				</p>
@@ -45,8 +46,8 @@ const SectionDivider = () => {
 
 			{/* Get Involved */}
 			<Link
-				href="/join_us"
-				className="group w-full md:flex-1 h-full px-10 md:px-16  py-8 bg-accent-two  transition-all duration-300 hover:shadow-xl hover:scale-[1.07] text-white text-center flex flex-col items-center justify-center"
+				href="/join-us"
+				className="group w-full md:flex-1 h-full px-10 md:px-16 py-8 bg-accent-two transition-all duration-300 hover:brightness-110 hover:shadow-lg text-white text-center flex flex-col items-center justify-center"
 			>
 				<h3
 					className={`text-xl md:text-2xl font-medium ${inter.className} tracking-wide group-hover:underline underline-offset-4`}
@@ -54,7 +55,7 @@ const SectionDivider = () => {
 					Get Involved
 				</h3>
 				<p
-					className={`mt-2 text-sm md:text-base  font-light ${inter.className} tracking-wider`}
+					className={`mt-2 text-sm md:text-base font-light ${inter.className} tracking-wider`}
 				>
 					Volunteer, Participate and Donate
 				</p>

@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
-import { signIn, signUp, signOut, useSession  } from '@/lib/auth-client'; // your Better Auth client
+import { signOut, useSession } from '@/lib/auth-client';
 import { HeartHandshake, Menu, X } from 'lucide-react';
 import { Inter } from 'next/font/google';
 
@@ -36,10 +36,8 @@ const variants: Record<'default' | 'alt', StyleVariant> = {
 };
 
 export default function Header() {
-	// --- Better Auth replaces useSession/signOut from next-auth/react ---
 	const { data: session } = useSession();
 	const router = useRouter();
-	// --------------------------------------------------------------------
 
 	const pathname = usePathname();
 	const [isOpen, setIsOpen] = useState(false);
@@ -66,10 +64,14 @@ export default function Header() {
 		return () => window.removeEventListener('scroll', onScroll);
 	}, []);
 
+	// Close mobile menu on route change
+	useEffect(() => {
+		setIsOpen(false);
+	}, [pathname]);
+
 	const navTextColor = scrolled ? scrolledTextColor : textColor;
 	const toggleMenu = () => setIsOpen((o) => !o);
 
-	// --- Better Auth sign-out: use fetchOptions.onSuccess for the redirect ---
 	const handleSignOut = async () => {
 		await signOut({
 			fetchOptions: {
@@ -77,7 +79,6 @@ export default function Header() {
 			},
 		});
 	};
-	// -------------------------------------------------------------------------
 
 	const links = [
 		{ href: '/', label: 'Home' },
@@ -88,10 +89,12 @@ export default function Header() {
 		{ href: '/contacts', label: 'Contact Us' },
 	];
 
-	// Better Auth session has the user nested under session?.user
 	if (session?.user) {
 		links.push({ href: '/registrations', label: 'Admin' });
 	}
+
+	const isActive = (href: string) =>
+		href === '/' ? pathname === '/' : pathname.startsWith(href);
 
 	return (
 		<header
@@ -120,7 +123,13 @@ export default function Header() {
 					className={`hidden text-sm font-semibold md:flex items-center gap-10 tracking-widest uppercase ${inter.className} ${navTextColor}`}
 				>
 					{links.map(({ href, label }) => (
-						<Link key={href} href={href} className="hover:text-secondary">
+						<Link
+							key={href}
+							href={href}
+							className={`relative pb-0.5 transition-colors duration-200 hover:text-secondary
+								${isActive(href) ? 'text-secondary after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-secondary after:rounded-full' : ''}
+							`}
+						>
 							{label}
 						</Link>
 					))}
@@ -135,27 +144,37 @@ export default function Header() {
 				</nav>
 
 				<Link
-					href="/join_us#donate"
+					href="/join-us#donate"
 					className="hidden md:flex items-center gap-1 text-lg text-secondary md:px-1 lg:px-4 py-1 rounded-sm border-2 border-secondary hover:bg-secondary hover:text-light transition-colors duration-300"
 				>
 					Donate <HeartHandshake size={20} />
 				</Link>
 
-				<button onClick={toggleMenu} className={`md:hidden ${navTextColor}`}>
+				<button
+					onClick={toggleMenu}
+					className={`md:hidden ${navTextColor} transition-transform duration-200 ${isOpen ? 'rotate-90' : 'rotate-0'}`}
+					aria-label={isOpen ? 'Close menu' : 'Open menu'}
+					aria-expanded={isOpen}
+				>
 					{isOpen ? <X size={28} /> : <Menu size={28} />}
 				</button>
 			</div>
 
-			{isOpen && (
+			{/* Mobile menu with slide-down animation */}
+			<div
+				className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+					isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+				}`}
+			>
 				<div
-					className={`md:hidden mt-4 flex flex-col gap-4 ${scrolledBgColor} px-4 py-4 rounded ${scrolledTextColor}`}
+					className={`mt-4 flex flex-col gap-4 ${scrolledBgColor} px-4 py-4 rounded ${scrolledTextColor}`}
 				>
 					{links.map(({ href, label }) => (
 						<Link
 							key={href}
 							href={href}
 							onClick={toggleMenu}
-							className="hover:text-secondary"
+							className={`hover:text-secondary transition-colors ${isActive(href) ? 'text-secondary font-semibold' : ''}`}
 						>
 							{label}
 						</Link>
@@ -172,14 +191,14 @@ export default function Header() {
 						</button>
 					)}
 					<Link
-						href="/join_us"
+						href="/join-us#donate"
 						onClick={toggleMenu}
 						className="w-fit flex items-center gap-2 bg-secondary px-3 py-1 rounded-sm hover:bg-primary-dark hover:text-light text-lg transition"
 					>
 						Donate <HeartHandshake size={20} />
 					</Link>
 				</div>
-			)}
+			</div>
 		</header>
 	);
 }

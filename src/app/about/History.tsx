@@ -61,7 +61,7 @@ export default function HistorySection () {
 								WHAT WE DO
 							</button>
 						</Link>
-						<Link href="/join_us#donate">
+						<Link href="/join-us#donate">
 							<button className="border-2 border-secondary text-secondary hover:bg-secondary hover:text-white  text-sm px-6 py-2 rounded-sm transition-all ease-in-out sm:w-auto">
 								DONATE NOW
 							</button>
