@@ -21,7 +21,7 @@ interface RegistrationCardProps {
 	formType: RegistrationType;
 }
 
-const RegistrationCard: React.FC<RegistrationCardProps> = ({ formType }) => {
+export default function RegistrationCard ({ formType } : RegistrationCardProps) {
 
 	const [pending, setPending] = useState(false);
 	// State to manage form data
@@ -210,5 +210,3 @@ const RegistrationCard: React.FC<RegistrationCardProps> = ({ formType }) => {
 		</div>
 	);
 };
-
-export default RegistrationCard;

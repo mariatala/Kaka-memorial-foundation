@@ -10,7 +10,7 @@ const inter = Inter({
 });
 const gowun = Gowun_Dodum({ weight: '400', subsets: ['latin'] });
 
-const DonateSection: React.FC = () => {
+export default function DonateSection(){
 	const [frequency, setFrequency] = useState<'One time' | 'Monthly'>('Monthly');
 	const [amount, setAmount] = useState<number | 'Other'>(10);
 
@@ -176,5 +176,3 @@ const DonateSection: React.FC = () => {
 		</section>
 	);
 };
-
-export default DonateSection;

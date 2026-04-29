@@ -48,8 +48,8 @@ export default function Header() {
 	const altPaths = [
 		'causes',
 		'events',
-		'join_us',
-		'contact',
+		'join-us',
+		'contacts',
 		'login',
 		'registrations',
 	] as const;
@@ -84,7 +84,7 @@ export default function Header() {
 		{ href: '/about', label: 'About' },
 		{ href: '/causes', label: 'Causes' },
 		{ href: '/events', label: 'Events' },
-		{ href: '/join_us', label: 'Join Us' },
+		{ href: '/join-us', label: 'Join Us' },
 		{ href: '/contacts', label: 'Contact Us' },
 	];
 

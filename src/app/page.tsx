@@ -14,7 +14,7 @@ import { useRouter } from "next/navigation";
 export default function Home() {
   const router = useRouter();
     return (
-      <main className="flex items-center justify-center h-screen bg-neutral-950 text-white">
+      <section className="min-h-screen flex flex-col  items-center sm:items-start  bg-light text-primary">
       <Hero />
 			<SectionDivider />
 			<AboutSection />
@@ -28,6 +28,7 @@ export default function Home() {
 				bgColor="bg-white"
 				animateIcon={true}
 			/>
+      <div className="flex items-center justify-center h-screen bg-neutral-950 text-white"> </ div>
       <div className="flex gap-4">
         <button
           onClick={() => router.push("/sign-up")}
@@ -42,7 +43,7 @@ export default function Home() {
           Sign In
         </button>
       </div>
-    </main>
+    </section>
     );
   }
   

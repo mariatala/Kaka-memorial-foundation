@@ -64,7 +64,7 @@ const ContactPage: React.FC = () => {
 	};
 
 	return (
-		<main className="w-full flex flex-col items-center justify-start min-h-screen bg-light text-primary">
+		<div className="w-full flex flex-col items-center justify-start min-h-screen bg-light text-primary">
 			
 
 			{/* Hero Section */}
@@ -93,19 +93,19 @@ const ContactPage: React.FC = () => {
 					icon={<Users className="w-10 h-10 mx-auto text-secondary" />}
 					title="Join Our Community"
 					description="Be part of a movement making impact across  Abuja, Nigeria."
-					link={{ href: '/join_us', label: ' Click to Join' }}
+					link={{ href: '/join-us', label: ' Click to Join' }}
 				/>
 				<ActionCard
 					icon={<Handshake className="w-10 h-10 mx-auto text-secondary" />}
 					title="Partner With Us"
 					description="Align your brand with purpose and sustainable growth."
-					link={{ href: '/join_us#partner', label: 'Click to Partner' }}
+					link={{ href: '/join-us#partner', label: 'Click to Partner' }}
 				/>
 				<ActionCard
 					icon={<HeartHandshake className="w-10 h-10 mx-auto text-secondary" />}
 					title="Volunteer Today"
 					description="Use your skills and time to directly impact lives."
-					link={{ href: '/join_us#volunteer', label: 'Click to Volunteer' }}
+					link={{ href: '/join-us#volunteer', label: 'Click to Volunteer' }}
 				/>
 			</section>
 
@@ -231,7 +231,7 @@ const ContactPage: React.FC = () => {
 					meaningful.
 				</p>
 			</section>
-		</main>
+		</div>
 	);
 };
 
