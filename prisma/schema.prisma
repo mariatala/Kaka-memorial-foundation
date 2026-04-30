@@ -23,12 +23,25 @@ model Event {
   createdAt    DateTime @default(now())
 }
 
+model EventCategory {
+  id         Int       @id @default(autoincrement())
+  title      String
+  subtitle   String    @default("")
+  about      String    @default("")
+  date       DateTime?
+  location   String    @default("")
+  imageUrl   String    @default("")
+  background String    @default("bg-secondary")
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+}
+
 model Registration {
   id               Int      @id @default(autoincrement())
   registrationType String
   name             String
   email            String
-  phone            String
+  phone            String   @unique
   address          String
   message          String
   createdAt        DateTime @default(now())
@@ -68,6 +81,10 @@ model User {
   image         String?
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
+  role          String?
+  banned        Boolean?  @default(false)
+  banReason     String?
+  banExpires    DateTime?
   sessions      Session[]
   accounts      Account[]
 
@@ -76,15 +93,16 @@ model User {
 }
 
 model Session {
-  id        String   @id
-  expiresAt DateTime
-  token     String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  ipAddress String?
-  userAgent String?
-  userId    String
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id             String   @id
+  expiresAt      DateTime
+  token          String
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  ipAddress      String?
+  userAgent      String?
+  userId         String
+  impersonatedBy String?
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([token])
   @@index([userId])

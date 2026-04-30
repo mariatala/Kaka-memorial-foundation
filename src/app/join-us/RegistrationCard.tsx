@@ -34,6 +34,7 @@ export default function RegistrationCard ({ formType } : RegistrationCardProps) 
 	});
 
 	const [submitted, setSubmitted] = useState(false);
+	const [error, setError] = useState<string | null>(null);
 	const isPartner = formType === 'partner';
 	const titleColor = isPartner ? 'text-primary' : 'text-secondary';
 	const buttonColor = isPartner
@@ -66,32 +67,27 @@ export default function RegistrationCard ({ formType } : RegistrationCardProps) 
 
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
+		setError(null);
 
-		if (!formData.name || !formData.phone) {
-			alert('Please fill in all required fields.');
+		if (!formData.name.trim() || !formData.phone.trim()) {
+			setError('Please fill in your name and phone number.');
 			return;
 		}
 
 		setPending(true);
 		try {
-			const res = await fetch('api/register', {
+			const res = await fetch('/api/register', {
 				method: 'POST',
-				headers: { 'content-type': 'application/JSON' },
-				body: JSON.stringify({
-					...formData,
-					formType,
-				}),
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ ...formData, formType }),
 			});
+			const data = await res.json();
 			if (!res.ok) {
-				const err = await res.json();
-				throw new Error(`Error: ${err.message}` || 'Failed to submit form');
+				throw new Error(data.message || 'Failed to submit form.');
 			}
 			setSubmitted(true);
-		} catch (error: unknown) {
-			console.error(`Registration Error:`, error);
-			alert(
-				`Registration Failed ${error instanceof Error ? error.message : ''}` || 'Please try again later.'
-			);
+		} catch (err: unknown) {
+			setError(err instanceof Error ? err.message : 'Please try again later.');
 		} finally {
 			setPending(false);
 		}
@@ -117,13 +113,8 @@ export default function RegistrationCard ({ formType } : RegistrationCardProps) 
 					<button
 						className=" mx-auto w-fit text-sm text-primary hover:font-semibold hover:text-white hover:cursor-pointer px-4 py-2 rounded-md hover:bg-primary-dark mt-2"
 						onClick={() => {
-							setFormData({
-								name: '',
-								phone: '',
-								email: '',
-								address: '',
-								message: '',
-							});
+							setFormData({ name: '', phone: '', email: '', address: '', message: '' });
+							setError(null);
 							setSubmitted(false);
 						}}
 					>
@@ -190,6 +181,13 @@ export default function RegistrationCard ({ formType } : RegistrationCardProps) 
 							focusColor={focusBorderColor}
 						/>
 					</div>
+
+					{/* Error message */}
+					{error && (
+						<div className="md:col-span-2 px-4 py-3 bg-red-50 border-l-4 border-red-500 rounded-sm" role="alert">
+							<p className="text-red-700 text-sm font-medium">{error}</p>
+						</div>
+					)}
 
 					{/* Submit Button */}
 					<div className="md:col-span-2">

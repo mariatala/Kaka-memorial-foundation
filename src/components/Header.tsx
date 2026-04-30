@@ -52,7 +52,7 @@ export default function Header() {
 		'registrations',
 		'sign-in',
 		'sign-up',
-		'dashboard',
+		'admin',
 	] as const;
 	const segment = pathname.split('/')[1];
 	const variantKey = altPaths.includes(segment as (typeof altPaths)[number])
@@ -92,8 +92,8 @@ export default function Header() {
 		{ href: '/contacts', label: 'Contact Us' },
 	];
 
-	if (session?.user) {
-		links.push({ href: '/registrations', label: 'Admin' });
+	if (session?.user?.role === 'admin') {
+		links.push({ href: '/admin', label: 'Admin' });
 	}
 
 	const isActive = (href: string) =>
