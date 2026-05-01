@@ -12,6 +12,7 @@ import {
 	LayoutDashboard,
 	HeartHandshake,
 	CalendarDays,
+	MessageSquare,
 } from 'lucide-react';
 
 const inter = Inter({
@@ -41,6 +42,13 @@ const quickLinks = [
 		label: 'Donations',
 		description: 'View all recorded PayPal transactions',
 		accent: 'bg-accent-two/10 text-accent-two border-accent-two/20',
+	},
+	{
+		href: '/admin/messages',
+		icon: MessageSquare,
+		label: 'Messages',
+		description: 'View contact form submissions',
+		accent: 'bg-accent-one/10 text-accent-one border-accent-one/20',
 	},
 ];
 
@@ -91,7 +99,7 @@ export default function AdminPage() {
 		<div className={`min-h-screen bg-light ${inter.className}`}>
 
 			{/* ── Hero banner ── */}
-			<div className="w-full bg-primary pt-24 pb-16 px-6 md:px-16">
+			<div className="w-full bg-primary pt-32 pb-16 px-6 md:px-16">
 				<div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-start sm:items-center gap-6">
 					{/* Avatar */}
 					<div className="w-16 h-16 rounded-full bg-secondary flex items-center justify-center shrink-0 shadow-lg">
@@ -128,7 +136,7 @@ export default function AdminPage() {
 						</h2>
 						<div className="w-10 h-0.5 bg-secondary rounded-full" />
 					</div>
-					<div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
 						{quickLinks.map(({ href, icon: Icon, label, description, accent }) => (
 							<Link
 								key={href}

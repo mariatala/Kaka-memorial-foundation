@@ -3,11 +3,18 @@ import { PrismaPg } from "@prisma/adapter-pg";
 
 const g = global as unknown as { prisma?: PrismaClient };
 
-// In development, always create a fresh client so schema changes picked up by
-// `prisma generate` take effect without a full server restart.
+// pg v9 will break 'require'/'prefer'/'verify-ca' — normalise to 'verify-full'
+// (same actual behaviour, no deprecation warning)
+function dbUrl() {
+    return (process.env.DATABASE_URL ?? '').replace(
+        /sslmode=(prefer|require|verify-ca)/,
+        'sslmode=verify-full',
+    );
+}
+
 const prisma: PrismaClient =
     process.env.NODE_ENV === "production"
-        ? (g.prisma ??= new PrismaClient({ adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL }) }))
-        : new PrismaClient({ adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL }) });
+        ? (g.prisma ??= new PrismaClient({ adapter: new PrismaPg({ connectionString: dbUrl() }) }))
+        : new PrismaClient({ adapter: new PrismaPg({ connectionString: dbUrl() }) });
 
 export default prisma;

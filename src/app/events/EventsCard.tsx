@@ -38,7 +38,7 @@ export default function EventsCard({
 				width={400}
 				height={300}
 				loading="lazy"
-				src={imageUrl || 'https://via.placeholder.com/400x300'}
+				src={imageUrl || '/cover_image.jpeg'}
 				alt={event.title}
 				className="w-full md:w-1/2 lg:w-1/3 object-cover rounded-lg max-h-72"
 			/>

@@ -6,18 +6,23 @@ import RegistrationCard from '@/app/join-us/RegistrationCard';
 import Link from 'next/link';
 import DonateSection from '@/app/join-us/DonateSection';
 import JoinUsSection from '@/components/JoinUsCta';
+import AnimateIn from '@/components/ui/AnimateIn';
+
 const inter = Inter({
 	weight: ['200', '300', '400', '500', '600', '700', '800'],
 	subsets: ['latin'],
 });
 const gowun = Gowun_Dodum({ weight: '400', subsets: ['latin'] });
-export default function EventsPage() {
+
+export default function JoinUsPage() {
 	return (
 		<div className="w-full h-full flex flex-col bg-light text-primary">
+
+			{/* Hero — above fold */}
 			<section className="w-full flex min-h-128 md:min-h-120 justify-start items-center py-8 md:py-0">
-				<div className="w-full flex flex-col-reverse  md:flex-row mt-16 justify-end items-center">
+				<div className="w-full flex flex-col-reverse md:flex-row mt-16 justify-end items-center">
 					<div className="w-full flex flex-col justify-center items-start">
-						<div className="w-full flex flex-col-reverse md:flex-row items-center">
+						<div className="w-full flex flex-col-reverse md:flex-row items-center animate-fade-in">
 							<Image
 								src="/joinUs.jpg"
 								alt="People joining hands to support the community"
@@ -25,39 +30,38 @@ export default function EventsPage() {
 								height={500}
 								className="md:border-l-12 w-5/6 md:w-1/4 border-secondary h-auto transition-all duration-300"
 							/>
-							<div className="w-full h-fit text-left bg-accent-three py-8 px-10">
+							<div className="w-full h-fit text-left bg-accent-three py-8 px-10 animate-fade-in-up animation-delay-150">
 								<h2
 									className={`text-3xl md:text-5xl uppercase text-primary ${gowun.className}`}
 								>
 									Get Involved
 								</h2>
 								<p
-									className={` text-lg md:text-xl my-4 text-light font-semibold tracking-wide ${inter.className}`}
+									className={`text-lg md:text-xl my-4 text-light font-semibold tracking-wide ${inter.className}`}
 								>
 									Make a Difference With Us
 								</p>
 								<div className="grid grid-cols-2 md:grid-cols-3 items-center gap-4 mt-6 max-w-fit">
 									<Link
 										href="/join-us#partner"
-										className={`bg-primary text-light flex items-center gap-2 px-2 sm:px-4 py-2 rounded-sm shadow-md text-sm  ${inter.className} tracking-wide hover:bg-secondary hover:text-primary transition-all duration-300`}
+										className={`bg-primary text-light flex items-center gap-2 px-2 sm:px-4 py-2 rounded-sm shadow-md text-sm ${inter.className} tracking-wide hover:bg-secondary hover:text-primary transition-all duration-300`}
 									>
 										Partner
-										<Heart className=" h-5 w-5 ml-1 text-accent-three-light" />
+										<Heart className="h-5 w-5 ml-1 text-accent-three-light" />
 									</Link>
 									<Link
 										href="/join-us#donate"
-										className={`bg-secondary text-light flex items-center gap-2 px-4 py-2 rounded-sm shadow-md text-sm  ${inter.className} tracking-wide hover:bg-primary hover:text-secondary transition-all duration-300`}
+										className={`bg-secondary text-light flex items-center gap-2 px-4 py-2 rounded-sm shadow-md text-sm ${inter.className} tracking-wide hover:bg-primary hover:text-secondary transition-all duration-300`}
 									>
 										Donate
-										<Heart className=" h-5 w-5 ml-1 text-accent-three-light" />
+										<Heart className="h-5 w-5 ml-1 text-accent-three-light" />
 									</Link>
-
 									<Link
 										href="/join-us#volunteer"
-										className={`bg-accent-three-light text-primary border border-primary flex items-center gap-2 px-4 py-2 rounded-sm shadow-md text-sm  ${inter.className} tracking-wide hover:bg-primary hover:text-light transition-all duration-300`}
+										className={`bg-accent-three-light text-primary border border-primary flex items-center gap-2 px-4 py-2 rounded-sm shadow-md text-sm ${inter.className} tracking-wide hover:bg-primary hover:text-light transition-all duration-300`}
 									>
 										Volunteer
-										<Heart className=" h-5 w-5 ml-1 text-primary" />
+										<Heart className="h-5 w-5 ml-1 text-primary" />
 									</Link>
 								</div>
 							</div>
@@ -66,27 +70,33 @@ export default function EventsPage() {
 				</div>
 			</section>
 
-			{/*Partner Card Section*/}
-			<section className=" w-full flex flex-col justify-center items-center gap-32 py-12 sm:py-16 md:py-24 px-2 sm:px-8 md:px-16 bg-light ">
-				<div id="partner" className="w-full scroll-mt-24">
-					<RegistrationCard formType="partner" />
-				</div>
+			{/* Registration forms + donate */}
+			<section className="w-full flex flex-col justify-center items-center gap-32 py-12 sm:py-16 md:py-24 px-2 sm:px-8 md:px-16 bg-light">
+				<AnimateIn className="w-full">
+					<div id="partner" className="w-full scroll-mt-24">
+						<RegistrationCard formType="partner" />
+					</div>
+				</AnimateIn>
 
-				<div id="volunteer" className=" w-full scroll-mt-24">
-					<RegistrationCard formType="volunteer" />
-				</div>
+				<AnimateIn className="w-full">
+					<div id="volunteer" className="w-full scroll-mt-24">
+						<RegistrationCard formType="volunteer" />
+					</div>
+				</AnimateIn>
 
-				<DonateSection />
+				<AnimateIn className="w-full">
+					<DonateSection />
+				</AnimateIn>
 			</section>
 
-			<JoinUsSection
-				title="Join Us in Making a Difference"
-				description="Join us in our mission to uplift communities and create a better future for all. Whether through volunteering, donating, or spreading the word, your support makes a difference."
-				bgColor="bg-white"
-				animateIcon={true}
-			/>
-
-			{/*Footer Section*/}
+			<AnimateIn>
+				<JoinUsSection
+					title="Join Us in Making a Difference"
+					description="Join us in our mission to uplift communities and create a better future for all. Whether through volunteering, donating, or spreading the word, your support makes a difference."
+					bgColor="bg-white"
+					animateIcon={true}
+				/>
+			</AnimateIn>
 		</div>
 	);
-};
+}
