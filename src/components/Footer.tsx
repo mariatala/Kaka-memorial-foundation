@@ -98,7 +98,7 @@ const Footer: React.FC = () => {
 							<Link href="https://x.com/KakaMFoundation" target="_blank" rel="noopener noreferrer" aria-label="X / Twitter" className="text-accent-three hover:text-secondary transition-colors"><FaXTwitter size={20} /></Link>
 						</div>
 
-						<Link href="/sign-in" className="text-white/30 text-xs hover:text-white/60 transition-colors w-fit mt-auto">Admin Login</Link>
+						<Link href="/sign-in?callbackUrl=/admin" className="text-white/30 text-xs hover:text-white/60 transition-colors w-fit mt-auto">Admin Login</Link>
 					</div>
 				</div>
 

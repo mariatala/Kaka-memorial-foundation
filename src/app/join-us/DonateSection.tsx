@@ -163,7 +163,7 @@ export default function DonateSection() {
 					onClick={() => setShowModal(false)}
 				>
 					<div
-						className="bg-white text-primary p-8 rounded-lg shadow-xl max-w-sm w-full text-center space-y-4"
+						className="relative bg-white text-primary p-8 rounded-lg shadow-xl max-w-sm w-full text-center space-y-4"
 						onClick={(e) => e.stopPropagation()}
 					>
 						<button

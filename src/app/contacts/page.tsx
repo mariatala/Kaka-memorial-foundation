@@ -146,41 +146,65 @@ const ContactPage: React.FC = () => {
 							className="grid grid-cols-1 md:grid-cols-2 gap-6"
 							noValidate
 						>
-							<input
-								type="text"
-								name="name"
-								required
-								placeholder="Your Name *"
-								value={form.name}
-								onChange={handleChange}
-								className="col-span-2 md:col-span-1 border-b border-primary/30 bg-transparent p-2 focus:outline-none focus:border-b-2 focus:border-secondary transition-colors placeholder:text-primary/40"
-							/>
-							<input
-								type="email"
-								name="email"
-								required
-								placeholder="Your Email *"
-								value={form.email}
-								onChange={handleChange}
-								className="col-span-2 md:col-span-1 border-b border-primary/30 bg-transparent p-2 focus:outline-none focus:border-b-2 focus:border-secondary transition-colors placeholder:text-primary/40"
-							/>
-							<input
-								type="text"
-								name="subject"
-								placeholder="Subject"
-								value={form.subject}
-								onChange={handleChange}
-								className="col-span-2 border-b border-primary/30 bg-transparent p-2 focus:outline-none focus:border-b-2 focus:border-secondary transition-colors placeholder:text-primary/40"
-							/>
-							<textarea
-								name="message"
-								required
-								rows={5}
-								placeholder="Your Message *"
-								value={form.message}
-								onChange={handleChange}
-								className="col-span-2 border-b border-primary/30 bg-transparent p-2 focus:outline-none focus:border-b-2 focus:border-secondary transition-colors resize-none placeholder:text-primary/40"
-							/>
+							<div className="col-span-2 md:col-span-1 flex flex-col gap-1">
+								<label htmlFor="contact-name" className="text-xs font-medium text-primary/60 uppercase tracking-wider">
+									Name <span className="text-red-500" aria-hidden="true">*</span>
+								</label>
+								<input
+									id="contact-name"
+									type="text"
+									name="name"
+									required
+									placeholder="Your name"
+									value={form.name}
+									onChange={handleChange}
+									className="border-b border-primary/30 bg-transparent p-2 focus:outline-none focus:border-b-2 focus:border-secondary transition-colors placeholder:text-primary/30"
+								/>
+							</div>
+							<div className="col-span-2 md:col-span-1 flex flex-col gap-1">
+								<label htmlFor="contact-email" className="text-xs font-medium text-primary/60 uppercase tracking-wider">
+									Email <span className="text-red-500" aria-hidden="true">*</span>
+								</label>
+								<input
+									id="contact-email"
+									type="email"
+									name="email"
+									required
+									placeholder="you@example.com"
+									value={form.email}
+									onChange={handleChange}
+									className="border-b border-primary/30 bg-transparent p-2 focus:outline-none focus:border-b-2 focus:border-secondary transition-colors placeholder:text-primary/30"
+								/>
+							</div>
+							<div className="col-span-2 flex flex-col gap-1">
+								<label htmlFor="contact-subject" className="text-xs font-medium text-primary/60 uppercase tracking-wider">
+									Subject
+								</label>
+								<input
+									id="contact-subject"
+									type="text"
+									name="subject"
+									placeholder="What is this regarding?"
+									value={form.subject}
+									onChange={handleChange}
+									className="border-b border-primary/30 bg-transparent p-2 focus:outline-none focus:border-b-2 focus:border-secondary transition-colors placeholder:text-primary/30"
+								/>
+							</div>
+							<div className="col-span-2 flex flex-col gap-1">
+								<label htmlFor="contact-message" className="text-xs font-medium text-primary/60 uppercase tracking-wider">
+									Message <span className="text-red-500" aria-hidden="true">*</span>
+								</label>
+								<textarea
+									id="contact-message"
+									name="message"
+									required
+									rows={5}
+									placeholder="Tell us what's on your mind…"
+									value={form.message}
+									onChange={handleChange}
+									className="border-b border-primary/30 bg-transparent p-2 focus:outline-none focus:border-b-2 focus:border-secondary transition-colors resize-none placeholder:text-primary/30"
+								/>
+							</div>
 							{error && (
 								<p className="col-span-2 text-sm text-red-600" role="alert">{error}</p>
 							)}

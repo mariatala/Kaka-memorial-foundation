@@ -18,7 +18,7 @@ function SignUpForm() {
 	const router = useRouter();
 	const searchParams = useSearchParams();
 	const rawCallback = searchParams.get('callbackUrl');
-	const callbackUrl = rawCallback?.startsWith('/') ? rawCallback : '/admin';
+	const callbackUrl = rawCallback?.startsWith('/') ? rawCallback : '/';
 
 	const [error, setError] = useState<string | null>(null);
 	const [pending, setPending] = useState(false);

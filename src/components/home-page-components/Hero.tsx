@@ -26,6 +26,7 @@ export default function HeroSection() {
 					<Link
 						href="https://www.facebook.com/profile.php?id=100088330151858"
 						target="_blank"
+						rel="noopener noreferrer"
 						aria-label="Facebook"
 						className="text-secondary md:text-white hover:text-accent-three md:hover:text-primary transition-colors duration-300 ease-in-out"
 					>
@@ -34,6 +35,7 @@ export default function HeroSection() {
 					<Link
 						href="https://www.instagram.com/kakamfoundation/"
 						target="_blank"
+						rel="noopener noreferrer"
 						aria-label="Instagram"
 						className="text-secondary md:text-white hover:text-accent-three md:hover:text-primary transition-colors duration-300 ease-in-out"
 					>
@@ -42,6 +44,7 @@ export default function HeroSection() {
 					<Link
 						href="https://x.com/KakaMFoundation"
 						target="_blank"
+						rel="noopener noreferrer"
 						aria-label="X / Twitter"
 						className="text-secondary md:text-white hover:text-accent-three md:hover:text-primary transition-colors duration-300 ease-in-out"
 					>

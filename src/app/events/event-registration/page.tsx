@@ -26,6 +26,7 @@ export default function EventRegistrationForm() {
 	});
 	const [submitted, setSubmitted] = useState(false);
 	const [submitting, setSubmitting] = useState(false);
+	const [submitError, setSubmitError] = useState<string | null>(null);
 
 	// Pre-fill name and email from session once it loads
 	useEffect(() => {
@@ -54,11 +55,25 @@ export default function EventRegistrationForm() {
 
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
+		setSubmitError(null);
 		setSubmitting(true);
-		// Simulate async submission — replace with real API call
-		await new Promise((r) => setTimeout(r, 800));
-		setSubmitted(true);
-		setSubmitting(false);
+		try {
+			const res = await fetch('/api/event-registration', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(formData),
+			});
+			const data = await res.json();
+			if (!res.ok) {
+				setSubmitError(data.message || 'Registration failed. Please try again.');
+			} else {
+				setSubmitted(true);
+			}
+		} catch {
+			setSubmitError('Something went wrong. Please try again.');
+		} finally {
+			setSubmitting(false);
+		}
 	};
 
 	// ── Loading state ──
@@ -265,6 +280,12 @@ export default function EventRegistrationForm() {
 							className="border-b-2 border-primary/20 bg-transparent py-2.5 px-1 text-primary placeholder:text-primary/30 focus:outline-none focus:border-secondary transition-colors duration-200 resize-none"
 						/>
 					</div>
+
+					{submitError && (
+						<div className="px-4 py-3 bg-red-50 border-l-4 border-red-500 rounded-sm" role="alert">
+							<p className={`text-red-700 text-sm font-medium ${inter.className}`}>{submitError}</p>
+						</div>
+					)}
 
 					<button
 						type="submit"

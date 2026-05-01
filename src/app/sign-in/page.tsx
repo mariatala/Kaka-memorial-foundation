@@ -17,7 +17,7 @@ function SignInForm() {
 	const router = useRouter();
 	const searchParams = useSearchParams();
 	const rawCallback = searchParams.get('callbackUrl');
-	const callbackUrl = rawCallback?.startsWith('/') ? rawCallback : '/admin';
+	const callbackUrl = rawCallback?.startsWith('/') ? rawCallback : '/';
 
 	const [error, setError] = useState<string | null>(null);
 	const [pending, setPending] = useState(false);
@@ -50,9 +50,9 @@ function SignInForm() {
 				</h1>
 				<div className="w-10 h-0.5 bg-secondary rounded-full" />
 				<p className={`text-primary/60 text-sm mt-2 ${inter.className}`}>
-					{callbackUrl !== '/admin'
-						? 'Sign in to continue to your destination.'
-						: 'Sign in to your admin account to continue.'}
+					{callbackUrl === '/'
+						? 'Sign in to your account to continue.'
+						: 'Sign in to continue to your destination.'}
 				</p>
 			</div>
 

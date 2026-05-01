@@ -1,4 +1,3 @@
-'use client';
 import React from 'react';
 import { Gowun_Dodum, Inter } from 'next/font/google';
 import {
@@ -48,7 +47,7 @@ export default function CausesPage(){
 				<div className="w-full flex flex-col md:flex-row items-center mt-40">
 					<Image
 						src="/map-1.png"
-						alt="Kaka Memorial Foundation Logo"
+						alt="Map showing Kaka Foundation core focus areas"
 						width={500}
 						height={500}
 						className="md:border-l-12 w-4/5 md:w-1/3 border-secondary h-auto transition-all duration-300"

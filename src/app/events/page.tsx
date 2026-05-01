@@ -20,7 +20,7 @@ export default function EventsPage(){
 						<div className="w-full flex flex-col-reverse  md:flex-row items-center">
 							<Image
 								src="/joinUs.jpg"
-								alt="Kaka Memorial Foundation Logo"
+								alt="Community members gathering for an event"
 								width={500}
 								height={500}
 								className="md:border-l-12 w-4/5 md:w-1/4 border-secondary h-auto transition-all duration-300"

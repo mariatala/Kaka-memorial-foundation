@@ -112,8 +112,8 @@ export default function Header() {
 				<Link href="/" className="flex items-center">
 					<Image
 						src="/Logo.png"
-						priority={false}
-						alt="Logo"
+						priority
+						alt="Kaka Memorial Foundation logo"
 						width={100}
 						height={100}
 						className={`h-auto transition-all duration-300 ${

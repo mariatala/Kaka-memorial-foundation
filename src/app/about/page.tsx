@@ -1,5 +1,3 @@
-'use client';
-
 import TeamSection from '@/app/about/TeamSection';
 import History from '@/app/about/History';
 import MissionVisionSection from '@/app/about/MissionVision';

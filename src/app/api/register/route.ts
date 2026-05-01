@@ -43,13 +43,8 @@ export async function POST(request: NextRequest) {
         });
 
         if (existing) {
-            const type = existing.registrationType === formType
-                ? `a ${existing.registrationType}`
-                : `a ${existing.registrationType}`;
             return Response.json(
-                {
-                    message: `This phone number is already registered as ${type}. Each phone number can only be used once.`,
-                },
+                { message: `This phone number is already registered as a ${existing.registrationType}. Each phone number can only be used once.` },
                 { status: 409 }
             );
         }
