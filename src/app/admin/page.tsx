@@ -36,10 +36,10 @@ const quickLinks = [
 		accent: 'bg-primary/10 text-primary border-primary/20',
 	},
 	{
-		href: '/join-us#donate',
+		href: '/admin/donations',
 		icon: HeartHandshake,
 		label: 'Donations',
-		description: 'View the donation page',
+		description: 'View all recorded PayPal transactions',
 		accent: 'bg-accent-two/10 text-accent-two border-accent-two/20',
 	},
 ];
