@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { Gowun_Dodum, Inter } from 'next/font/google';
 import {
