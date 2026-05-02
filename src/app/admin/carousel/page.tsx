@@ -45,7 +45,7 @@ export default async function AdminCarouselPage() {
                         <div>
                             <p className="text-secondary text-xs font-semibold uppercase tracking-widest">Admin Panel</p>
                             <h1 className={`text-2xl md:text-3xl text-light font-bold tracking-wide ${gowun.className}`}>
-                                Carousel
+                                Recent Advocacy / Projects
                             </h1>
                         </div>
                     </div>
