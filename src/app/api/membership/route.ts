@@ -19,12 +19,12 @@ export async function POST(request: NextRequest) {
 
         const normalized = email.trim().toLowerCase();
 
-        const existing = await prisma.membership.findFirst({ where: { email: normalized } });
-        if (existing) {
-            return Response.json({ success: true, message: 'Already subscribed.' });
-        }
-
-        await prisma.membership.create({ data: { email: normalized } });
+        // Upsert is atomic — avoids the race condition of findFirst then create
+        await prisma.membership.upsert({
+            where:  { email: normalized },
+            update: {},
+            create: { email: normalized },
+        });
 
         return Response.json({ success: true, message: 'Subscribed successfully.' });
     } catch (error) {

@@ -1,51 +1,66 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { Inter } from 'next/font/google';
-const inter = Inter({
-	weight: ['200', '300', '400', '500', '600', '700', '800'],
-	subsets: ['latin'],
-});
+import { ArrowRight } from 'lucide-react';
 
-type XSpaceCardProps = {
-	imageSrc: string;
-	imageAlt?: string;
-	title: string;
-	description: string;
+const inter = Inter({ weight: ['400', '500', '600', '700'], subsets: ['latin'] });
+
+type EventCardProps = {
+    imageSrc: string;
+    imageAlt?: string;
+    title: string;
+    description: string;
+    link?: string | null;
 };
 
 const EventCard = ({
-	imageSrc,
-	imageAlt = 'Event image',
-	title,
-	description,
-}: XSpaceCardProps) => {
-	return (
-		<div className="relative w-full max-w-sm md:max-w-md group h-[22rem] p-4 sm:p-6 md:p-8 flex flex-col justify-start items-start gap-6 overflow-hidden">
-			{/* Background Image */}
-			<Image
-				className="absolute top-0 left-0 w-full h-full object-cover"
-				src={imageSrc}
-				alt={imageAlt}
-				fill
-				sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-			/>
+    imageSrc,
+    imageAlt = 'Project image',
+    title,
+    description,
+    link,
+}: EventCardProps) => {
+    return (
+        <div
+            className={`group flex flex-col bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 h-full ${inter.className}`}
+        >
+            {/* Image */}
+            <div className="relative aspect-[16/9] overflow-hidden shrink-0">
+                <Image
+                    src={imageSrc}
+                    alt={imageAlt}
+                    fill
+                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+                {/* Subtle gradient so the white content area blends in */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
+            </div>
 
-			{/* Sliding Overlay Content */}
-			<div className="absolute top-0 bottom-0 right-0 p-4 sm:p-5 bg-accent-three-light/90 w-[90%] flex flex-col justify-start items-start gap-4 border-t-4 border-b-4 border-primary transform transition-transform duration-500 ease-in-out group-hover:translate-x-full group-active:translate-x-full group-focus-within:translate-x-full">
-				<div
-					className={`text-primary text-base sm:text-lg  font-semibold tracking-wide ${inter.className}`}
-				>
-					{title}
-				</div>
-				<div
-					className={`text-primary text-sm  leading-7 tracking-wide ${inter.className}`}
-				>
-					{description}
-				</div>
-			</div>
-		</div>
-	);
+            {/* Content */}
+            <div className="flex flex-col flex-1 p-4 border-l-4 border-secondary">
+                <h3 className="text-sm font-bold text-primary leading-snug mb-2 line-clamp-2">
+                    {title}
+                </h3>
+                <p className="text-sm text-primary/65 leading-relaxed line-clamp-3 flex-1">
+                    {description}
+                </p>
+                {link && (
+                    <Link
+                        href={link}
+                        target={link.startsWith('http') ? '_blank' : undefined}
+                        rel={link.startsWith('http') ? 'noopener noreferrer' : undefined}
+                        className="inline-flex items-center gap-1 mt-4 text-xs font-semibold text-secondary hover:text-secondary-dark transition-colors self-start"
+                    >
+                        View Project
+                        <ArrowRight size={12} className="transition-transform duration-200 group-hover:translate-x-0.5" />
+                    </Link>
+                )}
+            </div>
+        </div>
+    );
 };
 
 export default EventCard;

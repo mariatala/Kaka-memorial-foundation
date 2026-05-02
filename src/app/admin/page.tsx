@@ -13,6 +13,9 @@ import {
 	HeartHandshake,
 	CalendarDays,
 	MessageSquare,
+	BarChart2,
+	Layers,
+	Rss,
 } from 'lucide-react';
 
 const inter = Inter({
@@ -48,6 +51,27 @@ const quickLinks = [
 		icon: MessageSquare,
 		label: 'Messages',
 		description: 'View contact form submissions',
+		accent: 'bg-accent-one/10 text-accent-one border-accent-one/20',
+	},
+	{
+		href: '/admin/statistics',
+		icon: BarChart2,
+		label: 'Statistics',
+		description: 'Edit homepage stats and impact numbers',
+		accent: 'bg-secondary/10 text-secondary border-secondary/20',
+	},
+	{
+		href: '/admin/carousel',
+		icon: Layers,
+		label: 'Carousel',
+		description: 'Manage Recent Advocacy / Projects slides',
+		accent: 'bg-accent-three/20 text-primary border-accent-three/40',
+	},
+	{
+		href: '/admin/memberships',
+		icon: Rss,
+		label: 'Subscribers',
+		description: 'View and manage newsletter subscribers',
 		accent: 'bg-accent-one/10 text-accent-one border-accent-one/20',
 	},
 ];

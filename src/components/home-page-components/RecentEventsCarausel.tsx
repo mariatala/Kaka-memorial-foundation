@@ -1,76 +1,165 @@
 'use client';
-import React, { useRef } from 'react';
+
+import React, { useRef, useState, useCallback, useEffect } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import EventCard from '@/components/home-page-components/RecentEventCard';
 
-const EventsCarousel: React.FC = () => {
-	const carouselRef = useRef<HTMLDivElement | null>(null);
-
-	const scroll = (direction: 'left' | 'right') => {
-		if (!carouselRef.current) return;
-
-		const { scrollLeft, clientWidth } = carouselRef.current;
-		const scrollTo =
-			direction === 'left'
-				? scrollLeft - clientWidth
-				: scrollLeft + clientWidth;
-
-		carouselRef.current.scrollTo({
-			left: scrollTo,
-			behavior: 'smooth',
-		});
-	};
-
-	return (
-		<section className="w-full px-4 md:px-16 overflow-hidden scrollbar-hide">
-			<div className="relative">
-				{/* Navigation Buttons - Visible on All Screens */}
-				<div className="flex justify-between absolute top-1/2 -translate-y-1/2 w-full z-10 px-1">
-					<button
-						onClick={() => scroll('left')}
-						className="bg-primary text-white p-2 size-8 rounded-full hover:bg-secondary grid content-center"
-						aria-label="Scroll Left"
-					>
-						←
-					</button>
-					<button
-						onClick={() => scroll('right')}
-						className="bg-primary text-white p-2 size-8 rounded-full hover:bg-secondary grid content-center"
-						aria-label="Scroll Right"
-					>
-						→
-					</button>
-				</div>
-
-				{/* Carousel Container */}
-				<div
-					ref={carouselRef}
-					className="flex  gap-8 md:gap-16  px-4 md:px-12 overflow-x-auto scroll-smooth snap-x snap-mandatory touch-pan-x no-scrollbar"
-				>
-					<div className="min-w-[90%] md:min-w-[33%] snap-center shrink-0">
-						<EventCard
-							imageSrc="/xtalk.jpg"
-							title="X-Space Public Engagement"
-							description="Had a dialogue featuring Canadian Indigenous and Brazilian-Canadian human rights and social justice advocates, as we unpacked the ongoing LEA strike in Abuja and its impact on Education."
-						/>
-					</div>
-					<div className="min-w-[90%] md:min-w-[33%] snap-center shrink-0">
-						<EventCard
-							imageSrc="/water.jpg"
-							title="Water Access Advocacy, Shapi Community, Kwali Area Council"
-							description="Through direct engagement with the Area Council Chairman, Kaka Memorial Foundation successfully advocated for improved water access for residents of Shapi community, securing a critical need in this underserved area."
-						/>
-					</div>
-					<div className="min-w-[90%] md:min-w-[33%] snap-center shrink-0">
-						<EventCard
-							imageSrc="/about.jpg"
-							title="Youth Innovation Summit"
-							description="Discussed innovative solutions with youth leaders across Africa on sustainable development, education, and digital transformation."
-						/>
-					</div>
-				</div>
-			</div>
-		</section>
-	);
+export type CarouselItemData = {
+    id: number;
+    imageSrc: string;
+    imageAlt: string;
+    title: string;
+    description: string;
+    link?: string | null;
 };
 
-export default EventsCarousel;
+const GAP = 16; // px — matches gap-4
+
+function calcCardWidth(containerPx: number): number {
+    const count = containerPx >= 700 ? 3 : containerPx >= 440 ? 2 : 1;
+    // For a single card leave a ~16 % peek so the next card is hinted
+    if (count === 1) return Math.round(containerPx * 0.84);
+    return Math.round((containerPx - GAP * (count - 1)) / count);
+}
+
+type Props = { items: CarouselItemData[] };
+
+export default function EventsCarousel({ items }: Props) {
+    const containerRef = useRef<HTMLDivElement>(null);
+    const [cardWidth, setCardWidth] = useState<number | null>(null);
+    const [canScrollLeft, setCanScrollLeft] = useState(false);
+    const [canScrollRight, setCanScrollRight] = useState(false);
+    const [activeIndex, setActiveIndex] = useState(0);
+
+    const measure = useCallback(() => {
+        const el = containerRef.current;
+        if (!el) return;
+        setCardWidth(calcCardWidth(el.clientWidth));
+    }, []);
+
+    const syncScroll = useCallback(() => {
+        const el = containerRef.current;
+        if (!el) return;
+        const left = el.scrollLeft;
+        const maxScroll = el.scrollWidth - el.clientWidth;
+        setCanScrollLeft(left > 2);
+        setCanScrollRight(left < maxScroll - 2);
+        const cards = Array.from(el.children) as HTMLElement[];
+        let closest = 0, minDist = Infinity;
+        cards.forEach((card, i) => {
+            const dist = Math.abs(card.offsetLeft - left);
+            if (dist < minDist) { minDist = dist; closest = i; }
+        });
+        setActiveIndex(closest);
+    }, []);
+
+    useEffect(() => {
+        const el = containerRef.current;
+        if (!el) return;
+        measure();
+        el.addEventListener('scroll', syncScroll, { passive: true });
+        window.addEventListener('resize', measure);
+        return () => {
+            el.removeEventListener('scroll', syncScroll);
+            window.removeEventListener('resize', measure);
+        };
+    }, [measure, syncScroll]);
+
+    // Re-check scroll bounds after card widths settle
+    useEffect(() => {
+        const t = setTimeout(syncScroll, 60);
+        return () => clearTimeout(t);
+    }, [cardWidth, syncScroll]);
+
+    const scroll = useCallback((dir: 'left' | 'right') => {
+        const el = containerRef.current;
+        if (!el) return;
+        const step = (cardWidth ?? el.clientWidth) + GAP;
+        el.scrollBy({ left: dir === 'right' ? step : -step, behavior: 'smooth' });
+    }, [cardWidth]);
+
+    const scrollToIndex = useCallback((i: number) => {
+        const el = containerRef.current;
+        const card = el?.children[i] as HTMLElement | undefined;
+        if (!card || !el) return;
+        el.scrollTo({ left: card.offsetLeft, behavior: 'smooth' });
+    }, []);
+
+    if (items.length === 0) return null;
+
+    const NavButton = ({ dir, className = '' }: { dir: 'left' | 'right'; className?: string }) => (
+        <button
+            onClick={() => scroll(dir)}
+            disabled={dir === 'left' ? !canScrollLeft : !canScrollRight}
+            aria-label={dir === 'left' ? 'Previous slide' : 'Next slide'}
+            className={`shrink-0 w-10 h-10 rounded-full flex items-center justify-center
+                bg-white border border-primary/15 shadow-sm text-primary
+                hover:bg-primary hover:text-white hover:border-primary hover:shadow-md
+                disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-white
+                disabled:hover:text-primary disabled:hover:border-primary/15 disabled:hover:shadow-sm
+                transition-all duration-200 ${className}`}
+        >
+            {dir === 'left' ? <ChevronLeft size={18} /> : <ChevronRight size={18} />}
+        </button>
+    );
+
+    return (
+        <div className="w-full">
+            {/* Desktop: arrows flank the scroll track */}
+            <div className="flex items-center gap-3 px-4 md:px-0">
+                <NavButton dir="left" className="hidden md:flex" />
+
+                <div
+                    ref={containerRef}
+                    className="flex-1 flex gap-12 overflow-x-auto scroll-smooth snap-x snap-mandatory no-scrollbar touch-pan-x"
+                >
+                    {items.map(item => (
+                        <div
+                            key={item.id}
+                            className="snap-start shrink-0"
+                            style={cardWidth != null
+                                ? { width: cardWidth, minWidth: cardWidth }
+                                : { minWidth: '84%' }}
+                        >
+                            <EventCard
+                                imageSrc={item.imageSrc}
+                                imageAlt={item.imageAlt}
+                                title={item.title}
+                                description={item.description}
+                                link={item.link}
+                            />
+                        </div>
+                    ))}
+                </div>
+
+                <NavButton dir="right" className="hidden md:flex" />
+            </div>
+
+            {/* Mobile arrows + dot indicators */}
+            <div className="flex items-center justify-center gap-4 mt-5">
+                <NavButton dir="left" className="md:hidden" />
+
+                {items.length > 1 && (
+                    <div className="flex items-center gap-2" role="tablist" aria-label="Carousel navigation">
+                        {items.map((item, i) => (
+                            <button
+                                key={item.id}
+                                role="tab"
+                                aria-selected={i === activeIndex}
+                                aria-label={`Go to slide ${i + 1}`}
+                                onClick={() => scrollToIndex(i)}
+                                className={`rounded-full transition-all duration-300 ${
+                                    i === activeIndex
+                                        ? 'w-6 h-2.5 bg-secondary'
+                                        : 'w-2.5 h-2.5 bg-primary/25 hover:bg-primary/50'
+                                }`}
+                            />
+                        ))}
+                    </div>
+                )}
+
+                <NavButton dir="right" className="md:hidden" />
+            </div>
+        </div>
+    );
+}

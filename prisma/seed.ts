@@ -121,6 +121,63 @@ async function main() {
     console.log(`  ✓ Created admin: ${email}`);
   }
 
+  // Statistics
+  console.log('\nSeeding statistics…');
+  const existingStats = await prisma.statistic.count();
+  if (existingStats === 0) {
+    const DEFAULT_STATISTICS = [
+      { prefix: '$', value: '100', suffix: '', description: 'Raised Through Grants', order: 1 },
+      { prefix: '₦', value: '147740', suffix: '', description: 'Raised Through Donations', order: 2 },
+      { prefix: '', value: '500', suffix: '+', description: 'People Served by Kaka Foundation', order: 3 },
+      { prefix: '', value: '7', suffix: '', description: 'Programs Initiated Since 2022', order: 4 },
+      { prefix: '', value: '9', suffix: '', description: 'Volunteers Across Abuja', order: 5 },
+    ];
+    for (const stat of DEFAULT_STATISTICS) {
+      await prisma.statistic.create({ data: stat });
+    }
+    console.log(`  ✓ Seeded ${DEFAULT_STATISTICS.length} statistics`);
+  } else {
+    console.log(`  ✓ Statistics already exist (${existingStats}) — skipped`);
+  }
+
+  // Carousel items
+  console.log('\nSeeding carousel items…');
+  const existingCarousel = await prisma.carouselItem.count();
+  if (existingCarousel === 0) {
+    const DEFAULT_CAROUSEL = [
+      {
+        title: 'X-Space Public Engagement',
+        description: 'Had a dialogue featuring Canadian Indigenous and Brazilian-Canadian human rights and social justice advocates, as we unpacked the ongoing LEA strike in Abuja and its impact on Education.',
+        imageSrc: '/xtalk.jpg',
+        imageAlt: 'X-Space public engagement session',
+        link: null,
+        order: 1,
+      },
+      {
+        title: 'Water Access Advocacy, Shapi Community, Kwali Area Council',
+        description: 'Through direct engagement with the Area Council Chairman, Kaka Memorial Foundation successfully advocated for improved water access for residents of Shapi community, securing a critical need in this underserved area.',
+        imageSrc: '/water.jpg',
+        imageAlt: 'Water access advocacy in Shapi community',
+        link: null,
+        order: 2,
+      },
+      {
+        title: 'Youth Innovation Summit',
+        description: 'Discussed innovative solutions with youth leaders across Africa on sustainable development, education, and digital transformation.',
+        imageSrc: '/about.jpg',
+        imageAlt: 'Youth Innovation Summit',
+        link: null,
+        order: 3,
+      },
+    ];
+    for (const item of DEFAULT_CAROUSEL) {
+      await prisma.carouselItem.create({ data: item });
+    }
+    console.log(`  ✓ Seeded ${DEFAULT_CAROUSEL.length} carousel items`);
+  } else {
+    console.log(`  ✓ Carousel items already exist (${existingCarousel}) — skipped`);
+  }
+
   // Event categories
   console.log('\nSeeding event categories…');
   const existingCount = await prisma.eventCategory.count();

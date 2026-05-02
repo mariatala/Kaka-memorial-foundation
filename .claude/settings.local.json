@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(curl -s -X POST http://localhost:3000/api/register -H 'Content-Type: application/json' -d '{\"name\":\"Test User\",\"phone\":\"08012345678\",\"email\":\"\",\"address\":\"\",\"message\":\"\",\"formType\":\"volunteer\"}')"
+      "Bash(curl -s -X POST http://localhost:3000/api/register -H 'Content-Type: application/json' -d '{\"name\":\"Test User\",\"phone\":\"08012345678\",\"email\":\"\",\"address\":\"\",\"message\":\"\",\"formType\":\"volunteer\"}')",
+      "Bash(npx prisma *)"
     ]
   }
 }
