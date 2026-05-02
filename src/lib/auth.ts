@@ -9,7 +9,7 @@ const adapter = new PrismaNeon({
   });
   
   const prisma = new PrismaClient({ adapter });
-  
+
 export const auth = betterAuth({
     database: prismaAdapter(prisma, {
         provider: "postgresql",
@@ -20,4 +20,9 @@ export const auth = betterAuth({
         enabled: true,
     },
     plugins: [admin()],
+
+    trustedOrigins: [
+        "https://kaka-memorial-foundation.vercel.app",
+        "http://localhost:3000", // keep local working too
+      ],
 });
