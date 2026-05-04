@@ -23,6 +23,7 @@ export const auth = betterAuth({
 
     trustedOrigins: [
         "https://kaka-memorial-foundation.vercel.app",
+        "https://kakamemorialfoundation.org",
         "http://localhost:3000", // keep local working too
       ],
 });
