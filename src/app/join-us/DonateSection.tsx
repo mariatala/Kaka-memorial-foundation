@@ -59,7 +59,7 @@ export default function DonateSection() {
 						className={`text-light/80 text-sm font-light max-w-2xl tracking-wider leading-8 ${inter.className}`}
 					>
 						Your gift helps us provide clean water, education, healthcare, and
-						hope to vulnerable communities. Every amount makes a difference — no
+						hope to vulnerable communities. Every amount makes a difference, no
 						act of kindness is too small.
 					</p>
 
