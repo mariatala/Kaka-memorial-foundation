@@ -45,9 +45,9 @@ const CtaHome = () => {
 					</div>
 					<Link
 						href="/join-us#donate"
-						className={`px-8 py-2.5 bg-primary text-light font-semibold rounded-sm hover:bg-secondary transition-colors duration-300 ease-in-out tracking-wider text-sm ${inter.className}`}
+						className={`px-8 py-2.5 bg-primary text-light font-semibold rounded-sm hover:bg-secondary transition-colors duration-300 ease-in-out tracking-wider text-sm  uppercase ${inter.className}`}
 					>
-						DONATE
+						Support the Mission
 					</Link>
 				</div>
 
@@ -60,7 +60,7 @@ const CtaHome = () => {
 						<div
 							className={`text-center text-primary text-xl md:text-3xl font-medium tracking-wider ${inter.className}`}
 						>
-							Volunteer
+						 Join the Mission
 						</div>
 						<div
 							className={`text-primary text-sm md:text-base text-center leading-8 tracking-wide ${inter.className}`}

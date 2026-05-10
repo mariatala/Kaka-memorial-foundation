@@ -51,11 +51,11 @@ const Footer: React.FC = () => {
 						<div className="flex flex-col gap-2">
 							<h2 className="text-3xl md:text-5xl tracking-widest uppercase text-light font-reading">Contact Us</h2>
 							<div className="w-16 h-1 bg-secondary rounded-full" />
-							<h3 className="text-xl text-secondary font-semibold tracking-wide mt-1">Let&#39;s talk — your voice matters</h3>
+							<h3 className="text-xl text-secondary font-semibold tracking-wide mt-1">Let&#39;s talk, your voice matters</h3>
 						</div>
 
 						<p className="tracking-wider text-accent-three text-sm leading-7 font-reading max-w-lg">
-							Have questions, ideas, or want to get involved? Whether you&#39;re looking to volunteer, partner, or simply learn more — reach out!
+							Have questions, ideas, or want to get involved? Whether you&#39;re looking to volunteer, partner, or simply learn more; reach out!
 						</p>
 
 						{/* Contact details */}

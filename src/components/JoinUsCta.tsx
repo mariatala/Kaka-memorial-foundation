@@ -51,13 +51,13 @@ const JoinUsSection: React.FC<JoinUsProps> = ({
 							href="/join-us#volunteer"
 							className="bg-secondary text-white text-base px-6 py-3 rounded-sm font-semibold shadow hover:scale-105 hover:brightness-105 transition-all duration-300"
 						>
-							Become a Volunteer
+							Volunteer With Us
 						</Link>
 						<Link
 							href="/join-us#donate"
 							className="bg-primary text-white text-base px-6 py-3 rounded-sm font-semibold shadow hover:scale-105 hover:bg-primary-dark flex items-center gap-2 transition-all duration-300"
 						>
-							Donate Now
+							Give Today
 						</Link>
 					</div>
 				</div>

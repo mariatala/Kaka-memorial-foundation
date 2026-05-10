@@ -77,7 +77,7 @@ export default function HeroSection() {
 							href="/join-us#donate"
 							className={`px-6 py-2.5 border-2 border-primary text-primary text-sm font-semibold rounded-sm hover:bg-primary hover:text-light transition-all duration-300 tracking-wide ${inter.className}`}
 						>
-							Donate Now
+							Make an Impact
 						</Link>
 					</div>
 				</div>
