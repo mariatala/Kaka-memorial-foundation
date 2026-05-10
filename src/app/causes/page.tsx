@@ -169,7 +169,7 @@ export default function CausesPage(){
 							<div className="w-4/5 md:w-1/3 text-center">
 								<Image
 									className="w-full h-auto rounded-md"
-									src="/Map.png"
+									src="/map-2.png"
 									alt="Abuja Area Council"
 									width={700}
 									height={500}
