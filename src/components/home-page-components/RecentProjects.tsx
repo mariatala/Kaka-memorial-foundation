@@ -55,7 +55,7 @@ const RecentProjects = async () => {
                 </h2>
                 <div className="w-16 h-1 bg-secondary rounded-full" />
                 <p className={`text-base text-primary/60 font-medium tracking-wide mt-1 ${inter.className}`}>
-                    Take a stand — support ethical, people-first development
+                    Take a stand; support ethical, people-first development
                 </p>
             </div>
 
