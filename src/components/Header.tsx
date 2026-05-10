@@ -123,7 +123,7 @@ export default function Header() {
 				</Link>
 
 				<nav
-					className={`hidden text-sm font-medium md:flex items-center gap-10 tracking-widest uppercase ${inter.className} ${navTextColor}`}
+					className={`hidden text-sm font-normal md:flex items-center gap-10 tracking-widest uppercase ${inter.className} ${navTextColor}`}
 				>
 					{links.map(({ href, label }) => (
 						<Link
