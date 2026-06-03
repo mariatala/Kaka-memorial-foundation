@@ -72,19 +72,20 @@ const Footer: React.FC = () => {
 
 							<p className="flex items-center gap-3">
 								<PhoneCall className="shrink-0 text-secondary" size={18} aria-hidden="true" />
+								<Link href="'tel:+2348068287964" className="hover:text-secondary transition-colors">+234 806 828 7964</Link>
 								<Link href="tel:+2348069521144" className="hover:text-secondary transition-colors">+234 806 952 1144</Link>
 							</p>
 
 							<p className="flex items-start gap-3">
 								<MapPin className="shrink-0 mt-0.5 text-secondary" size={18} aria-hidden="true" />
-								<span>No. 20 Alh Inuwa Gani Shopping Complex, Along ABUJA-LOKOJA Express Road, Abaji-Abuja</span>
+								<span>Coming soon...</span>
 							</p>
 
 							{/* FIX: WhatsApp link — was MessageCircleHeart without proper href */}
 							<p className="flex items-center gap-3">
 								<MessageCircleHeart className="shrink-0 text-secondary" size={18} aria-hidden="true" />
 								<a href="https://wa.me/2348067094933" target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition-colors">
-									+234 806 709 4933 (WhatsApp)
+									+234 806 828 7964 (WhatsApp)
 								</a>
 							</p>
 

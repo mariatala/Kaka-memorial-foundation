@@ -35,13 +35,13 @@ export default function HistorySection () {
 					<p>
 						Established to carry forward her legacy, the foundation works to
 						uplift rural and underserved communities in Nigeria by providing
-						access to clean water,  education, electricity,
-						and economic opportunities.
+						access to clean water,  education, and strong partnerships with people
+						and organizations with similar goals/vision.
 					</p>
 					<p>
 						Our mission is rooted in the belief that kindness expressed through
 						empathy, generosity, and action has the power to transform lives.
-						Through advocacy, outreach, and sustainable development projects, we
+						Through advocacy, outreach, sponsorship and sustainable development projects, we
 						aim to bridge gaps, uphold human rights, and empower communities to
 						thrive.
 					</p>

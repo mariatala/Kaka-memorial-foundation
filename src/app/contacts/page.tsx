@@ -236,6 +236,17 @@ const ContactPage: React.FC = () => {
 						}}
 						content="We respond within 24 hours on business days."
 					/>
+						<ContactInfo
+						icon={<Phone className="shrink-0" size={20} />}
+						title="Call Us"
+						link={{
+							href: 'tel:+2348068287964',
+							label: '+234 8068287964',
+						}}
+						content="Available Monday to Friday, 9 AM – 5 PM WAT"
+					/>
+
+					
 					<ContactInfo
 						icon={<Phone className="shrink-0" size={20} />}
 						title="Call Us"
@@ -243,6 +254,8 @@ const ContactPage: React.FC = () => {
 							href: 'tel:+2349028123427',
 							label: '+234 9028123427',
 						}}
+						
+						
 						content="Available Monday to Friday, 9 AM – 5 PM WAT"
 					/>
 					<ContactInfo
@@ -250,14 +263,14 @@ const ContactPage: React.FC = () => {
 						title="WhatsApp Us"
 						link={{
 							href: 'https://wa.me/2348067094933',
-							label: '+234 806 709 4933',
+							label: '+234  806 828 7964',
 						}}
 						content="Quick responses for urgent inquiries."
 					/>
 					<ContactInfo
 						icon={<Users className="shrink-0" size={20} />}
 						title="Visit Us"
-						content="No. 20 Alh Inuwa Gani Shopping Complex, Along ABUJA-LOKOJA Express Road, Abaji-Abuja"
+						content="Coming soon"
 					/>
 				</div>
 			</section>

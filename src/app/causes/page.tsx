@@ -247,12 +247,12 @@ export default function CausesPage(){
 								{
 									title: "2. Issue-Based Campaigns",
 									description:
-										"Our campaigns shine a spotlight on specific challenges affecting vulnerable populations. Whether it’s advocating for improved school infrastructure, better sanitation, or access to safe drinking water, these campaigns mobilize communities, volunteers, and partners to take action and drive change.",
+										"Our campaigns shine a spotlight on specific challenges affecting vulnerable populations. Whether it’s advocating for improved school infrastructure, access to safe drinking water, or total well being of children in challenging situations. These campaigns mobilize communities, volunteers, and partners to take action and drive change.",
 								},
 								{
 									title: "3. Stakeholder Meetings & Consultations",
 									description:
-										"We regularly engage with government representatives, NGOs, development partners, and community leaders to align efforts, share insights, and co-develop solutions. These meetings help shape inclusive programs and ensure that interventions are grounded in the real needs of the people.",
+										"We thrive in engaging government representatives, NGOs, development partners, and community leaders to align efforts, share insights, and co-develop solutions. These meetings help shape inclusive programs and ensure that interventions are grounded in the real needs of the people.",
 								},
 							].map((item, index) => (
 								<div
