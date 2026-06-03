@@ -138,7 +138,8 @@ export default function CausesPage(){
 							imageSrc="/collaborative.jpg"
 							heading="Collaborative Projects (SDG 17)"
 							subheading="Partner with us."
-							description="We believe real change happens through strong partnerships. At Kaka Memorial Foundation, we collaborate with NGOs, government bodies, and private sector allies to design and deliver impactful solutions in education, healthcare, clean water, and rural development. Together, we go further building sustainable progress through shared vision and action."
+
+							description="We believe real change happens through strong partnerships. At Kaka Memorial Foundation, we collaborate with NGOs, government bodies, and private sector allies to design and deliver impactful solutions in education, clean water, and rural development. Together, we go further building sustainable progress through shared vision and action."
 							cards={[
 								{
 									title: 'Collaborate to Empower Communities',
