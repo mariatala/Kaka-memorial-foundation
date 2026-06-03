@@ -39,7 +39,7 @@ export default function TeamSection ({
 						className="rounded-xl w-full md:w-1/3 h-auto object-cover shadow-md"
 						width={400}
 						height={480}
-						src="/team/Zainab.jpg"
+						src="/team/Director.png"
 						alt="Team member - Founder"
 					/>
 					<div className="w-full md:w-2/3 flex flex-col gap-4 text-primary">
@@ -127,7 +127,7 @@ export default function TeamSection ({
 						niconneFontClass={niconneFontClass}
 					/>
 						<TeamMemberCard
-						imageSrc="/team/Abdulbaki_Ibrahim_Gani.jpeg"
+						imageSrc="/team/Zulaiha_Yusuf.jpeg"
 						altText="Team member - Advocacy and Wellness Coordinator"
 						description="As the advocacy and wellness coordinator at Kaka Memorial Foundation, I serve as a bridge between the foundation and the communities we support. With a background in law and counseling, I use both legal insight and emotinal intelligence to advocate for children and families. I help parents understand the importance of education and support children through academic, emotional and mental health challenges, whether it's poor performance, school strikes or personal struggles. With a trauma-informed approach, my role is to be present, to listen and to guide, creatinga safe and supportive enviroment where every child feels seen, heard, and empowered to succeed in school and in life."
 						name="Hon. Zulaiha Yusuf(Esq)"
