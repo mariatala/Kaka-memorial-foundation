@@ -20,7 +20,7 @@ export default function HeroSection() {
 			<div className="absolute inset-0 bg-gradient-to-b from-primary-dark/40 to-primary-dark/95 z-0" />
 
 			{/* Hero Content */}
-			<div className="relative z-10 h-full flex flex-col-reverse gap-8 md:flex-row items-center mt-16 justify-center md:justify-between text-justify py-32">
+			<div className="relative z-10 h-full flex flex-col-reverse gap-8 md:flex-row items-center mt-16 justify-center md:justify-between py-32">
 				{/* Social Icons */}
 				<div className="social-icons p-3 md:bg-secondary mx-4 rounded-sm flex flex-row md:flex-col items-center justify-center gap-6 animate-fade-in animation-delay-450">
 					<Link

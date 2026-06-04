@@ -159,7 +159,20 @@ const Footer: React.FC = () => {
 			{/* Bottom bar */}
 			<div className="bg-primary-dark text-light py-5 flex flex-col sm:flex-row items-center justify-between gap-2 px-8 md:px-16">
 				<p className="text-sm">&copy; {new Date().getFullYear()} Kaka Memorial Foundation. All rights reserved.</p>
-				<p className="text-xs text-accent-three">Made with ❤️ for the communities we serve.</p>
+				<p className="text-xs text-accent-three">
+					Made with ❤️ for the communities we serve by{' '}
+					<span className="text-accent-three hover:text-secondary transition-colors">
+						<Link
+							href="https://mariatala.dev/"
+							target="_blank"
+							rel="noopener noreferrer"
+							className="text-accent-two hover:text-secondary transition-colors"
+						>
+							Maria Tala
+						</Link>
+					</span>.
+				</p>
+
 			</div>
 		</footer>
 	);

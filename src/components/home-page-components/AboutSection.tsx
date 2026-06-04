@@ -27,7 +27,7 @@ const AboutSection = () => {
 
 				<div className="self-stretch justify-start">
 					<span
-						className={`text-primary md:text-lg text-base font-medium leading-10 tracking-wide ${gowun.className}`}
+						className={`text-primary md:text-lg text-base font-medium leading-relaxed tracking-wide ${gowun.className}`}
 					>
 						Kaka Memorial Foundation works to improve rural communities in
 						Nigeria by advancing education, clean water access, and strong

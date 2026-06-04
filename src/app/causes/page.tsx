@@ -74,7 +74,7 @@ export default function CausesPage(){
 				<AnimateIn>
 					<div className="inline-flex justify-center my-12 sm:mt-24 md:mt-8">
 						<p
-							className={`${gowun.className} text-lg leading-10 tracking-wide text-justify md:text-center w-full xl:w-5/6 px-4 lg:px-8 my-8 md:mt-0 text-primary`}
+							className={`${gowun.className} text-lg leading-relaxed tracking-wide md:text-center w-full xl:w-5/6 px-4 lg:px-8 my-8 md:mt-0 text-primary`}
 						>
 							Kaka Memorial Foundation is committed to transforming underserved
 							rural communities in Nigeria through strategic action on essential
@@ -269,7 +269,7 @@ export default function CausesPage(){
 											{item.title}
 										</h3>
 										<p
-											className={`${gowun.className} text leading-8 tracking-wide text-justify w-full xl:w-5/6 lg:px-8 my-8 md:mt-0 text-primary`}
+											className={`${gowun.className} leading-relaxed tracking-wide w-full xl:w-5/6 lg:px-8 my-8 md:mt-0 text-primary`}
 										>
 											{item.description}
 										</p>

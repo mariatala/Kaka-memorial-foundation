@@ -81,7 +81,7 @@ const ContactPage: React.FC = () => {
 					>
 						Let&apos;s Connect &amp; Create Change
 					</p>
-					<p className={`text-base md:text-lg text-primary/80 ${inter.className}`}>
+					<p className={`text-base md:text-lg text-primary/80 leading-relaxed ${inter.className}`}>
 						Have a question, an idea, or just want to say hi? Whether you&apos;re a
 						changemaker, donor, partner, or volunteer, this is your space to
 						reach out.
@@ -121,7 +121,7 @@ const ContactPage: React.FC = () => {
 					<h2 className={`text-2xl font-bold text-primary ${gowun.className}`}>
 						Send Us a Message
 					</h2>
-					<p className={`text-sm text-primary/60 ${inter.className}`}>
+					<p className={`text-sm text-primary/60 leading-relaxed ${inter.className}`}>
 						Let us know what is on your mind — we will get back to you as soon as
 						possible.
 					</p>
@@ -287,7 +287,7 @@ const ContactPage: React.FC = () => {
 					Let&apos;s Build the Future Together
 				</h2>
 				<p
-					className={`max-w-2xl mx-auto text-base font-light tracking-wide ${inter.className}`}
+					className={`max-w-2xl mx-auto text-base font-light tracking-wide leading-relaxed ${inter.className}`}
 				>
 					We believe in people-powered change. Whether it&apos;s a question, a
 					connection, or a contribution — this is your moment to start something
@@ -316,7 +316,7 @@ const ActionCard = ({
 	<div className="bg-white shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 rounded-lg px-6 py-8 space-y-4">
 		{icon}
 		<h3 className="text-lg font-semibold text-primary">{title}</h3>
-		<p className="text-sm text-primary/70">{description}</p>
+		<p className="text-sm text-primary/70 leading-relaxed">{description}</p>
 
 		{link && (
 			<Link

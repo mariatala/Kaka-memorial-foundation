@@ -194,7 +194,7 @@ export default function DonateSection() {
 							<h3 className={`text-xl font-bold text-primary ${gowun.className}`}>
 								Thank you{donorName ? `, ${donorName.split(' ')[0]}` : ''}!
 							</h3>
-							<p className={`text-primary/70 text-sm ${inter.className}`}>
+							<p className={`text-primary/70 text-sm leading-relaxed ${inter.className}`}>
 								Your donation of <strong>${effectiveAmount > 0 ? effectiveAmount : 10}</strong> has been received.
 								Your support makes a real difference in the lives of those we serve.
 							</p>
