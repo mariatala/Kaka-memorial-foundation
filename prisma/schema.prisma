@@ -29,6 +29,7 @@ model EventCategory {
   location   String    @default("")
   imageUrl   String    @default("")
   background String    @default("bg-secondary")
+  order      Int       @default(0)
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @updatedAt
 }

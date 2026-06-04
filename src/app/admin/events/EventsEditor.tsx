@@ -16,6 +16,7 @@ export interface EventCategoryUI {
     location: string;
     imageUrl: string;
     background: string;
+    order: number;
     createdAt: string;
     updatedAt: string;
 }
@@ -28,6 +29,7 @@ type FormData = {
     location: string;
     imageUrl: string;
     background: string;
+    order: string;
 };
 
 const BG_OPTIONS = [
@@ -38,7 +40,7 @@ const BG_OPTIONS = [
 ];
 
 function emptyForm(): FormData {
-    return { title: '', subtitle: '', about: '', date: '', location: '', imageUrl: '', background: 'bg-secondary' };
+    return { title: '', subtitle: '', about: '', date: '', location: '', imageUrl: '', background: 'bg-secondary', order: '0' };
 }
 
 function toFormData(event: EventCategoryUI): FormData {
@@ -50,6 +52,7 @@ function toFormData(event: EventCategoryUI): FormData {
         location: event.location,
         imageUrl: event.imageUrl,
         background: event.background,
+        order: String(event.order),
     };
 }
 
@@ -141,6 +144,20 @@ function EventForm({ data, onChange, onSubmit, onCancel, pending, error, submitL
                         ))}
                     </select>
                 </div>
+
+                <div className="flex flex-col gap-1.5">
+                    <label className="text-xs font-semibold uppercase tracking-wider text-primary/50">
+                        Display Order{' '}
+                        <span className="font-normal normal-case text-primary/30">(lower = appears first)</span>
+                    </label>
+                    <input
+                        className={fieldCls}
+                        value={data.order}
+                        onChange={e => onChange('order', e.target.value)}
+                        placeholder="0"
+                        inputMode="numeric"
+                    />
+                </div>
             </div>
 
             <div className="flex flex-col gap-1.5">
@@ -213,8 +230,9 @@ export default function EventsEditor({ events: initial }: { events: EventCategor
     }
 
     function startCreate() {
+        const nextOrder = events.length > 0 ? Math.max(...events.map(e => e.order)) + 1 : 1;
         setIsCreating(true);
-        setCreateForm(emptyForm());
+        setCreateForm({ ...emptyForm(), order: String(nextOrder) });
         setCreateError(null);
         setEditingId(null);
         setEditError(null);
@@ -228,7 +246,7 @@ export default function EventsEditor({ events: initial }: { events: EventCategor
             const res = await fetch(`/api/admin/events/${editingId}`, {
                 method: 'PATCH',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ ...editForm, date: editForm.date || null }),
+                body: JSON.stringify({ ...editForm, date: editForm.date || null, order: parseInt(editForm.order, 10) || 0 }),
             });
             const data = await res.json();
             if (!res.ok) throw new Error(data.message);
@@ -248,7 +266,7 @@ export default function EventsEditor({ events: initial }: { events: EventCategor
             const res = await fetch('/api/admin/events', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ ...createForm, date: createForm.date || null }),
+                body: JSON.stringify({ ...createForm, date: createForm.date || null, order: parseInt(createForm.order, 10) || 0 }),
             });
             const data = await res.json();
             if (!res.ok) throw new Error(data.message);
@@ -352,6 +370,7 @@ export default function EventsEditor({ events: initial }: { events: EventCategor
                                             <MapPin size={12} />
                                             {event.location || 'Location TBA'}
                                         </span>
+                                        <span className="text-xs text-primary/40">Order: {event.order}</span>
                                     </div>
                                     {event.about && editingId !== event.id && (
                                         <p className="text-sm text-primary/50 mt-2 line-clamp-2">{event.about}</p>

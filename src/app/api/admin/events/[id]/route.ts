@@ -12,7 +12,7 @@ async function requireAdmin(request: NextRequest) {
 function serialize(e: {
     id: number; title: string; subtitle: string; about: string;
     date: Date | null; location: string; imageUrl: string; background: string;
-    createdAt: Date; updatedAt: Date;
+    order: number; createdAt: Date; updatedAt: Date;
 }) {
     return {
         ...e,
@@ -34,7 +34,7 @@ export async function PATCH(
     if (isNaN(id)) return Response.json({ message: 'Invalid ID.' }, { status: 400 });
 
     const body = await request.json();
-    const { title, subtitle, about, date, location, imageUrl, background } = body;
+    const { title, subtitle, about, date, location, imageUrl, background, order } = body;
 
     if (!title?.trim()) {
         return Response.json({ message: 'Title is required.' }, { status: 400 });
@@ -50,6 +50,7 @@ export async function PATCH(
             location: location?.trim() ?? '',
             imageUrl: imageUrl?.trim() ?? '',
             background: background || 'bg-secondary',
+            order: typeof order === 'number' ? order : 0,
         },
     });
     revalidatePath('/events');

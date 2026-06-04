@@ -18,7 +18,7 @@ export default async function AdminEventsPage() {
         redirect('/sign-in?callbackUrl=/admin/events');
     }
 
-    const events = await prisma.eventCategory.findMany({ orderBy: { id: 'asc' } });
+    const events = await prisma.eventCategory.findMany({ orderBy: { order: 'asc' } });
     const serialized = events.map((e) => ({
         ...e,
         date: e.date?.toISOString() ?? null,

@@ -18,7 +18,7 @@ export default async function EventsSection() {
     }[] = [];
 
     try {
-        events = await prisma.eventCategory.findMany({ orderBy: { id: 'asc' } });
+        events = await prisma.eventCategory.findMany({ orderBy: { order: 'asc' } });
     } catch {
         // DB unavailable — render empty state rather than crash
     }
