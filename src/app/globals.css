@@ -32,6 +32,18 @@ body {
 		BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, 'Noto Sans', 'Apple Color Emoji',
 		'Segoe UI Emoji';
 	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-kerning: normal;
+}
+
+/* ─── Typographic refinements ──────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+	text-wrap: balance;
+}
+
+p {
+	text-wrap: pretty;
 }
 
 /* ─── Font helpers ─────────────────────────────────────── */

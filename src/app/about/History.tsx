@@ -24,7 +24,7 @@ export default function HistorySection () {
 
 				{/* Content Block */}
 				<div
-					className={`text-primary w-full md:w-3/4 xl:w-2/3 md:text-lg text-base font-medium leading-relaxed tracking-wide ${gowun.className}`}
+					className={`text-primary w-full md:w-3/4 xl:w-2/3 md:text-lg text-base font-medium leading-[1.85] tracking-wide space-y-6 ${gowun.className}`}
 				>
 					<p>
 						Kaka Memorial Foundation is a non-profit organization founded in
