@@ -29,9 +29,9 @@ export default async function EventsSection() {
                 <p
                     className={`${gowun.className} text-lg leading-relaxed tracking-wide md:text-center w-full xl:w-5/6 lg:px-8 my-8 md:mt-0 text-primary`}
                 >
-                   At Kaka Memorial Foundation, every event is more than just a gathering; it is a movement for change. Whether through vibrant community outreach programs, impactful advocacy and awareness campaigns, scholarship sponsorship initiatives that empower children through education, or collaborative fundraising and partnership events, each initiative represents a meaningful step toward transforming lives and upholding human dignity.
+                   At Kaka Memorial Foundation, every event is more than just a gathering; it is a movement for change. Whether through vibrant community outreach programs, impactful advocacy and awareness campaigns, scholarship sponsorship initiatives that empower children through education, or collaborative fundraising and partnership events, each initiative represents a meaningful step toward transforming lives and upholding human dignity. </p>
 
-                    We invite passionate individuals, organizations, and advocates for justice to join us on these impactful journeys. Your presence, voice, and support can amplify our mission to expand educational opportunities, provide access to basic amenities, promote human rights, and foster sustainable development in underserved communities. Together, we can create lasting change and brighter futures for generations to come.
+                    <p>We invite passionate individuals, organizations, and advocates for justice to join us on these impactful journeys. Your presence, voice, and support can amplify our mission to expand educational opportunities, provide access to basic amenities, promote human rights, and foster sustainable development in underserved communities. Together, we can create lasting change and brighter futures for generations to come.
 
                 </p>
             </div>
