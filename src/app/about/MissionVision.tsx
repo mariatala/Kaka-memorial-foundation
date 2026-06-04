@@ -40,7 +40,7 @@ export default function MissionVisionSection({
 							</h3>
 						</div>
 						<p
-							className={`text-primary/80 leading-8 tracking-wide ${bodyFontClass}`}
+							className={`text-primary/80 md:text-lg text-base font-medium leading-8 tracking-wide ${bodyFontClass}`}
 						>
 							To create sustainable development opportunities by empowering
 							underprivileged communities focusing on education, access to
@@ -60,7 +60,7 @@ export default function MissionVisionSection({
 							</h3>
 						</div>
 						<p
-							className={`text-primary/80 leading-8 tracking-wide ${bodyFontClass}`}
+							className={`text-primary/80  md:text-lg text-base font-medium  leading-8 tracking-wide ${bodyFontClass}`}
 						>
 							To be a beacon of hope and transformation for marginalized
 							populations, fostering a world where every individual has the

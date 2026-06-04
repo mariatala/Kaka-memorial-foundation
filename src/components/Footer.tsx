@@ -166,7 +166,7 @@ const Footer: React.FC = () => {
 							href="https://mariatala.dev/"
 							target="_blank"
 							rel="noopener noreferrer"
-							className="text-accent-two hover:text-secondary transition-colors"
+							className="text-accent-three-light hover:text-secondary transition-colors"
 						>
 							Maria Tala
 						</Link>
