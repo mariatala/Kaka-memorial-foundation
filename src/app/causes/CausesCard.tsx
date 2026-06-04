@@ -79,7 +79,7 @@ export default function EducationSection ({
 						<div className="p-6 flex flex-col gap-4">
 							<div className="flex items-center gap-3">
 								<card.icon className="w-6 h-6 text-secondary" />
-								<h4 className="text-primary text-lg md:text-xl font-semibold tracking-wide">
+								<h4 className="text-primary text-lg md:text-xl font-semibold text-balance tracking-wide">
 									{card.title}
 								</h4>
 							</div>

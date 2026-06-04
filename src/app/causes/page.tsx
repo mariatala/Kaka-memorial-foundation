@@ -70,7 +70,7 @@ export default function CausesPage(){
 				</div>
 			</section>
 
-			<section className="w-full">
+			<section className="relative w-full py-12 md:py-24 px-4 md:px-12 lg:px-24">
 				<AnimateIn>
 					<div className="inline-flex justify-center my-12 sm:mt-24 md:mt-8">
 						<p
@@ -227,7 +227,7 @@ export default function CausesPage(){
 						</div>
 						<div className="w-full flex justify-center mx-auto px-4 md:px-12 py-10 space-y-8">
 							<p
-								className={`${gowun.className} text-lg leading-8 tracking-wide text-center sm:px-4 w-full lg:w-2/3`}
+								className={`${gowun.className} text-lg leading-8 tracking-wide text-balance md:text-center  sm:px-4 w-full lg:w-2/3`}
 							>
 								Kaka Memorial Foundation actively engages in advocacy that
 								promotes social justice, human rights, and sustainable
