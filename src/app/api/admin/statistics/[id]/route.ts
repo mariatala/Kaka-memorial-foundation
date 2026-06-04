@@ -1,4 +1,5 @@
 import { NextRequest } from 'next/server';
+import { revalidatePath } from 'next/cache';
 import { auth } from '@/lib/auth';
 import prisma from '@/lib/prisma';
 
@@ -50,6 +51,7 @@ export async function PATCH(
             order: typeof order === 'number' ? order : 0,
         },
     });
+    revalidatePath('/');
     return Response.json(serialize(stat));
 }
 
@@ -65,5 +67,6 @@ export async function DELETE(
     if (isNaN(id)) return Response.json({ message: 'Invalid ID.' }, { status: 400 });
 
     await prisma.statistic.delete({ where: { id } });
+    revalidatePath('/');
     return Response.json({ message: 'Deleted.' });
 }
