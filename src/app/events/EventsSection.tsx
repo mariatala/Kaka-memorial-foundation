@@ -27,7 +27,7 @@ export default async function EventsSection() {
         <section className="w-full events-section px-2 pb-12 sm:px-8 md:px-16 lg:px-32">
             <div className="w-full inline-flex justify-center md:my-0">
                 <div
-                    className={`${gowun.className} text-lg leading-[1.85] tracking-wide md:text-center w-full xl:w-5/6 lg:px-8 my-8 md:mt-0 text-primary space-y-5`}
+                    className={`${gowun.className} md:text-lg text-base font-medium leading-[1.85] tracking-wide md:text-center w-full xl:w-5/6 lg:px-8 my-8 md:mt-0 text-primary space-y-5`}
                 >
                     <p>
                         At Kaka Memorial Foundation, every event is more than just a gathering; it is a movement for change. Whether through vibrant community outreach programs, impactful advocacy and awareness campaigns, scholarship sponsorship initiatives that empower children through education, or collaborative fundraising and partnership events, each initiative represents a meaningful step toward transforming lives and upholding human dignity.
