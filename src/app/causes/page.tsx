@@ -247,7 +247,7 @@ export default function CausesPage(){
 								{
 									title: "2. Issue-Based Campaigns",
 									description:
-										"Our campaigns shine a spotlight on specific challenges affecting vulnerable populations. Whether it’s advocating for improved school infrastructure, access to safe drinking water, or total well being of children in challenging situations. These campaigns mobilize communities, volunteers, and partners to take action and drive change.",
+										"Our campaigns shine a spotlight on specific challenges affecting vulnerable populations. Whether it’s advocating for improved school infrastructure, access to safe drinking water, or to promoting the overall well-being of children in difficult circumstances, we are dedicated to building brighter futures and stronger communities. These campaigns mobilize communities, volunteers, and partners to take action and drive change.",
 								},
 								{
 									title: "3. Stakeholder Meetings & Consultations",

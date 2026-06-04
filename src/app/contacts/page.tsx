@@ -262,15 +262,15 @@ const ContactPage: React.FC = () => {
 						icon={<MessageCircleHeart className="shrink-0" size={20} />}
 						title="WhatsApp Us"
 						link={{
-							href: 'https://wa.me/2348067094933',
-							label: '+234  806 828 7964',
+							href: 'https://wa.me/2348068287964',
+							label: '+234 806 828 7964 (WhatsApp)',
 						}}
 						content="Quick responses for urgent inquiries."
 					/>
 					<ContactInfo
 						icon={<Users className="shrink-0" size={20} />}
 						title="Visit Us"
-						content="Coming soon"
+						content="Virtual Operations – Physical Location Coming Soon"
 					/>
 				</div>
 			</section>
