@@ -49,7 +49,7 @@ const Footer: React.FC = () => {
 
 						{/* Heading */}
 						<div className="flex flex-col gap-2">
-							<h2 className="text-3xl md:text-5xl tracking-widest uppercase text-light font-reading">Contact Us</h2>
+							<h2 className="text-3xl md:text-4xl lg:text-5xl tracking-widest uppercase text-light font-reading">Contact Us</h2>
 							<div className="w-16 h-1 bg-secondary rounded-full" />
 							<h3 className="text-xl text-secondary font-semibold tracking-wide mt-1">Let&#39;s talk, your voice matters</h3>
 						</div>

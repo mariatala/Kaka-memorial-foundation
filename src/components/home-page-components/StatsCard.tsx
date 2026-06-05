@@ -48,16 +48,16 @@ const StatsCard: React.FC<StatCardProps> = ({ amount, description }) => {
 	return (
 		<div
 			ref={ref}
-			className="flex-1 py-6 md:py-10 px-4 w-full md:w-fit bg-accent-three-light inline-flex flex-col justify-center items-center gap-1"
+			className="w-full py-5 sm:py-6 lg:py-10 px-3 bg-accent-three-light flex flex-col justify-center items-center gap-1"
 		>
 			<div
-				className={`self-stretch text-center text-secondary text-3xl md:text-4xl font-bold tabular-nums ${inter.className}`}
+				className={`w-full text-center text-secondary text-2xl sm:text-3xl lg:text-4xl font-bold tabular-nums ${inter.className}`}
 				aria-label={amount}
 			>
 				{prefix}{formatNumber(value, originalHadCommas)}{suffix}
 			</div>
 			<div
-				className={`self-stretch text-center text-primary text-sm md:text-base font-normal tracking-wide ${inter.className}`}
+				className={`w-full text-center text-primary text-xs sm:text-sm lg:text-base font-normal tracking-wide leading-snug ${inter.className}`}
 			>
 				{description}
 			</div>

@@ -24,21 +24,21 @@ export default function EventsPage(){
 								alt="Community members gathering for an event"
 								width={500}
 								height={500}
-								className="md:border-l-12 w-4/5 md:w-1/4 border-secondary h-auto transition-all duration-300"
+								className="md:border-l-12 w-4/5 md:w-1/3 lg:w-1/4 border-secondary h-auto transition-all duration-300"
 							/>
-							<div className="w-full h-fit text-left bg-accent-three-light py-8 px-10 animate-fade-in-up animation-delay-150">
+							<div className="w-full h-fit text-left bg-accent-three-light py-8 px-6 md:px-10 animate-fade-in-up animation-delay-150">
 								<h2
-									className={`text-3xl md:text-5xl uppercase text-primary ${gowun.className}`}
+									className={`text-3xl md:text-4xl lg:text-5xl uppercase text-primary ${gowun.className}`}
 								>
 									Get Involved
 								</h2>
 								<p
-									className={`text-lg md:text-xl my-4 text-secondary font-semibold tracking-wide ${inter.className}`}
+									className={`text-base md:text-lg lg:text-xl my-4 text-secondary font-semibold tracking-wide ${inter.className}`}
 								>
 									Join us, because kindness in action builds the future we all
 									deserve.
 								</p>
-								<div className="grid grid-cols-2 md:grid-cols-3 items-center gap-4 mt-6 max-w-fit">
+								<div className="grid grid-cols-2 md:grid-cols-3 items-center gap-3 md:gap-4 mt-6 max-w-fit">
 									<Link
 										href="/join-us"
 										className={`bg-primary text-light flex items-center gap-2 px-2 sm:px-4 py-2 rounded-sm shadow-md text-sm ${inter.className} tracking-wide hover:bg-secondary hover:text-primary transition-all duration-300`}

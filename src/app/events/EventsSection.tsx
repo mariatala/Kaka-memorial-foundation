@@ -24,10 +24,10 @@ export default async function EventsSection() {
     }
 
     return (
-        <section className="w-full events-section px-2 pb-12 sm:px-8 md:px-16 lg:px-32">
+        <section className="w-full events-section px-4 pb-12 sm:px-8 md:px-12 lg:px-24 xl:px-32">
             <div className="w-full inline-flex justify-center md:my-0">
                 <div
-                    className={`${gowun.className} md:text-lg text-base font-medium leading-[1.85] tracking-wide md:text-center w-full xl:w-5/6 lg:px-8 my-8 md:mt-0 text-primary space-y-5`}
+                    className={`${gowun.className} text-base md:text-base lg:text-lg font-medium leading-[1.75] md:leading-[1.85] tracking-wide md:text-center w-full xl:w-5/6 lg:px-8 my-8 md:mt-0 text-primary space-y-5`}
                 >
                     <p>
                         At Kaka Memorial Foundation, every event is more than just a gathering; it is a movement for change. Whether through vibrant community outreach programs, impactful advocacy and awareness campaigns, scholarship sponsorship initiatives that empower children through education, or collaborative fundraising and partnership events, each initiative represents a meaningful step toward transforming lives and upholding human dignity.
@@ -38,8 +38,8 @@ export default async function EventsSection() {
                 </div>
             </div>
 
-            <div className="w-full flex flex-col justify-center items-center space-y-2 my-16">
-                <h2 className={`text-3xl md:text-5xl uppercase text-primary ${gowun.className}`}>
+            <div className="w-full flex flex-col justify-center items-center space-y-2 my-10 md:my-16">
+                <h2 className={`text-3xl md:text-4xl lg:text-5xl uppercase text-primary ${gowun.className}`}>
                     Events
                 </h2>
                 <div className="w-16 h-1 bg-secondary rounded-full" />

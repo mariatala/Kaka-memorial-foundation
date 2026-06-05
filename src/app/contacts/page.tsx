@@ -70,9 +70,9 @@ const ContactPage: React.FC = () => {
 		<div className="w-full flex flex-col items-center justify-start min-h-screen bg-light text-primary">
 
 			{/* Hero — above fold, CSS animation only */}
-			<section className="w-full px-4 md:px-8 py-20 mt-24 text-center space-y-6">
+			<section className="w-full px-4 md:px-8 py-16 md:py-20 mt-20 md:mt-24 text-center space-y-6">
 				<div className="max-w-3xl mx-auto space-y-4 animate-fade-in-up">
-					<h2 className={`text-3xl md:text-5xl uppercase text-primary ${gowun.className}`}>
+					<h2 className={`text-3xl md:text-4xl lg:text-5xl uppercase text-primary ${gowun.className}`}>
 						Get In Touch
 					</h2>
 					<div className="w-16 h-1 mx-auto bg-secondary rounded-full" />
@@ -91,7 +91,7 @@ const ContactPage: React.FC = () => {
 
 			{/* Info Cards */}
 			<AnimateIn className="w-full">
-				<section className="w-full px-4 md:px-16 py-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 text-center">
+				<section className="w-full px-4 md:px-10 lg:px-16 py-10 md:py-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 text-center">
 					<ActionCard
 						icon={<Users className="w-10 h-10 mx-auto text-secondary" />}
 						title="Join Our Community"
@@ -115,7 +115,7 @@ const ContactPage: React.FC = () => {
 
 			{/* Contact Form & Info */}
 			<AnimateIn className="w-full max-w-7xl">
-			<section className="w-full max-w-7xl px-4 md:px-8 py-12 flex flex-col lg:flex-row gap-12">
+			<section className="w-full max-w-7xl px-4 md:px-8 py-10 md:py-12 flex flex-col lg:flex-row gap-8 md:gap-12">
 				{/* Form */}
 				<div className="w-full lg:w-2/3 bg-white shadow-md rounded-lg px-6 py-10 space-y-6">
 					<h2 className={`text-2xl font-bold text-primary ${gowun.className}`}>
@@ -278,12 +278,12 @@ const ContactPage: React.FC = () => {
 
 			{/* Bottom CTA */}
 			<AnimateIn className="w-full">
-			<section className="w-full mt-24 bg-secondary text-light text-center px-6 py-12 space-y-6">
+			<section className="w-full mt-16 md:mt-24 bg-secondary text-light text-center px-6 py-10 md:py-12 space-y-6">
 				<HandHeart
-					className="w-16 h-16 mx-auto text-light animate-pulse-slow"
+					className="w-12 h-12 md:w-16 md:h-16 mx-auto text-light animate-pulse-slow"
 					strokeWidth={1}
 				/>
-				<h2 className={`text-3xl md:text-4xl font-bold ${gowun.className}`}>
+				<h2 className={`text-2xl md:text-3xl lg:text-4xl font-bold ${gowun.className}`}>
 					Let&apos;s Build the Future Together
 				</h2>
 				<p

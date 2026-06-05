@@ -53,15 +53,15 @@ export default function HeroSection() {
 				</div>
 
 				{/* Hero Text Content */}
-				<div className="flex flex-col justify-center items-center md:items-start gap-4 text-white w-5/6 xl:w-2/3 bg-secondary/90 backdrop-blur-sm px-3 md:px-6 lg:px-12 py-8 rounded-sm md:rounded-none animate-fade-in-up">
+				<div className="flex flex-col justify-center items-center md:items-start gap-4 text-white w-5/6 md:w-4/5 lg:w-3/4 xl:w-2/3 bg-secondary/90 backdrop-blur-sm px-3 md:px-6 lg:px-12 py-8 rounded-sm md:rounded-none animate-fade-in-up">
 					<h3
-						className={`text-3xl lg:text-4xl xl:text-5xl text-center md:text-start tracking-wide uppercase text-primary ${inter.className}`}
+						className={`text-3xl md:text-4xl lg:text-5xl xl:text-5xl text-center md:text-start tracking-wide uppercase text-primary ${inter.className}`}
 					>
 						Empowering communities
 					</h3>
 
 					<h4
-						className={`text-base sm:text-xl text-center md:text-start text-light tracking-wide ${inter.className} animation-delay-150`}
+						className={`text-base sm:text-lg md:text-xl text-center md:text-start text-light tracking-wide ${inter.className} animation-delay-150`}
 					>
 						Engaging Stakeholders For Real Impact
 					</h4>

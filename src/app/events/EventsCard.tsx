@@ -31,7 +31,7 @@ export default function EventsCard({
 
 	return (
 		<div
-			className={`${background} w-full shadow-sm px-4 py-8 lg:p-16 mb-12 flex flex-col gap-8 lg:flex-row items-center rounded-lg`}
+			className={`${background} w-full shadow-sm px-4 py-8 md:px-8 md:py-10 lg:p-16 mb-10 md:mb-12 flex flex-col gap-6 md:gap-8 lg:flex-row items-center rounded-lg`}
 		>
 			{/* Image */}
 			<Image
@@ -40,11 +40,11 @@ export default function EventsCard({
 				loading="lazy"
 				src={imageUrl || '/cover_image.jpeg'}
 				alt={event.title}
-				className="w-full md:w-1/2 lg:w-1/3 object-cover rounded-lg max-h-72"
+				className="w-full md:w-2/5 lg:w-1/3 object-cover rounded-lg max-h-64 md:max-h-72"
 			/>
 
 			{/* Content */}
-			<div className="w-full md:w-1/2 lg:w-2/3">
+			<div className="w-full md:w-3/5 lg:w-2/3">
 				<div className="w-full flex flex-col justify-center items-start gap-2">
 					<h3
 						className={`text-2xl md:text-3xl xl:text-4xl tracking-widest uppercase text-light ${gowun.className}`}

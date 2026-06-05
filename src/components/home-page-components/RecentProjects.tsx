@@ -44,13 +44,13 @@ const RecentProjects = async () => {
     const items = rows.length > 0 ? rows : FALLBACK_ITEMS;
 
     return (
-        <section className="w-full bg-accent-three-light py-12 md:py-16 flex flex-col items-center gap-8">
+        <section className="w-full bg-accent-three-light py-10 md:py-14 lg:py-16 flex flex-col items-center gap-6 md:gap-8">
             {/* Section header */}
-            <div className="w-full max-w-5xl px-6 md:px-16 flex flex-col items-center gap-3 text-center">
+            <div className="w-full max-w-5xl px-6 md:px-10 lg:px-16 flex flex-col items-center gap-3 text-center">
                 <p className={`text-secondary text-xs font-semibold uppercase tracking-widest ${inter.className}`}>
                     Impact &amp; Outreach
                 </p>
-                <h2 className={`text-3xl md:text-4xl text-primary tracking-widest uppercase ${gowun.className}`}>
+                <h2 className={`text-2xl md:text-3xl lg:text-4xl text-primary tracking-widest uppercase ${gowun.className}`}>
                     Recent Advocacy / Projects
                 </h2>
                 <div className="w-16 h-1 bg-secondary rounded-full" />
@@ -60,7 +60,7 @@ const RecentProjects = async () => {
             </div>
 
             {/* Carousel */}
-            <div className="w-full max-w-7xl md:px-16">
+            <div className="w-full max-w-7xl md:px-10 lg:px-16">
                 <EventsCarousel items={items} />
             </div>
         </section>

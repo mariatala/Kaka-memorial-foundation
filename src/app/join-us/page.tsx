@@ -28,16 +28,16 @@ export default function JoinUsPage() {
 								alt="People joining hands to support the community"
 								width={500}
 								height={500}
-								className="md:border-l-12 w-5/6 md:w-1/4 border-secondary h-auto transition-all duration-300"
+								className="md:border-l-12 w-5/6 md:w-1/3 lg:w-1/4 border-secondary h-auto transition-all duration-300"
 							/>
-							<div className="w-full h-fit text-left bg-accent-three py-8 px-10 animate-fade-in-up animation-delay-150">
+							<div className="w-full h-fit text-left bg-accent-three py-8 px-6 md:px-10 animate-fade-in-up animation-delay-150">
 								<h2
-									className={`text-3xl md:text-5xl uppercase text-primary ${gowun.className}`}
+									className={`text-3xl md:text-4xl lg:text-5xl uppercase text-primary ${gowun.className}`}
 								>
 									Get Involved
 								</h2>
 								<p
-									className={`text-lg md:text-xl my-4 text-light font-semibold tracking-wide ${inter.className}`}
+									className={`text-base md:text-lg lg:text-xl my-4 text-light font-semibold tracking-wide ${inter.className}`}
 								>
 									Make a Difference With Us
 								</p>
@@ -71,7 +71,7 @@ export default function JoinUsPage() {
 			</section>
 
 			{/* Registration forms + donate */}
-			<section className="w-full flex flex-col justify-center items-center gap-32 py-12 sm:py-16 md:py-24 px-2 sm:px-8 md:px-16 bg-light">
+			<section className="w-full flex flex-col justify-center items-center gap-16 md:gap-24 lg:gap-32 py-12 sm:py-16 md:py-20 lg:py-24 px-2 sm:px-6 md:px-10 lg:px-16 bg-light">
 				<AnimateIn className="w-full">
 					<div id="partner" className="w-full scroll-mt-24">
 						<RegistrationCard formType="partner" />

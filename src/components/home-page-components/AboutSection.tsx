@@ -11,11 +11,11 @@ const gowun = Gowun_Dodum({ weight: '400', subsets: ['latin'] });
 
 const AboutSection = () => {
 	return (
-		<div className="w-full px-8 md:px-32 py-8 md:py-16 inline-flex flex-col xl:flex-row justify-between items-center gap-8 md:gap-32 my-16">
-			<div className="flex-1 inline-flex flex-col justify-start items-start gap-8">
+		<div className="w-full px-6 sm:px-8 md:px-12 lg:px-16 py-8 md:py-12 lg:py-16 inline-flex flex-col lg:flex-row justify-between items-center gap-8 md:gap-14 lg:gap-24 xl:gap-32 my-8 md:my-12 lg:my-16">
+			<div className="flex-1 inline-flex flex-col justify-start items-start gap-8 ">
 				<div className="w-full flex flex-col justify-center items-start gap-2">
 					<h3
-						className={`text-3xl md:text-5xl tracking-widest uppercase text-primary ${gowun.className}`}
+						className={`text-3xl md:text-4xl lg:text-5xl tracking-widest uppercase text-primary ${gowun.className}`}
 					>
 						About
 					</h3>
@@ -27,7 +27,7 @@ const AboutSection = () => {
 
 				<div className="self-stretch justify-start">
 					<span
-						className={`text-primary md:text-lg text-base font-medium leading-[1.85] tracking-wide ${gowun.className}`}
+						className={`text-primary  text-base xl:text-lg font-medium leading-[1.85] tracking-wide ${gowun.className}`}
 					>
 						Kaka Memorial Foundation works to improve rural communities in
 						Nigeria by advancing education, clean water access, and strong
@@ -48,7 +48,7 @@ const AboutSection = () => {
 				</div>
 			</div>
 
-			<div className="relative group w-full md:max-w-md h-64 sm:h-96 mx-auto rounded-md overflow-hidden shadow-xl border-[6px] border-secondary bg-white">
+			<div className="relative group w-full lg:max-w-md h-64 sm:h-80 lg:h-96 mx-auto rounded-md overflow-hidden shadow-xl border-[6px] border-secondary bg-white">
 				{/* Image */}
 				<Image
 					src="/about.jpg"

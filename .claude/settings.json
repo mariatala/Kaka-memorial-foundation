@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(grep -v \"\\\\\\\\\\\\\\\\admin\\\\\\\\\\\\\\\\\")"
+      "Bash(grep -v \"\\\\\\\\\\\\\\\\admin\\\\\\\\\\\\\\\\\")",
+      "Bash(npx next *)"
     ]
   }
 }

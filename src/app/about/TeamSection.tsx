@@ -23,7 +23,7 @@ export default function TeamSection ({
 				{/* Heading */}
 				<div className="flex items-center flex-col md:items-center-safe w-full gap-2">
 					<h3
-						className={`text-3xl md:text-5xl  text-center tracking-widest uppercase text-primary ${gowun.className}`}
+						className={`text-3xl md:text-4xl lg:text-5xl text-center tracking-widest uppercase text-primary ${gowun.className}`}
 					>
 						Our Team
 					</h3>
@@ -62,7 +62,7 @@ export default function TeamSection ({
 				</div>
 
 				{/* Other Team Members */}
-				<div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
+				<div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 lg:gap-20">
 					<TeamMemberCard
 						imageSrc="/team/Inuwa_Suleiman_Gani.jpeg"
 						altText="Team member - Secretary"

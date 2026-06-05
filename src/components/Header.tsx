@@ -123,7 +123,7 @@ export default function Header() {
 				</Link>
 
 				<nav
-					className={`hidden text-sm font-normal md:flex items-center gap-10 tracking-widest uppercase ${inter.className} ${navTextColor}`}
+					className={`hidden text-xs md:text-sm font-normal md:flex items-center gap-4 lg:gap-7 xl:gap-10 tracking-wide lg:tracking-widest uppercase ${inter.className} ${navTextColor}`}
 				>
 					{links.map(({ href, label }) => (
 						<Link
@@ -148,7 +148,7 @@ export default function Header() {
 
 				<Link
 					href="/join-us#donate"
-					className="hidden md:flex items-center gap-1 text-lg text-secondary md:px-1 lg:px-4 py-1 rounded-sm border-2 border-secondary hover:bg-secondary hover:text-light transition-colors duration-300"
+					className="hidden md:flex items-center gap-1 text-sm lg:text-lg text-secondary md:px-2 lg:px-4 py-1 rounded-sm border-2 border-secondary hover:bg-secondary hover:text-light transition-colors duration-300"
 				>
 					Donate <HeartHandshake size={20} />
 				</Link>

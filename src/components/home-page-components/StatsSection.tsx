@@ -20,8 +20,8 @@ const StatsSection = async () => {
 	const stats = rows.length > 0 ? rows : FALLBACK_STATS;
 
 	return (
-		<div className="w-full px-8 py-10 md:py-4 bg-accent-three inline-flex flex-col justify-evenly items-center overflow-hidden">
-			<div className="w-full py-10 md:py-4 inline-flex flex-col md:flex-row justify-center items-center gap-8 md:gap-4">
+		<div className="w-full px-4 py-6 md:py-4 bg-accent-three">
+			<div className="w-full py-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
 				{stats.map(stat => (
 					<StatCard
 						key={stat.id}

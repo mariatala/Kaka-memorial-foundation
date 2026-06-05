@@ -24,22 +24,22 @@ export default function CausesPage(){
 	const causesIcons = [
 		<HandHeart
 			key="handheart"
-			className="w-8 h-8 sm:w-12 sm:h-12 md:w-20 md:h-20 text-secondary"
+			className="w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 lg:w-20 lg:h-20 text-secondary"
 			strokeWidth={1}
 		/>,
 		<Users
 			key="users"
-			className="w-8 h-8 sm:w-12 sm:h-12 md:w-20 md:h-20 text-secondary"
+			className="w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 lg:w-20 lg:h-20 text-secondary"
 			strokeWidth={1}
 		/>,
 		<Megaphone
 			key="megaphone"
-			className="w-8 h-8 sm:w-12 sm:h-12 md:w-20 md:h-20 text-secondary"
+			className="w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 lg:w-20 lg:h-20 text-secondary"
 			strokeWidth={1}
 		/>,
 		<Handshake
 			key="handshake"
-			className="w-8 h-8 sm:w-12 sm:h-12 md:w-20 md:h-20 text-secondary"
+			className="w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 lg:w-20 lg:h-20 text-secondary"
 			strokeWidth={1}
 		/>,
 	];
@@ -55,9 +55,9 @@ export default function CausesPage(){
 						height={500}
 						className="md:border-l-12 w-4/5 md:w-1/3 border-secondary h-auto transition-all duration-300"
 					/>
-					<div className="w-full h-fit text-left bg-secondary py-8 px-10 animate-fade-in-up animation-delay-150">
+					<div className="w-full h-fit text-left bg-secondary py-8 px-6 md:px-10 animate-fade-in-up animation-delay-150">
 						<h2
-							className={`text-3xl md:text-5xl uppercase text-primary ${gowun.className}`}
+							className={`text-3xl md:text-4xl lg:text-5xl uppercase text-primary ${gowun.className}`}
 						>
 							Core Focus Areas
 						</h2>
@@ -70,11 +70,11 @@ export default function CausesPage(){
 				</div>
 			</section>
 
-			<section className="relative w-full py-12 md:py-24 px-4 md:px-12 lg:px-24">
+			<section className="w-full">
 				<AnimateIn>
 					<div className="inline-flex justify-center my-12 sm:mt-24 md:mt-8">
 						<p
-							className={`text-primary w-full md:w-3/4 xl:w-2/3 md:text-lg text-base font-medium leading-[1.85] tracking-wide space-y-6 ${gowun.className}`}
+							className={`${gowun.className} text-base md:text-lg leading-8 md:leading-9 tracking-wide text-justify md:text-center w-full xl:w-5/6 px-4 lg:px-8 my-8 md:mt-0 text-primary`}
 						>
 							Kaka Memorial Foundation is committed to transforming underserved
 							rural communities in Nigeria through strategic action on essential
@@ -88,7 +88,7 @@ export default function CausesPage(){
 						</p>
 					</div>
 				</AnimateIn>
-				<div className="flex flex-col gap-12 md:gap-16 px-4 md:px-16">
+				<div className="flex flex-col gap-12 md:gap-16 px-4 md:px-10 lg:px-16">
 					<AnimateIn>
 						<CausesCard
 							imageSrc="/education.jpeg"
@@ -153,10 +153,10 @@ export default function CausesPage(){
 				</div>
 
 				<AnimateIn>
-					<div className="areas w-full py-16 px-4 md:px-16 flex flex-col justify-center items-center md:gap-8">
+					<div className="areas w-full py-12 md:py-16 px-4 md:px-10 lg:px-16 flex flex-col justify-center items-center gap-8 md:gap-10">
 						<div className="w-full flex flex-col justify-center items-center gap-2">
 							<h3
-								className={`text-3xl md:text-5xl tracking-widest uppercase text-primary ${gowun.className}`}
+								className={`text-3xl md:text-4xl lg:text-5xl tracking-widest uppercase text-primary ${gowun.className}`}
 							>
 								Where We Serve
 							</h3>
@@ -166,7 +166,7 @@ export default function CausesPage(){
 							</h4>
 						</div>
 
-						<div className="w-full flex flex-col-reverse md:flex-row px-4 md:px-16 gap-16 md:gap-32 justify-center items-center mt-8">
+						<div className="w-full flex flex-col-reverse md:flex-row gap-10 md:gap-16 lg:gap-32 justify-center items-center mt-4">
 							<div className="w-4/5 md:w-1/3 text-center">
 								<Image
 									className="w-full h-auto rounded-md"
@@ -227,7 +227,7 @@ export default function CausesPage(){
 						</div>
 						<div className="w-full flex justify-center mx-auto px-4 md:px-12 py-10 space-y-8">
 							<p
-								className={`${gowun.className} text-lg leading-8 tracking-wide text-balance md:text-center  sm:px-4 w-full lg:w-2/3`}
+								className={`${gowun.className} text-lg leading-8 tracking-wide text-center sm:px-4 w-full lg:w-2/3`}
 							>
 								Kaka Memorial Foundation actively engages in advocacy that
 								promotes social justice, human rights, and sustainable
@@ -237,7 +237,7 @@ export default function CausesPage(){
 							</p>
 						</div>
 
-						<div className="w-full max-w-6xl mx-auto px-6 md:px-12 mb-16 py-12 md:py-24 space-y-16">
+						<div className="w-full max-w-6xl mx-auto px-4 md:px-8 lg:px-12 mb-12 md:mb-16 py-8 md:py-14 lg:py-24 space-y-10 md:space-y-14 lg:space-y-16">
 							{[
 								{
 									title: "1. Community Engagements & Discussions",
@@ -269,7 +269,7 @@ export default function CausesPage(){
 											{item.title}
 										</h3>
 										<p
-											className={`${gowun.className} leading-relaxed tracking-wide w-full xl:w-5/6 lg:px-8 my-8 md:mt-0 text-primary`}
+											className={`${gowun.className} text leading-8 tracking-wide text-justify w-full xl:w-5/6 lg:px-8 my-8 md:mt-0 text-primary`}
 										>
 											{item.description}
 										</p>

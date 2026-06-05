@@ -23,12 +23,12 @@ const JoinUsSection: React.FC<JoinUsProps> = ({
 	animateIcon = true,
 }) => {
 	return (
-		<section className={`w-full ${bgColor} py-12 sm:py-20 px-6 md:px-20`}>
-			<div className="w-full sm:w-5/6 mx-auto flex flex-col lg:flex-row items-center gap-12">
+		<section className={`w-full ${bgColor} py-12 sm:py-16 md:py-20 px-6 md:px-14 lg:px-20`}>
+			<div className="w-full sm:w-5/6 mx-auto flex flex-col lg:flex-row items-center gap-10 md:gap-12">
 				{/* Text & CTAs */}
-				<div className="flex flex-col justify-center items-center gap-6 text-center lg:text-left">
+				<div className="flex flex-col justify-center items-center gap-5 md:gap-6 text-center lg:text-left">
 					<h2
-						className={`text-3xl md:text-4xl font-bold text-primary tracking-wider uppercase ${gowun.className}`}
+						className={`text-2xl md:text-3xl lg:text-4xl font-bold text-primary tracking-wider uppercase ${gowun.className}`}
 					>
 						{title}
 					</h2>

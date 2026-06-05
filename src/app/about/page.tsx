@@ -14,13 +14,13 @@ export default function AboutPage () {
 
 			{/* Hero — above fold, CSS animation only */}
 			<section className="w-full inline-flex items-end h-80 justify-start bg-gradient-to-b from-primary to-primary-dark py-16">
-				<div className="w-full px-4 sm:px-16 md:px-32 flex flex-col justify-center items-start gap-2 animate-fade-in-up">
+				<div className="w-full px-6 sm:px-12 md:px-20 lg:px-32 flex flex-col justify-center items-start gap-2 animate-fade-in-up">
 					<h3
-						className={`text-3xl md:text-5xl tracking-widest uppercase text-light ${gowun.className}`}
+						className={`text-3xl md:text-4xl lg:text-5xl tracking-widest uppercase text-light ${gowun.className}`}
 					>
 						About Us
 					</h3>
-					<h4 className="text-xl text-secondary font-semibold tracking-wide mt-2">
+					<h4 className="text-lg md:text-xl text-secondary font-semibold tracking-wide mt-2">
 						Our Motto: &ldquo;Impacting Humanity With Kindness&rdquo;
 					</h4>
 				</div>
