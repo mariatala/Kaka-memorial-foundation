@@ -4,42 +4,13 @@ import { Suspense, useState } from 'react';
 import Link from 'next/link';
 import { Inter, Gowun_Dodum } from 'next/font/google';
 import { Eye, EyeOff, ArrowLeft, KeyRound, ShieldCheck, CheckCircle } from 'lucide-react';
+import { SECURITY_QUESTIONS } from '@/lib/security-questions';
+import { PASSWORD_RULES, getPasswordStrength, isPasswordValid } from '@/lib/password-validation';
 
 const inter = Inter({ weight: ['300', '400', '500', '600', '700'], subsets: ['latin'] });
 const gowun = Gowun_Dodum({ weight: '400', subsets: ['latin'] });
 
 type Step = 'email' | 'answer' | 'reset' | 'done';
-
-interface PasswordStrength {
-    score: number;
-    label: string;
-    color: string;
-}
-
-const SECURITY_QUESTIONS = [
-    'What was your childhood nickname?',
-    'What is the name of your first pet?',
-    'What city were you born in?',
-    "What is your mother's maiden name?",
-    'What was the name of your elementary school?',
-    'What was the make and model of your first car?',
-    'What street did you grow up on?',
-    "What is your oldest sibling's middle name?",
-];
-
-function getPasswordStrength(pw: string): PasswordStrength {
-    let score = 0;
-    if (pw.length >= 8) score++;
-    if (pw.length >= 12) score++;
-    if (/[A-Z]/.test(pw)) score++;
-    if (/[a-z]/.test(pw)) score++;
-    if (/[0-9]/.test(pw)) score++;
-    if (/[^A-Za-z0-9]/.test(pw)) score++;
-
-    if (score <= 2) return { score, label: 'Weak', color: 'bg-red-500' };
-    if (score <= 4) return { score, label: 'Fair', color: 'bg-accent-two' };
-    return { score, label: 'Strong', color: 'bg-secondary' };
-}
 
 function ForgotPasswordForm() {
     const [step, setStep] = useState<Step>('email');
@@ -55,7 +26,7 @@ function ForgotPasswordForm() {
     const [pending, setPending] = useState(false);
 
     const strength = getPasswordStrength(newPassword);
-    const strengthWidth = `${(strength.score / 6) * 100}%`;
+    const newPwValid = isPasswordValid(newPassword);
 
     async function handleEmailSubmit(e: React.FormEvent) {
         e.preventDefault();
@@ -293,35 +264,33 @@ function ForgotPasswordForm() {
                             </button>
                         </div>
                         {newPassword && (
-                            <div className="mt-1 space-y-1">
-                                <div className="h-1 w-full bg-primary/10 rounded-full overflow-hidden">
-                                    <div
-                                        className={`h-full rounded-full transition-all duration-300 ${strength.color}`}
-                                        style={{ width: strengthWidth }}
-                                    />
+                            <div className="mt-2 space-y-2">
+                                <div className="flex items-center gap-2">
+                                    <div className="flex-1 h-1.5 bg-primary/10 rounded-full overflow-hidden">
+                                        <div
+                                            className={`h-full rounded-full transition-all duration-300 ${strength.color}`}
+                                            style={{ width: `${(strength.score / 6) * 100}%` }}
+                                        />
+                                    </div>
+                                    <span className={`text-xs font-semibold w-10 text-right ${strength.textColor}`}>
+                                        {strength.label}
+                                    </span>
                                 </div>
-                                <p className={`text-xs font-medium ${
-                                    strength.label === 'Strong' ? 'text-secondary' :
-                                    strength.label === 'Fair' ? 'text-accent-two' : 'text-red-500'
-                                }`}>
-                                    {strength.label}
-                                </p>
+                                <ul className="space-y-1">
+                                    {PASSWORD_RULES.map((rule) => {
+                                        const met = rule.test(newPassword);
+                                        return (
+                                            <li key={rule.id} className={`flex items-center gap-2 text-xs transition-colors duration-200 ${met ? 'text-secondary' : 'text-primary/40'}`}>
+                                                <span className={`inline-flex items-center justify-center w-3.5 h-3.5 rounded-full border text-[9px] font-bold shrink-0 transition-all duration-200 ${met ? 'bg-secondary border-secondary text-white' : 'border-primary/20 text-primary/20'}`}>
+                                                    {met ? '✓' : ''}
+                                                </span>
+                                                {rule.label}
+                                            </li>
+                                        );
+                                    })}
+                                </ul>
                             </div>
                         )}
-                        <ul className="mt-1 space-y-0.5">
-                            {[
-                                [/[A-Z]/.test(newPassword), 'Uppercase letter'],
-                                [/[a-z]/.test(newPassword), 'Lowercase letter'],
-                                [/[0-9]/.test(newPassword), 'Number'],
-                                [/[^A-Za-z0-9]/.test(newPassword), 'Special character'],
-                                [newPassword.length >= 8, 'At least 8 characters'],
-                            ].map(([met, label]) => (
-                                <li key={String(label)} className={`text-xs flex items-center gap-1.5 ${met ? 'text-secondary' : 'text-primary/30'}`}>
-                                    <span className="text-[10px]">{met ? '✓' : '○'}</span>
-                                    {String(label)}
-                                </li>
-                            ))}
-                        </ul>
                     </div>
 
                     <div className="flex flex-col gap-1.5">
@@ -361,7 +330,7 @@ function ForgotPasswordForm() {
                         type="submit"
                         disabled={
                             pending ||
-                            !newPassword ||
+                            !newPwValid ||
                             !confirmPassword ||
                             newPassword !== confirmPassword
                         }

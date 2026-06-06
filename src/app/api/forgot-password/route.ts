@@ -2,20 +2,12 @@ import { NextRequest } from 'next/server';
 import crypto from 'crypto';
 import prisma from '@/lib/prisma';
 import { hashPassword, verifyPassword } from 'better-auth/crypto';
+import { validatePassword } from '@/lib/password-validation';
 
 const WINDOW_MS = 15 * 60 * 1000;
 const REQUEST_LIMIT = 10;
 const VERIFY_LIMIT = 5;
 const TOKEN_TTL_MS = 15 * 60 * 1000;
-
-function passwordError(pw: string): string | null {
-    if (pw.length < 8) return 'Password must be at least 8 characters.';
-    if (!/[A-Z]/.test(pw)) return 'Password must contain at least one uppercase letter.';
-    if (!/[a-z]/.test(pw)) return 'Password must contain at least one lowercase letter.';
-    if (!/[0-9]/.test(pw)) return 'Password must contain at least one number.';
-    if (!/[^A-Za-z0-9]/.test(pw)) return 'Password must contain at least one special character (!@#$%^&* etc.).';
-    return null;
-}
 
 async function isRateLimited(key: string, max: number): Promise<boolean> {
     const now = new Date();
@@ -127,7 +119,7 @@ export async function POST(request: NextRequest) {
             return Response.json({ error: 'All fields are required.' }, { status: 400 });
         }
 
-        const pwErr = passwordError(newPassword);
+        const pwErr = validatePassword(newPassword);
         if (pwErr) return Response.json({ error: pwErr }, { status: 400 });
 
         const now = new Date();

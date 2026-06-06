@@ -6,7 +6,9 @@ import { signUp } from '@/lib/auth-client';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Inter, Gowun_Dodum } from 'next/font/google';
-import { Eye, EyeOff, UserPlus } from 'lucide-react';
+import { Eye, EyeOff, UserPlus, ShieldCheck } from 'lucide-react';
+import { SECURITY_QUESTIONS } from '@/lib/security-questions';
+import { PASSWORD_RULES, getPasswordStrength, isPasswordValid } from '@/lib/password-validation';
 
 const inter = Inter({
 	weight: ['300', '400', '500', '600', '700'],
@@ -22,7 +24,13 @@ function SignUpForm() {
 
 	const [error, setError] = useState<string | null>(null);
 	const [pending, setPending] = useState(false);
+	const [password, setPassword] = useState('');
 	const [showPassword, setShowPassword] = useState(false);
+	const [selectedQuestion, setSelectedQuestion] = useState(SECURITY_QUESTIONS[0]);
+	const [answer, setAnswer] = useState('');
+
+	const strength = getPasswordStrength(password);
+	const pwValid = isPasswordValid(password);
 
 	async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault();
@@ -30,18 +38,48 @@ function SignUpForm() {
 		setPending(true);
 
 		const formData = new FormData(e.currentTarget);
-		const res = await signUp.email({
-			name: formData.get('name') as string,
-			email: formData.get('email') as string,
-			password: formData.get('password') as string,
-		});
+		const name = formData.get('name') as string;
+		const email = formData.get('email') as string;
+
+		// Step 1: Create the account via Better Auth
+		const res = await signUp.email({ name, email, password });
 
 		if (res.error) {
 			setError(res.error.message || 'Something went wrong. Please try again.');
 			setPending(false);
-		} else {
-			router.push(callbackUrl);
+			return;
 		}
+
+		// Step 2: Persist the security question immediately after sign-up.
+		// The session cookie is now set, so the API can authenticate this request.
+		try {
+			const sqRes = await fetch('/api/user/security-question', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ question: selectedQuestion, answer }),
+			});
+
+			if (!sqRes.ok) {
+				const data = await sqRes.json().catch(() => ({}));
+				// Account was created but security question failed — surface the error
+				// so the user can retry from the profile page rather than silently ignoring it.
+				setError(
+					(data.error as string | undefined) ??
+					'Account created, but security question could not be saved. Please set it from your profile.',
+				);
+				setPending(false);
+				// Navigate anyway — account exists and the profile page has a prompt to complete setup
+				router.push(callbackUrl);
+				return;
+			}
+		} catch {
+			// Network failure — account still created, non-fatal
+			setPending(false);
+			router.push(callbackUrl);
+			return;
+		}
+
+		router.push(callbackUrl);
 	}
 
 	return (
@@ -63,6 +101,8 @@ function SignUpForm() {
 			)}
 
 			<form onSubmit={handleSubmit} className="space-y-6" noValidate>
+
+				{/* ── Personal details ── */}
 				<div className="flex flex-col gap-1.5">
 					<label htmlFor="name" className="text-sm font-medium text-primary/80">
 						Full Name
@@ -104,8 +144,9 @@ function SignUpForm() {
 							type={showPassword ? 'text' : 'password'}
 							autoComplete="new-password"
 							required
-							minLength={8}
-							placeholder="Minimum 8 characters"
+							value={password}
+							onChange={(e) => setPassword(e.target.value)}
+							placeholder="Create a strong password"
 							className="w-full border-b-2 border-primary/20 bg-transparent py-2.5 px-1 pr-10 text-primary placeholder:text-primary/30 focus:outline-none focus:border-secondary transition-colors duration-200"
 						/>
 						<button
@@ -117,12 +158,105 @@ function SignUpForm() {
 							{showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
 						</button>
 					</div>
-					<p className="text-xs text-primary/40 mt-0.5">Must be at least 8 characters.</p>
+
+					{/* ── Strength bar ── */}
+					{password.length > 0 && (
+						<div className="mt-2 space-y-2">
+							<div className="flex items-center gap-2">
+								<div className="flex-1 h-1.5 bg-primary/10 rounded-full overflow-hidden">
+									<div
+										className={`h-full rounded-full transition-all duration-300 ${strength.color}`}
+										style={{ width: `${(strength.score / 6) * 100}%` }}
+									/>
+								</div>
+								<span className={`text-xs font-semibold w-10 text-right ${strength.textColor}`}>
+									{strength.label}
+								</span>
+							</div>
+
+							{/* ── Requirements checklist ── */}
+							<ul className="space-y-1 pt-0.5">
+								{PASSWORD_RULES.map((rule) => {
+									const met = rule.test(password);
+									return (
+										<li
+											key={rule.id}
+											className={`flex items-center gap-2 text-xs transition-colors duration-200 ${met ? 'text-secondary' : 'text-primary/40'}`}
+										>
+											<span className={`inline-flex items-center justify-center w-3.5 h-3.5 rounded-full border text-[9px] font-bold shrink-0 transition-all duration-200 ${
+												met
+													? 'bg-secondary border-secondary text-white'
+													: 'border-primary/20 text-primary/20'
+											}`}>
+												{met ? '✓' : ''}
+											</span>
+											{rule.label}
+										</li>
+									);
+								})}
+							</ul>
+						</div>
+					)}
+				</div>
+
+				{/* ── Account Recovery divider ── */}
+				<div className="flex items-center gap-3 pt-2">
+					<div className="flex-1 h-px bg-primary/10" />
+					<div className="flex items-center gap-1.5 text-primary/40">
+						<ShieldCheck size={13} />
+						<span className={`text-xs font-medium uppercase tracking-widest ${inter.className}`}>
+							Account Recovery
+						</span>
+					</div>
+					<div className="flex-1 h-px bg-primary/10" />
+				</div>
+
+				{/* ── Security question ── */}
+				<div className="flex flex-col gap-1.5">
+					<label htmlFor="security-question" className="text-sm font-medium text-primary/80">
+						Security Question
+					</label>
+					<select
+						id="security-question"
+						value={selectedQuestion}
+						onChange={(e) => setSelectedQuestion(e.target.value as typeof selectedQuestion)}
+						required
+						className="w-full border-b-2 border-primary/20 bg-transparent py-2.5 px-1 text-primary focus:outline-none focus:border-secondary transition-colors duration-200 cursor-pointer"
+					>
+						{SECURITY_QUESTIONS.map((q) => (
+							<option key={q} value={q}>
+								{q}
+							</option>
+						))}
+					</select>
+					<p className="text-xs text-primary/40 mt-0.5">
+						Used to verify your identity if you ever forget your password.
+					</p>
+				</div>
+
+				<div className="flex flex-col gap-1.5">
+					<label htmlFor="security-answer" className="text-sm font-medium text-primary/80">
+						Your Answer
+					</label>
+					<input
+						id="security-answer"
+						type="text"
+						autoComplete="off"
+						required
+						minLength={2}
+						value={answer}
+						onChange={(e) => setAnswer(e.target.value)}
+						placeholder="Enter your answer"
+						className="w-full border-b-2 border-primary/20 bg-transparent py-2.5 px-1 text-primary placeholder:text-primary/30 focus:outline-none focus:border-secondary transition-colors duration-200"
+					/>
+					<p className="text-xs text-primary/40 mt-0.5">
+						Answers are not case-sensitive and are stored securely.
+					</p>
 				</div>
 
 				<button
 					type="submit"
-					disabled={pending}
+					disabled={pending || !pwValid || !answer.trim()}
 					className="w-full flex items-center justify-center gap-2 bg-secondary hover:bg-secondary-dark disabled:opacity-60 disabled:cursor-not-allowed text-white font-semibold py-3 rounded-sm transition-colors duration-300"
 				>
 					{pending ? (
@@ -205,6 +339,7 @@ export default function SignUpPage() {
 				<Suspense fallback={
 					<div className="w-full max-w-md space-y-6 animate-pulse">
 						<div className="h-10 bg-primary/10 rounded" />
+						<div className="h-12 bg-primary/10 rounded" />
 						<div className="h-12 bg-primary/10 rounded" />
 						<div className="h-12 bg-primary/10 rounded" />
 						<div className="h-12 bg-primary/10 rounded" />
