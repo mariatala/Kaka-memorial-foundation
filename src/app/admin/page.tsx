@@ -17,6 +17,7 @@ import {
 	Layers,
 	Rss,
 	UserCheck,
+	ShieldCheck,
 } from 'lucide-react';
 
 const inter = Inter({
@@ -213,6 +214,16 @@ export default function AdminPage() {
 							<span className="text-xs font-semibold uppercase tracking-wider text-secondary bg-secondary/10 px-2.5 py-1 rounded-full">
 								{user.role || 'Admin'}
 							</span>
+						</div>
+						<div className="flex items-center justify-between px-6 py-4">
+							<span className="text-sm text-primary/50 font-medium">Security</span>
+							<Link
+								href="/admin/profile"
+								className="inline-flex items-center gap-1.5 text-xs font-semibold text-secondary hover:underline underline-offset-4 transition-colors"
+							>
+								<ShieldCheck size={13} />
+								Manage password &amp; recovery
+							</Link>
 						</div>
 					</div>
 				</div>

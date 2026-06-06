@@ -100,19 +100,21 @@ model CarouselItem {
 }
 
 model User {
-  id            String    @id
-  name          String
-  email         String
-  emailVerified Boolean   @default(false)
-  image         String?
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
-  role          String?
-  banned        Boolean?  @default(false)
-  banReason     String?
-  banExpires    DateTime?
-  sessions      Session[]
-  accounts      Account[]
+  id                 String    @id
+  name               String
+  email              String
+  emailVerified      Boolean   @default(false)
+  image              String?
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+  role               String?
+  banned             Boolean?  @default(false)
+  banReason          String?
+  banExpires         DateTime?
+  securityQuestion   String?
+  securityAnswerHash String?
+  sessions           Session[]
+  accounts           Account[]
 
   @@unique([email])
   @@map("user")
