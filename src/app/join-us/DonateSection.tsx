@@ -162,7 +162,7 @@ export default function DonateSection() {
 							It is easy to donate offline too.
 						</p>
 						<a
-						    href="'tel:+2348068287964"
+						    href="tel:+2348068287964"
 							className="text-sm font-medium hover:text-secondary transition-colors underline underline-offset-2"
 						>
 						    +2348068287964"

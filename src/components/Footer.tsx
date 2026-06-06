@@ -72,9 +72,9 @@ const Footer: React.FC = () => {
 
 							<p className="flex items-center gap-3">
 								<PhoneCall className="shrink-0 text-secondary" size={18} aria-hidden="true" />
-								<Link href="'tel:+2348068287964" className="hover:text-secondary transition-colors">+234 806 828 7964</Link>
+								<a href="tel:+2348068287964" className="hover:text-secondary transition-colors">+234 806 828 7964</a>
 								|
-								<Link href="tel:+2348069521144" className="hover:text-secondary transition-colors">+234 806 952 1144</Link>
+								<a href="tel:+2348069521144" className="hover:text-secondary transition-colors">+234 806 952 1144</a>
 							</p>
 				
 
