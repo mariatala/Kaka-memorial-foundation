@@ -167,12 +167,7 @@ export default function DonateSection() {
 						>
 						    +2348068287964"
 						</a>
-						<a
-							href="tel:+2348069521144"
-							className="text-sm font-medium hover:text-secondary transition-colors underline underline-offset-2"
-						>
-							+234 806 952 1144
-						</a>
+						
 					</div>
 				</div>
 
