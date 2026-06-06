@@ -1,254 +1,227 @@
 # User Guide — Kaka Memorial Foundation
 
-Welcome to the Kaka Memorial Foundation website. This guide explains how to use the site — from creating an account to registering for events, making a donation, and getting in touch with the foundation.
+This guide walks you through everything you can do on the Kaka Memorial Foundation website — from creating an account to registering for events, making a donation, and recovering your password.
 
 ---
 
 ## Table of Contents
 
-1. [Creating an Account](#1-creating-an-account)
-2. [Signing In](#2-signing-in)
-3. [Browsing Events](#3-browsing-events)
+1. [Exploring the Website](#1-exploring-the-website)
+2. [Creating an Account (Sign Up)](#2-creating-an-account-sign-up)
+3. [Signing In](#3-signing-in)
 4. [Registering for an Event](#4-registering-for-an-event)
-5. [Becoming a Partner or Volunteer](#5-becoming-a-partner-or-volunteer)
-6. [Making a Donation](#6-making-a-donation)
+5. [Making a Donation](#5-making-a-donation)
+6. [Joining as a Partner or Volunteer](#6-joining-as-a-partner-or-volunteer)
 7. [Subscribing to the Newsletter](#7-subscribing-to-the-newsletter)
 8. [Contacting the Foundation](#8-contacting-the-foundation)
-9. [Signing Out](#9-signing-out)
-10. [Frequently Asked Questions](#10-frequently-asked-questions)
+9. [Forgetting Your Password (Password Recovery)](#9-forgetting-your-password-password-recovery)
+10. [Signing Out](#10-signing-out)
 
 ---
 
-## 1. Creating an Account
+## 1. Exploring the Website
 
-You need an account to register for events. Creating one is free and only takes a minute.
+The Kaka Memorial Foundation website has several public pages you can browse without an account:
 
-**Steps:**
+| Page | What you will find |
+|------|--------------------|
+| **Home** (`/`) | Overview of the foundation's mission, impact statistics, recent projects carousel, and a call to action |
+| **About** (`/about`) | The foundation's story, goals, SDG alignment, and team |
+| **Causes** (`/causes`) | The three focus areas: education, clean water, and partnerships |
+| **Events** (`/events`) | Upcoming and ongoing events you can register for |
+| **Join Us** (`/join-us`) | Partner and volunteer registration forms, and the donation section |
+| **Contact** (`/contacts`) | A form to send a message directly to the foundation |
 
-1. Click **Sign In** in the navigation bar at the top of any page.
-2. On the sign-in page, click the **"Create one"** link near the bottom.
-3. You will be taken to the sign-up page. Fill in:
-   - **Full Name** — your first and last name
-   - **Email Address** — you will use this to sign in
-   - **Password** — must be at least 8 characters long
-4. Click **Create Account**.
-
-Your account will be created immediately. You do not need to verify your email before using the site.
-
-> If you already have an account, skip this step and go to [Signing In](#2-signing-in).
+No account is needed to read these pages. You only need an account to **register for events**.
 
 ---
 
-## 2. Signing In
+## 2. Creating an Account (Sign Up)
 
-1. Click **Sign In** in the navigation bar.
-2. Enter your **Email Address** and **Password**.
-3. Click **Sign In**.
+Go to `/sign-up` or click **Sign In → Create Account** in the navigation.
 
-You will be taken back to the page you were on (or to the home page if you came directly to the sign-in page).
+### What you will need to fill in
 
-**Trouble signing in?**
-- Make sure there are no extra spaces in your email address.
-- Passwords are case-sensitive — check that Caps Lock is off.
-- If you have forgotten your password, please contact the foundation directly (see [Contacting the Foundation](#8-contacting-the-foundation)) so the technical team can assist you.
+| Field | Notes |
+|-------|-------|
+| **Full Name** | Your first and last name |
+| **Email Address** | This will be your login username |
+| **Password** | Must meet all five strength requirements (see below) |
+| **Security Question** | Choose one from the dropdown — this is used if you ever forget your password |
+| **Your Answer** | Your answer to the chosen question; not case-sensitive |
+
+### Password requirements
+
+Your password must include all of the following:
+- At least 8 characters
+- At least one uppercase letter (A–Z)
+- At least one lowercase letter (a–z)
+- At least one number (0–9)
+- At least one special character (e.g., `!`, `@`, `#`, `$`, `%`)
+
+As you type, a **strength bar** and a **checklist** will show you which requirements you have met. The Create Account button will stay disabled until all five are satisfied and you have typed a security answer.
+
+### Why is a security question required?
+
+The foundation does not send password-reset emails. Instead, your security question is the only way to verify your identity if you ever forget your password. Choose a question whose answer you will remember, and give an honest, specific answer.
+
+> Your security answer is stored securely and is never visible to anyone, including foundation staff.
+
+### After signing up
+
+Once your account is created, you are signed in automatically and redirected to the home page (or back to the page you were trying to reach).
 
 ---
 
-## 3. Browsing Events
+## 3. Signing In
 
-You do not need an account to browse events.
+Go to `/sign-in` or click **Sign In** in the navigation.
 
-1. Click **Events** in the navigation bar, or go to `/events`.
-2. You will see a list of event categories that the foundation runs, such as Community Outreach, Advocacy, or Fundraising events.
-3. Each event card shows:
-   - The **event name** and a short description
-   - The **date** of the event (or "No planned event at the moment" if none is scheduled yet)
-   - The **location** (or "To be announced" if not confirmed)
-   - A **Join Us** button to register
+1. Enter your **Email Address** and **Password**.
+2. Click **Sign In**.
 
-If no events are showing yet, the foundation may not have published any upcoming events. Check back later or subscribe to the newsletter to be notified.
+If your credentials are correct you will be redirected to your destination. If you see an error, double-check your email and password. If you have forgotten your password, use the **Forgot password?** link next to the Password label.
 
 ---
 
 ## 4. Registering for an Event
 
-To register for an event, you must be **signed in**. If you are not signed in yet, the registration page will ask you to sign in first.
+You must be signed in to register for an event.
 
-### Step-by-step
+1. Go to the **Events** page (`/events`).
+2. Browse the event categories. Each card shows the event title, date, location, and a description.
+3. Click **Register** (or the event card) to open the registration form.
+4. Fill in your details:
 
-**Step 1 — Go to the Events page**
+   | Field | Required? |
+   |-------|-----------|
+   | Full Name | Yes |
+   | Email Address | Yes |
+   | Phone Number | Yes |
+   | Organisation | No |
+   | Address | No |
+   | Comments | No |
 
-Click **Events** in the navigation bar.
+5. Click **Register** to submit.
 
-**Step 2 — Choose an event**
-
-Find the event you want to attend and click the **Join Us** button on its card.
-
-**Step 3 — Sign in (if prompted)**
-
-If you are not already signed in, you will see a prompt. Click **Sign In to Continue** and sign in with your email and password. You will be brought back to the registration form automatically after signing in.
-
-**Step 4 — Fill in the registration form**
-
-The form will pre-fill your **name** and **email address** from your account. You only need to complete the remaining fields:
-
-| Field | Description | Required? |
-|-------|-------------|-----------|
-| **Full Name** | Your full name (already filled in) | Yes |
-| **Email Address** | Your email (already filled in) | Yes |
-| **Phone Number** | Your mobile or contact number (e.g., +234 000 000 0000) | Yes |
-| **Select Event** | Choose the specific event from the dropdown list | Yes |
-| **Message** | Any extra information you'd like to share with the organizers | No |
-
-**Step 5 — Submit your registration**
-
-Click **Register Now**. The button will briefly show a loading animation while your registration is being submitted.
-
-**Step 6 — Confirmation**
-
-Once successful, you will see a confirmation message:
-
-> **"You're Registered!"**
-> Thank you, [your name]! We've received your registration for [event name]. We'll be in touch with more details.
-
-From here you can:
-- Click **Register for Another** to go back and register for a different event.
-- Click **Back to Events** to return to the events listing.
+You will see a confirmation message when your registration is saved. Each email address can only be registered once per event category — if you try to register again with the same email you will see a message saying you are already registered.
 
 ---
 
-### Things to Know
+## 5. Making a Donation
 
-- **You can only register once per event.** If you try to register again with the same email for the same event, you will see the message: *"You are already registered for this event."*
-- **Your name and email are filled in automatically** from your account — you cannot change them on the registration form. If they are incorrect, please contact the foundation.
-- **The event dropdown** only shows events that have been set up by the foundation. If an event you heard about is not in the list, contact the foundation for assistance.
+You do not need an account to donate.
+
+1. Go to the **Join Us** page (`/join-us`) and scroll to the **Donate** section, or use the donation call-to-action on the home page.
+2. Choose a donation frequency:
+   - **One-time** — a single donation
+   - **Monthly** — recurring monthly
+   - **Annual** — once per year
+3. Enter or select a donation amount.
+4. Click the **PayPal** button. You will be taken to PayPal to complete the payment securely.
+5. After payment, you are returned to the website and your donation is recorded automatically.
+
+Donations are processed by PayPal. The foundation never sees your card or bank details.
 
 ---
 
-## 5. Becoming a Partner or Volunteer
+## 6. Joining as a Partner or Volunteer
 
-You do not need an account to submit a partner or volunteer form.
+You do not need an account to submit a partner or volunteer application.
 
-1. Click **Join Us** in the navigation bar, or go to `/join-us`.
-2. Scroll down to find the **Partner with Us** or **Volunteer with Us** section.
+1. Go to the **Join Us** page (`/join-us`).
+2. Scroll to the **Partner with Us** or **Volunteer** section.
 3. Fill in the form:
 
-   | Field | Description | Required? |
-   |-------|-------------|-----------|
-   | **Name** | Your full name | Yes |
-   | **Phone Number** | Your contact number | Yes |
-   | **Email** | Your email address | No |
-   | **Message** | How you'd like to partner or volunteer, or your availability | No |
-   | **Address** | Your location or address | No |
+   | Field | Required? |
+   |-------|-----------|
+   | Full Name | Yes |
+   | Email Address | Yes |
+   | Phone Number | Yes |
+   | Address | Yes |
+   | Message | Yes |
 
-4. Click **Submit Partnership Request** (for partners) or **Submit Volunteer Form** (for volunteers).
+4. Select whether you are applying as a **Partner** or **Volunteer**.
+5. Click **Submit**.
 
-You will see a confirmation message:
-
-> *"Thank you! Your [partner/volunteer] registration has been received. We'll be in touch shortly."*
-
-Click **Submit another registration** if you need to submit another form.
-
-> Each phone number can only be registered once. If you see an error saying your phone number is already registered, the foundation may already have your details on file.
-
----
-
-## 6. Making a Donation
-
-You do not need an account to donate. Donations are processed securely through **PayPal**.
-
-1. Click **Join Us** in the navigation bar, or go to `/join-us`.
-2. Scroll down to the **Donate** section (with the dark background).
-3. Choose how often you want to donate:
-   - **One time** — a single donation
-   - **Monthly** — a recurring donation every month
-4. Choose a donation amount by clicking one of the preset buttons: **$10**, **$50**, **$100**, or **$200**.
-   - If you want to give a different amount, click **Other** and type in your chosen amount.
-5. Click the **PayPal button** that appears below the amount selector.
-6. You will be taken to PayPal's secure payment page. Follow the steps there to complete your payment using your PayPal account or a debit/credit card.
-7. Once the payment is confirmed by PayPal, you will be returned to the website and see a thank-you message:
-
-   > *"Thank you! Your donation of $X has been received. Your support makes a real difference in the lives of those we serve."*
-
-8. Click **Close** to dismiss the message.
-
-**Alternative ways to donate:**
-
-If you prefer not to use PayPal, the foundation also accepts donations via:
-- **Email:** kakamemorialfoundation@gmail.com
-- **Phone:** +234 8068287964 or +234 9028123427
-
-Contact details for in-person or bank transfer arrangements can be obtained by reaching out directly.
+The foundation team will review your submission and follow up with you directly by email.
 
 ---
 
 ## 7. Subscribing to the Newsletter
 
-Stay up to date with the foundation's work by subscribing to the newsletter.
+You do not need an account to subscribe.
 
-Look for the newsletter sign-up section on the home page or the **Join Us** page. Enter your **email address** and submit the form. You will receive a confirmation that you have been subscribed.
+Look for the **newsletter subscription** form on the website (available in the Join Us page and the footer area). Enter your email address and click **Subscribe**. You will receive foundation updates and announcements.
 
-> To unsubscribe, contact the foundation directly and they will remove your email from the list.
+To unsubscribe, contact the foundation via the Contact page.
 
 ---
 
 ## 8. Contacting the Foundation
 
-1. Click **Contact** in the navigation bar, or go to `/contacts`.
-2. Fill in the contact form:
+Go to the **Contact** page (`/contacts`).
 
-   | Field | Description | Required? |
-   |-------|-------------|-----------|
-   | **Name** | Your full name | Yes |
-   | **Email** | Your email address | Yes |
-   | **Subject** | A brief subject line for your message | No |
-   | **Message** | Your full message | Yes |
+Fill in the form:
 
-3. Click **Send Message**.
+| Field | Required? |
+|-------|-----------|
+| Full Name | Yes |
+| Email Address | Yes |
+| Subject | No |
+| Message | Yes |
 
-You will see a confirmation:
-
-> *"Thank you! Your message has been received. We'll get back to you within 24 hours."*
-
-Click **Send another message** if you need to send a follow-up.
-
-**You can also reach the foundation directly:**
-
-| Channel | Details |
-|---------|---------|
-| Email | kakamemorialfoundation@gmail.com |
-| Phone | +234 8068287964 |
-| Phone | +234 9028123427 |
-| WhatsApp | +234 806 828 7964 |
-| Hours | Monday – Friday, 9 AM – 5 PM WAT |
+Click **Send Message**. The foundation team will see your message in their admin panel and may follow up by email.
 
 ---
 
-## 9. Signing Out
+## 9. Forgetting Your Password (Password Recovery)
 
-When you are done, click the **Sign Out** option in the navigation bar. This ends your session and signs you out of your account on that device.
+If you forget your password, you can reset it without needing a reset email. The process uses the security question you chose when you signed up.
+
+### Step 1 — Enter your email
+
+1. On the sign-in page, click **Forgot password?** (next to the Password label).
+2. You are taken to `/forgot-password`.
+3. Enter the **email address** associated with your account.
+4. Click **Continue**.
+
+If the account exists and has a security question set, the page will advance to the next step.
+
+### Step 2 — Answer your security question
+
+1. Your security question will be shown (e.g., "What is the name of your first pet?").
+2. Type your answer. Answers are not case-sensitive.
+3. Click **Verify Answer**.
+
+You have up to 5 attempts before the system temporarily locks the email address for 15 minutes. If you answer correctly, the page advances to the final step.
+
+### Step 3 — Set a new password
+
+1. Type your **new password**. It must meet all five requirements:
+   - At least 8 characters
+   - One uppercase letter
+   - One lowercase letter
+   - One number
+   - One special character
+2. The strength bar and checklist will guide you in real time.
+3. Type the new password again in **Confirm New Password**.
+4. Click **Reset Password**.
+
+On success, all your existing sessions are signed out for security, and you are shown a confirmation. You can then sign in with your new password.
+
+> The reset token expires after **15 minutes**. If you take too long, start the process again from Step 1.
+
+### What if I never set a security question?
+
+If your account was created before the security question feature was added, or if the security question was not saved during sign-up, you will see the message: _"No security question is set for this account."_ In this case, please contact the foundation's technical team directly to have your password reset manually.
 
 ---
 
-## 10. Frequently Asked Questions
+## 10. Signing Out
 
-**Do I need an account to use the website?**
-You only need an account to **register for events**. Everything else — browsing events, donating, volunteering, partnering, and contacting the foundation — can be done without signing in.
+Click **Sign Out** in the navigation bar. Your session will end immediately and you will be returned to the home page.
 
-**I cannot remember my password. What do I do?**
-There is no self-service password reset at this time. Please contact the foundation by email or phone and the technical team will help you regain access.
+---
 
-**I registered for an event but made a mistake. Can I change my registration?**
-Registrations cannot be changed or cancelled through the website. Please contact the foundation directly to update or cancel your registration.
-
-**Can I register for more than one event?**
-Yes. You can register for as many different event categories as you like. You just cannot register for the same event twice using the same email address.
-
-**I tried to donate but the PayPal button did not appear.**
-Make sure your browser is not blocking scripts or pop-ups from the website. Try refreshing the page. If the problem continues, use one of the direct contact methods listed in the donation section to arrange an alternative way to give.
-
-**Is my personal information safe?**
-The foundation stores only the information you provide (your name, email, phone number, and any messages). Payment details are handled entirely by PayPal and are never stored on the foundation's website.
-
-**How do I know if my event registration was successful?**
-You will see a confirmation message on screen after registering. If you did not see this message, your registration may not have gone through — please try again or contact the foundation to confirm.
+> For further help, use the **Contact** page to send a message to the foundation team.

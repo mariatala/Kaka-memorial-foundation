@@ -17,6 +17,7 @@ A full-stack NGO website for the **Kaka Memorial Foundation**, an organization d
 - [Running Locally](#running-locally)
 - [Build and Deployment](#build-and-deployment)
 - [Authentication and Authorization](#authentication-and-authorization)
+- [Password Security](#password-security)
 - [API Reference](#api-reference)
 - [Admin Dashboard](#admin-dashboard)
 - [PayPal Integration](#paypal-integration)
@@ -49,9 +50,22 @@ The site focuses on three SDG pillars:
 - Contact form for general inquiries
 
 **Authentication**
-- Email and password sign-in via Better-Auth
+- Email and password sign-in via Better Auth
+- Mandatory security question setup during registration (used for password recovery)
 - Role-based access control (admin role required for dashboard)
 - Session management with IP and user-agent tracking
+
+**Password Security**
+- Strong password enforcement: minimum 8 characters, uppercase, lowercase, number, and special character
+- Real-time strength bar and requirements checklist during registration and password change
+- Backend validation via Better Auth middleware — cannot be bypassed via direct API calls
+- Shared validation logic in `src/lib/password-validation.ts`
+
+**Password Recovery (no email required)**
+- 3-step security-question–based forgot-password flow
+- One-time tokens (32-byte random, SHA-256 stored, 15-minute TTL)
+- Database-backed rate limiting: 10 requests / 15 min (email step), 5 attempts / 15 min (answer step)
+- All sessions revoked on successful reset
 
 **Admin Dashboard**
 - Manage event categories (create, edit, delete)
@@ -62,6 +76,7 @@ The site focuses on three SDG pillars:
 - Edit homepage statistics (prefix, value, suffix, description)
 - Manage carousel slides (title, description, image, link, order)
 - View newsletter subscribers
+- Admin profile page to change password and update security question
 
 ---
 
@@ -75,7 +90,7 @@ The site focuses on three SDG pillars:
 | Styling | Tailwind CSS | 4.2.4 |
 | ORM | Prisma | 7.8.0 |
 | Database | PostgreSQL (Neon) | — |
-| Authentication | Better-Auth | 1.6.9 |
+| Authentication | Better Auth | 1.6.9 |
 | Payments | PayPal React SDK | 9.1.1 |
 | Icons | Lucide React + React Icons | — |
 | DB Driver | pg (node-postgres) | 8.20.0 |
@@ -103,11 +118,13 @@ kaka-memorial-foundation/
 │   │   │   ├── causes/
 │   │   │   ├── contacts/
 │   │   │   ├── events/
-│   │   │   ├── join-us/
-│   │   │   ├── sign-in/
-│   │   │   └── sign-up/
+│   │   │   └── join-us/
+│   │   ├── sign-in/           # Sign-in page
+│   │   ├── sign-up/           # Sign-up page (with security question)
+│   │   ├── forgot-password/   # 3-step password recovery page
 │   │   ├── admin/             # Protected admin dashboard routes
 │   │   │   ├── page.tsx       # Dashboard overview
+│   │   │   ├── profile/       # Admin profile (password + security question)
 │   │   │   ├── carousel/
 │   │   │   ├── donations/
 │   │   │   ├── event-attendees/
@@ -116,18 +133,18 @@ kaka-memorial-foundation/
 │   │   │   ├── messages/
 │   │   │   ├── registrations/
 │   │   │   └── statistics/
-│   │   ├── api/               # API route handlers
-│   │   │   ├── auth/[...all]/ # Better-Auth catch-all
-│   │   │   ├── contact/
-│   │   │   ├── donation/
-│   │   │   ├── event-categories/
-│   │   │   ├── event-registration/
-│   │   │   ├── membership/
-│   │   │   ├── register/
-│   │   │   └── admin/         # Admin-only API routes
-│   │   ├── generated/prisma/  # Auto-generated Prisma client (do not edit)
-│   │   ├── globals.css        # Global styles + Tailwind theme tokens
-│   │   └── layout.tsx         # Root layout with fonts and metadata
+│   │   └── api/               # API route handlers
+│   │       ├── auth/[...all]/ # Better Auth catch-all
+│   │       ├── contact/
+│   │       ├── donation/
+│   │       ├── event-categories/
+│   │       ├── event-registration/
+│   │       ├── forgot-password/   # Password reset (3-step)
+│   │       ├── membership/
+│   │       ├── register/
+│   │       ├── user/
+│   │       │   └── security-question/  # Get/set security question
+│   │       └── admin/         # Admin-only API routes
 │   ├── components/
 │   │   ├── Header.tsx
 │   │   ├── Footer.tsx
@@ -139,9 +156,11 @@ kaka-memorial-foundation/
 │   ├── hooks/
 │   │   └── useCountUp.ts      # Intersection-observer count-up hook
 │   └── lib/
-│       ├── auth.ts            # Better-Auth server config
-│       ├── auth-client.ts     # Better-Auth browser client
-│       └── prisma.ts          # Prisma client singleton
+│       ├── auth.ts            # Better Auth server config + password hooks
+│       ├── auth-client.ts     # Better Auth browser client
+│       ├── password-validation.ts  # Shared password rules and strength logic
+│       ├── prisma.ts          # Prisma client singleton
+│       └── security-questions.ts   # Predefined security question list
 ├── next.config.ts
 ├── prisma.config.ts
 ├── tailwind.config.js
@@ -184,7 +203,7 @@ Copy the example below into a `.env` file in the project root and fill in your v
 **4. Set up the database**
 
 ```bash
-# Push the schema to your database
+# Apply the schema to your database
 npx prisma migrate deploy
 
 # Seed initial data (admin users, statistics, carousel, event categories)
@@ -213,7 +232,7 @@ DATABASE_URL="postgresql://<user>:<password>@<host>/<dbname>?sslmode=require&pgb
 # Unpooled connection used by Prisma migrations
 DATABASE_URL_UNPOOLED="postgresql://<user>:<password>@<host>/<dbname>?sslmode=require"
 
-# ── Better-Auth ───────────────────────────────────────────────────────────────
+# ── Better Auth ───────────────────────────────────────────────────────────────
 BETTER_AUTH_SECRET="<at-least-32-character-random-secret>"
 BETTER_AUTH_URL="http://localhost:3000"   # Change to production URL when deploying
 
@@ -247,10 +266,10 @@ The project uses **Prisma ORM** with a **PostgreSQL** database. The schema is de
 
 | Model | Purpose |
 |-------|---------|
-| `User` | Authenticated users (admin accounts) |
+| `User` | Authenticated users; includes `securityQuestion` and `securityAnswerHash` fields |
 | `Session` | Active login sessions |
-| `Account` | Auth provider accounts |
-| `Verification` | Email/token verification records |
+| `Account` | Auth provider accounts (passwords stored here under `providerId: 'credential'`) |
+| `Verification` | Email/token verification records; also used for rate-limit tracking |
 | `EventCategory` | Event types (title, date, location, image) |
 | `Event` | Individual event registrations per category |
 | `Registration` | Partner and volunteer form submissions |
@@ -268,6 +287,9 @@ npx prisma migrate deploy
 
 # (Development only) Create a new migration after schema changes
 npx prisma migrate dev --name <migration-name>
+
+# Regenerate the Prisma client after schema changes
+npx prisma generate
 ```
 
 ### Seeding
@@ -336,8 +358,8 @@ The project is configured for zero-config Vercel deployment:
 
 ### Trusted Origins
 
-Better-Auth is pre-configured to trust the following origins (edit `src/lib/auth.ts` to add more):
-- `https://*.vercel.app`
+Better Auth is pre-configured to trust the following origins (edit `src/lib/auth.ts` to add more):
+- `https://kaka-memorial-foundation.vercel.app`
 - `https://kakamemorialfoundation.org`
 - `http://localhost:3000`
 
@@ -345,14 +367,28 @@ Better-Auth is pre-configured to trust the following origins (edit `src/lib/auth
 
 ## Authentication and Authorization
 
-Authentication is handled by **[Better-Auth](https://better-auth.com)** with email/password credentials.
+Authentication is handled by **[Better Auth](https://better-auth.com)** with email/password credentials.
 
-### Sign-Up / Sign-In Flow
+### Sign-Up Flow
 
-1. Users visit `/sign-up` or `/sign-in`.
-2. Credentials are submitted to the Better-Auth catch-all handler at `/api/auth/[...all]`.
-3. Sessions are stored in the `session` table with expiry, IP address, and user-agent.
-4. Client-side session state is accessed via the `useSession()` hook from `src/lib/auth-client.ts`.
+1. User fills in name, email, password, security question, and security answer at `/sign-up`.
+2. Better Auth creates the account via `/api/auth/[...all]`.
+3. Immediately after account creation, the security question and hashed answer are saved via `POST /api/user/security-question`.
+4. Sessions are stored in the `session` table with expiry, IP address, and user-agent.
+
+### Sign-In Flow
+
+1. User visits `/sign-in` and submits email and password.
+2. On success, a session cookie is set and the user is redirected.
+3. A "Forgot password?" link on the sign-in page leads to the recovery flow.
+
+### Password Recovery (Forgot Password)
+
+The 3-step flow at `/forgot-password` does not use email links:
+
+1. **Step 1 — Email:** Enter the registered email address. The system returns the security question for that account.
+2. **Step 2 — Answer:** Submit the answer to the security question. On success, a one-time reset token (valid for 15 minutes) is issued.
+3. **Step 3 — New Password:** Submit the new password (must meet strength requirements) along with the token. All existing sessions are revoked on success.
 
 ### Admin Access
 
@@ -374,6 +410,39 @@ Admin API routes call `auth.api.getSession()` and return `401 Unauthorized` if t
 
 ---
 
+## Password Security
+
+Password requirements are enforced at every entry point — registration, password change, and password reset. They cannot be bypassed via direct API calls.
+
+### Rules
+
+All five of the following must be satisfied:
+
+| Rule | Requirement |
+|------|-------------|
+| Length | At least 8 characters |
+| Uppercase | At least one uppercase letter (A–Z) |
+| Lowercase | At least one lowercase letter (a–z) |
+| Number | At least one digit (0–9) |
+| Special character | At least one non-alphanumeric character |
+
+### Strength Indicator
+
+The sign-up and password-change pages display a colour-coded strength bar and a per-rule checklist in real time:
+- **Weak** (red) — score 0–2
+- **Fair** (amber) — score 3–4
+- **Strong** (green) — score 5–6
+
+### Shared Logic
+
+All password logic lives in `src/lib/password-validation.ts` and is imported by:
+- `src/lib/auth.ts` — Better Auth `hooks.before` middleware (server-side enforcement)
+- `src/app/api/forgot-password/route.ts` — reset step validation
+- `src/app/sign-up/page.tsx` — real-time frontend feedback
+- `src/app/admin/profile/page.tsx` — admin password change feedback
+
+---
+
 ## API Reference
 
 All endpoints accept and return JSON unless noted otherwise.
@@ -388,6 +457,7 @@ All endpoints accept and return JSON unless noted otherwise.
 | `POST` | `/api/event-registration` | Register for an event (requires auth session) |
 | `POST` | `/api/membership` | Subscribe to the newsletter |
 | `POST` | `/api/register` | Submit a partner or volunteer registration |
+| `POST` | `/api/forgot-password` | Password reset (3-step: `request`, `verify`, `reset`) |
 
 #### `POST /api/contact`
 ```json
@@ -433,6 +503,42 @@ Returns `409 Conflict` if the email is already registered for that event categor
 }
 ```
 
+#### `POST /api/forgot-password`
+
+Step `request`:
+```json
+{ "step": "request", "email": "string" }
+```
+Returns `{ "question": "string" }` on success.
+
+Step `verify`:
+```json
+{ "step": "verify", "email": "string", "answer": "string" }
+```
+Returns `{ "token": "string" }` on success. Token is valid for 15 minutes.
+
+Step `reset`:
+```json
+{ "step": "reset", "email": "string", "token": "string", "newPassword": "string" }
+```
+Returns `{ "success": true }` on success. All sessions are revoked.
+
+### Authenticated User Endpoints
+
+| Method | Path | Auth required | Description |
+|--------|------|---------------|-------------|
+| `GET` | `/api/user/security-question` | Session | Get the signed-in user's security question and whether it is set |
+| `POST` | `/api/user/security-question` | Session | Set or update the security question and answer |
+
+#### `POST /api/user/security-question`
+```json
+{
+  "question": "string (must be from the predefined list)",
+  "answer": "string",
+  "currentPassword": "string (required only when updating an existing answer)"
+}
+```
+
 ### Admin Endpoints
 
 All admin endpoints require an authenticated session with `role: 'admin'`. Returns `401` otherwise.
@@ -462,7 +568,7 @@ All admin endpoints require an authenticated session with `role: 'admin'`. Retur
 
 | Method | Path | Description |
 |--------|------|-------------|
-| `*` | `/api/auth/[...all]` | Better-Auth handler (sign in, sign up, sign out, session) |
+| `*` | `/api/auth/[...all]` | Better Auth handler (sign in, sign up, sign out, session, change password) |
 
 ---
 
@@ -475,18 +581,19 @@ The admin dashboard is accessible at `/admin` for users with `role: 'admin'`.
 | Route | Purpose |
 |-------|---------|
 | `/admin` | Overview with quick-navigation links |
-| `/admin/events` | Create, edit, and delete event categories (title, subtitle, date, location, image URL, background color, sort order) |
-| `/admin/event-attendees` | View all event registrations grouped by category; export-ready table |
+| `/admin/events` | Create, edit, and delete event categories |
+| `/admin/event-attendees` | View all event registrations; search, filter, export CSV |
 | `/admin/registrations` | Browse partner and volunteer submissions |
-| `/admin/donations` | View all PayPal donation records (amount, currency, frequency, date) |
+| `/admin/donations` | View all PayPal donation records |
 | `/admin/messages` | Read contact form submissions |
-| `/admin/statistics` | Edit the homepage impact stats (e.g., "500+ Families Served") |
+| `/admin/statistics` | Edit the homepage impact stats |
 | `/admin/carousel` | Manage the homepage advocacy/projects carousel slides |
 | `/admin/memberships` | View and manage newsletter subscribers |
+| `/admin/profile` | Change password and update security question |
 
 ### Accessing the Dashboard
 
-Sign in at `/sign-in` using admin credentials provisioned by the seed script. After sign-in you will be redirected to `/admin`.
+Sign in at `/sign-in` using admin credentials provisioned by the seed script. After sign-in, navigate to `/admin` or click the admin dashboard link.
 
 ---
 
@@ -516,6 +623,12 @@ The `postinstall` script runs automatically. If it fails, run it manually:
 npx prisma generate
 ```
 
+### TypeScript errors after schema changes
+After modifying `prisma/schema.prisma`, always regenerate the Prisma client:
+```bash
+npx prisma generate
+```
+
 ### Database connection errors
 - Verify `DATABASE_URL` is correct and the database is reachable.
 - For Neon, ensure the connection string includes `?sslmode=require`.
@@ -526,12 +639,15 @@ npx prisma generate
 - Check that `BETTER_AUTH_SECRET` is the same across all server restarts.
 - Clear browser cookies and sign in again.
 
+### Password reset says "No security question is set"
+The user must have set a security question during sign-up or from the admin profile page. If the account was created before the security question feature was added, a developer will need to reset the password directly in the database.
+
 ### PayPal button does not appear
 - Verify `NEXT_PUBLIC_PAYPAL_CLIENT_ID` is set and is a valid sandbox or live client ID.
 - Check the browser console for PayPal SDK errors.
 
-### Seed script fails with "already exists"
-The seed is idempotent and skips existing records by design. If you see an actual error, check that `DATABASE_URL` points to the correct database and that migrations have been applied.
+### Seed script fails
+The seed is idempotent and skips existing records by design. If you see an actual error, check that `DATABASE_URL` points to the correct database and that migrations have been applied (`npx prisma migrate deploy`).
 
 ### Images from external URLs not loading
 `next.config.ts` allows images from all HTTPS hostnames (`hostname: '**'`). If an image still fails, check for mixed-content (HTTP) URLs in the database.

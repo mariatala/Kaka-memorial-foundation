@@ -16,7 +16,8 @@ This guide explains how to use the admin section of the Kaka Memorial Foundation
 8. [Editing Homepage Statistics](#8-editing-homepage-statistics)
 9. [Managing the Carousel (Recent Projects)](#9-managing-the-carousel-recent-projects)
 10. [Managing Newsletter Subscribers](#10-managing-newsletter-subscribers)
-11. [Signing Out](#11-signing-out)
+11. [Managing Your Profile (Password & Security Question)](#11-managing-your-profile-password--security-question)
+12. [Signing Out](#12-signing-out)
 
 ---
 
@@ -31,7 +32,7 @@ Only staff with an admin account can access the admin section. Admin accounts ar
 3. Click **Sign In**.
 4. If your credentials are correct, you will be taken to the home page. Then navigate to `/admin` or click your way to the admin dashboard.
 
-> If you see "Invalid email or password," double-check your credentials. If you have forgotten your password, contact the technical team to reset it.
+> If you see "Invalid email or password," double-check your credentials. If you have forgotten your password, use the **Forgot password?** link on the sign-in page to reset it using your security question.
 
 ---
 
@@ -40,9 +41,10 @@ Only staff with an admin account can access the admin section. Admin accounts ar
 Once signed in as an admin, go to `/admin`. You will see:
 
 - Your **name**, **email address**, and your role badge (**ADMIN**) displayed at the top.
-- A grid of **8 quick-action cards**, each leading to a different section of the admin panel.
+- A grid of quick-action cards, each leading to a different section of the admin panel.
+- An **Account Details** section at the bottom with a link to manage your password and recovery settings.
 
-The eight sections are:
+The main sections are:
 
 | Section | What it does |
 |---------|-------------|
@@ -318,10 +320,43 @@ Click **Copy all** (or **Copy X** when filtering) to copy all visible email addr
 
 ---
 
-## 11. Signing Out
+## 11. Managing Your Profile (Password & Security Question)
+
+Go to **Admin → Profile** (or `/admin/profile`), accessible from the **"Manage password & recovery"** link at the bottom of the main dashboard.
+
+This page has two sections: **Change Password** and **Security Question**.
+
+### Changing Your Password
+
+1. Enter your **Current Password**.
+2. Enter a **New Password**. A strength bar and checklist will appear as you type, showing which requirements are met:
+   - At least 8 characters
+   - One uppercase letter (A–Z)
+   - One lowercase letter (a–z)
+   - One number (0–9)
+   - One special character (e.g., `!`, `@`, `#`, `$`)
+3. Enter the new password again in **Confirm New Password**.
+4. Click **Update Password**.
+
+The submit button is disabled until the new password meets all requirements and both entries match. All your active sessions remain valid after a password change here (unlike a password reset, which revokes all sessions).
+
+### Setting or Updating Your Security Question
+
+Your security question is what the system will ask you if you ever use **Forgot Password** on the sign-in page.
+
+1. Select a question from the **Security Question** dropdown.
+2. Type your answer in the **Your Answer** field. Answers are not case-sensitive and are stored securely (hashed — never stored in plain text).
+3. If you are updating an existing answer, you will also need to enter your **Current Password** to confirm the change.
+4. Click **Save Question**.
+
+> If you have not yet set a security question, a yellow warning banner will appear at the top of the page. Set your question as soon as possible so that you can recover your account if you ever forget your password.
+
+---
+
+## 12. Signing Out
 
 To sign out, click the **Sign Out** option in the navigation header. You will be returned to the home page and your admin session will end.
 
 ---
 
-> For technical issues such as forgotten passwords, database errors, or access problems, please contact the development team.
+> For technical issues such as database errors or access problems, please contact the development team.
