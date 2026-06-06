@@ -10,28 +10,33 @@ datasource db {
 }
 
 model Event {
-  id           Int      @id @default(autoincrement())
-  name         String
-  email        String
-  phone        String
-  organization String?
-  address      String?
-  comments     String?
-  createdAt    DateTime @default(now())
+  id              Int            @id @default(autoincrement())
+  name            String
+  email           String
+  phone           String
+  organization    String?
+  address         String?
+  comments        String?
+  eventCategoryId Int?
+  eventCategory   EventCategory? @relation(fields: [eventCategoryId], references: [id], onDelete: SetNull)
+  createdAt       DateTime       @default(now())
+
+  @@unique([eventCategoryId, email])
 }
 
 model EventCategory {
-  id         Int       @id @default(autoincrement())
-  title      String
-  subtitle   String    @default("")
-  about      String    @default("")
-  date       DateTime?
-  location   String    @default("")
-  imageUrl   String    @default("")
-  background String    @default("bg-secondary")
-  order      Int       @default(0)
-  createdAt  DateTime  @default(now())
-  updatedAt  DateTime  @updatedAt
+  id              Int       @id @default(autoincrement())
+  title           String
+  subtitle        String    @default("")
+  about           String    @default("")
+  date            DateTime?
+  location        String    @default("")
+  imageUrl        String    @default("")
+  background      String    @default("bg-secondary")
+  order           Int       @default(0)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  registrations   Event[]
 }
 
 model Registration {

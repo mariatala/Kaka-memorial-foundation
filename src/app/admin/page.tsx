@@ -16,6 +16,7 @@ import {
 	BarChart2,
 	Layers,
 	Rss,
+	UserCheck,
 } from 'lucide-react';
 
 const inter = Inter({
@@ -38,6 +39,13 @@ const quickLinks = [
 		label: 'Events',
 		description: 'Manage event categories, dates & locations',
 		accent: 'bg-primary/10 text-primary border-primary/20',
+	},
+	{
+		href: '/admin/event-attendees',
+		icon: UserCheck,
+		label: 'Event Attendees',
+		description: 'View all event registration submissions',
+		accent: 'bg-secondary/10 text-secondary border-secondary/20',
 	},
 	{
 		href: '/admin/donations',
@@ -223,7 +231,7 @@ export default function AdminPage() {
 							Kaka Memorial Foundation
 						</p>
 						<p className="text-xs text-primary/30">
-							Impacting Humanity With Kindness
+							Impacting Humanity Through Kindness
 						</p>
 					</div>
 				</div>

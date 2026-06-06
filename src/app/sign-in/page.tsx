@@ -160,7 +160,7 @@ export default function SignInPage() {
 				<div className="relative z-10 flex flex-col h-full justify-center gap-12">
 					<div className="space-y-6">
 						<h2 className={`text-4xl xl:text-5xl text-light tracking-widest uppercase leading-snug ${gowun.className}`}>
-							Impacting Humanity<br />With Kindness
+							Impacting Humanity<br />Through Kindness
 						</h2>
 						<div className="w-16 h-1 bg-secondary rounded-full" />
 						<p className="text-accent-three text-base leading-8 tracking-wide max-w-sm">

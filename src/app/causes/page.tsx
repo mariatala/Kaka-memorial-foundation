@@ -99,7 +99,7 @@ export default function CausesPage(){
 								{
 									title: 'Sponsor an Orphan',
 									description:
-										'Help provide food, tuition, and mentorship for orphaned children.',
+										'Help writing materials, tuition, and mentorship for orphaned children.',
 									icon: HeartHandshake,
 								},
 								{

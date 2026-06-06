@@ -140,9 +140,10 @@ export default function DonateSection() {
 						<h3 className="text-lg font-semibold uppercase tracking-wider mb-2">In Person</h3>
 						<div className="w-10 h-0.5 bg-primary/30 rounded-full mx-auto" />
 						<p className="text-sm leading-8">
-							No. 20 Alh Inuwa Gani Shopping Complex,<br />
-							Along ABUJA-LOKOJA Express Road,<br />
-							Abaji-Abuja
+						Virtual Operations
+						</p>
+						<p className="text-sm leading-8">
+						Physical Location Coming Soon
 						</p>
 						<a
 							href="mailto:kakamemorialfoundation@gmail.com"

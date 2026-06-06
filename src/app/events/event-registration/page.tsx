@@ -13,6 +13,13 @@ const inter = Inter({
 });
 const gowun = Gowun_Dodum({ weight: '400', subsets: ['latin'] });
 
+interface EventCategory {
+	id: number;
+	title: string;
+	date: string | null;
+	location: string;
+}
+
 export default function EventRegistrationForm() {
 	const router = useRouter();
 	const { data: session, isPending } = useSession();
@@ -21,12 +28,15 @@ export default function EventRegistrationForm() {
 		name: '',
 		email: '',
 		phone: '',
-		event: '',
+		eventCategoryId: '',
 		message: '',
 	});
+	const [eventCategories, setEventCategories] = useState<EventCategory[]>([]);
+	const [categoriesLoading, setCategoriesLoading] = useState(true);
 	const [submitted, setSubmitted] = useState(false);
 	const [submitting, setSubmitting] = useState(false);
 	const [submitError, setSubmitError] = useState<string | null>(null);
+	const [selectedEventTitle, setSelectedEventTitle] = useState('');
 
 	// Pre-fill name and email from session once it loads
 	useEffect(() => {
@@ -38,6 +48,15 @@ export default function EventRegistrationForm() {
 			}));
 		}
 	}, [session]);
+
+	// Fetch event categories for the dropdown
+	useEffect(() => {
+		fetch('/api/event-categories')
+			.then((r) => r.json())
+			.then((data: EventCategory[]) => setEventCategories(data))
+			.catch(() => setEventCategories([]))
+			.finally(() => setCategoriesLoading(false));
+	}, []);
 
 	// Redirect unauthenticated users (secondary guard after middleware)
 	useEffect(() => {
@@ -51,6 +70,10 @@ export default function EventRegistrationForm() {
 	) => {
 		const { name, value } = e.target;
 		setFormData((prev) => ({ ...prev, [name]: value }));
+		if (name === 'eventCategoryId') {
+			const cat = eventCategories.find((c) => String(c.id) === value);
+			setSelectedEventTitle(cat?.title ?? '');
+		}
 	};
 
 	const handleSubmit = async (e: React.FormEvent) => {
@@ -61,7 +84,10 @@ export default function EventRegistrationForm() {
 			const res = await fetch('/api/event-registration', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify(formData),
+				body: JSON.stringify({
+					...formData,
+					eventCategoryId: Number(formData.eventCategoryId),
+				}),
 			});
 			const data = await res.json();
 			if (!res.ok) {
@@ -91,7 +117,7 @@ export default function EventRegistrationForm() {
 		);
 	}
 
-	// ── Unauthenticated fallback (middleware handles this first, but just in case) ──
+	// ── Unauthenticated fallback ──
 	if (!session?.user) {
 		return (
 			<div className="min-h-screen bg-light flex items-center justify-center px-4 pt-20">
@@ -130,19 +156,20 @@ export default function EventRegistrationForm() {
 					</h2>
 					<p className={`text-primary/70 text-sm leading-relaxed ${inter.className}`}>
 						Thank you, <strong>{formData.name}</strong>! We&apos;ve received your registration for{' '}
-						<strong>{formData.event}</strong>. We&apos;ll be in touch with more details.
+						<strong>{selectedEventTitle}</strong>. We&apos;ll be in touch with more details.
 					</p>
 					<div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
 						<button
 							onClick={() => {
 								setSubmitted(false);
-								setFormData((prev) => ({
+								setFormData({
 									name: session.user.name || '',
 									email: session.user.email || '',
 									phone: '',
-									event: '',
+									eventCategoryId: '',
 									message: '',
-								}));
+								});
+								setSelectedEventTitle('');
 							}}
 							className="px-5 py-2.5 border-2 border-primary text-primary font-semibold rounded-sm hover:bg-primary hover:text-light transition-all duration-300 text-sm"
 						>
@@ -252,17 +279,34 @@ export default function EventRegistrationForm() {
 							</label>
 							<select
 								id="reg-event"
-								name="event"
-								value={formData.event}
+								name="eventCategoryId"
+								value={formData.eventCategoryId}
 								onChange={handleChange}
 								required
-								className="border-b-2 border-primary/20 bg-transparent py-2.5 px-1 text-primary focus:outline-none focus:border-secondary transition-colors duration-200 cursor-pointer"
+								disabled={categoriesLoading}
+								className="border-b-2 border-primary/20 bg-transparent py-2.5 px-1 text-primary focus:outline-none focus:border-secondary transition-colors duration-200 cursor-pointer disabled:opacity-50"
 							>
-								<option value="">— Choose an Event —</option>
-								<option value="Community Outreach">Community Outreach</option>
-								<option value="Advocacy Campaign">Advocacy &amp; Awareness Campaign</option>
-								<option value="Fundraising">Fundraising &amp; Partnership</option>
+								<option value="">
+									{categoriesLoading ? 'Loading events…' : '— Choose an Event —'}
+								</option>
+								{eventCategories.map((cat) => (
+									<option key={cat.id} value={cat.id}>
+										{cat.title}
+										{cat.date
+											? ` — ${new Date(cat.date).toLocaleDateString('en-GB', {
+													day: 'numeric',
+													month: 'short',
+													year: 'numeric',
+											  })}`
+											: ''}
+									</option>
+								))}
 							</select>
+							{!categoriesLoading && eventCategories.length === 0 && (
+								<p className={`text-xs text-primary/40 mt-1 ${inter.className}`}>
+									No upcoming events available at this time.
+								</p>
+							)}
 						</div>
 					</div>
 
@@ -289,7 +333,7 @@ export default function EventRegistrationForm() {
 
 					<button
 						type="submit"
-						disabled={submitting}
+						disabled={submitting || categoriesLoading}
 						className="w-full flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark disabled:opacity-60 disabled:cursor-not-allowed text-white font-semibold py-3 rounded-sm transition-colors duration-300"
 					>
 						{submitting ? (

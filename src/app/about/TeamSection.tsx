@@ -53,7 +53,7 @@ export default function TeamSection ({
 							access, and sustainable growth through kindness."
 						</p>
 						<h5 className={`${niconneFontClass} text-3xl text-primary`}>
-							Mrs. Zainab Inuwa Gani Esq.
+							Haj. Zainab Inuwa Gani Esq.
 						</h5>
 						<p className="text-secondary text-sm md:text-base font-semibold uppercase tracking-wider">
 							Founder & Director
